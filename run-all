@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Verificar se foi fornecido um padrão de nome (opcional)
+PATTERN="${1:-*.sh}"
+
+# Encontrar todos os arquivos .sh que correspondem ao padrão
+# e ordená-los numericamente
+FILES=$(find . -maxdepth 1 -name "$PATTERN" -type f -executable | sort -V)
+
+# Verificar se foram encontrados arquivos
+if [ -z "$FILES" ]; then
+    echo "Nenhum arquivo executável correspondente a '$PATTERN' foi encontrado."
+    exit 1
+fi
+
+# Contador para acompanhar o progresso
+TOTAL=$(echo "$FILES" | wc -l)
+CURRENT=0
+
+echo "Iniciando execução de $TOTAL scripts em sequência..."
+echo "---------------------------------------------"
+
+# Executar cada arquivo encontrado
+for FILE in $FILES; do
+    CURRENT=$((CURRENT + 1))
+    FILENAME=$(basename "$FILE")
+    
+    echo "[$CURRENT/$TOTAL] Executando: $FILENAME"
+    echo "---------------------------------------------"
+    
+    # Executar o script
+    "$FILE"
+    
+    # Verificar o código de saída
+    EXIT_CODE=$?
+    if [ $EXIT_CODE -ne 0 ]; then
+        echo "AVISO: $FILENAME terminou com código de saída $EXIT_CODE"
+    fi
+    
+    echo "---------------------------------------------"
+    echo "Concluído: $FILENAME"
+    echo ""
+done
+
+echo "Execução completa! Todos os $TOTAL scripts foram executados."
