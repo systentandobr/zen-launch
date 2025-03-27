@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Script 0 criado automaticamente
+echo "Executando claude-ai0.sh"
+#!/bin/bash
+
+# Criar script para gerar a estrutura completa do projeto Zen Launcher
+
+cat << 'EOF' > setup_project_structure.sh
+#!/bin/bash
+
 # Script para criar a estrutura de diretórios do projeto Zen Launcher
 # Executar este script na raiz do projeto após fazer o 'npx react-native init' inicial
 
@@ -45,7 +54,7 @@ mkdir -p src/types
 
 # Diretórios para módulos nativos Android
 mkdir -p android/app/src/main/java/com/zenlauncher
-mkdir -p android/app/src/main/res/values/
+
 echo "Criando arquivos base iniciais..."
 
 # Criar arquivos base para o app
@@ -299,3 +308,10 @@ EOT
 echo "Estrutura de diretórios criada com sucesso!"
 echo "Para configurar o TypeScript e Babel adequadamente, não esqueça de atualizar os arquivos tsconfig.json e babel.config.js conforme necessário."
 echo "Execute 'yarn add' ou 'npm install' para adicionar as dependências necessárias ao projeto."
+EOF
+
+# Tornar o script executável
+chmod +x setup_project_structure.sh
+
+echo "Script de configuração criado: setup_project_structure.sh"
+echo "Para executar, use: ./setup_project_structure.sh"

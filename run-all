@@ -2,7 +2,8 @@
 
 # Verificar se foi fornecido um padrão de nome (opcional)
 PATTERN="${1:-*.sh}"
-
+\cp scripts/app/* .
+\cp scripts/github_actions/* .
 # Encontrar todos os arquivos .sh que correspondem ao padrão
 # e ordená-los numericamente
 FILES=$(find . -maxdepth 1 -name "$PATTERN" -type f -executable | sort -V)
@@ -43,3 +44,5 @@ for FILE in $FILES; do
 done
 
 echo "Execução completa! Todos os $TOTAL scripts foram executados."
+
+rm -f *.sh

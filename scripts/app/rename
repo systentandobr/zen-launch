@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for file in claude-ai*; do
+    suffix="${file#claude-ai}"
+    echo suffix: $suffix;
+    mv "$file" "app$suffix";
+done;
+
