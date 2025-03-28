@@ -298,4 +298,4 @@ EOT
 
 echo "Estrutura de diretórios criada com sucesso!"
 echo "Para configurar o TypeScript e Babel adequadamente, não esqueça de atualizar os arquivos tsconfig.json e babel.config.js conforme necessário."
-echo "Execute 'yarn add' ou 'npm install' para adicionar as dependências necessárias ao projeto."
+echo "Execute 'yarn add' ou 'pnpm install' para adicionar as dependências necessárias ao projeto."

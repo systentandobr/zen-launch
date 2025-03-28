@@ -1,8 +1,3 @@
-#!/bin/bash
-
-# Script 46 criado automaticamente
-echo "Executando claude-ai46.sh"
-cat << 'EOF' > README.md
 # Zen Launcher
 
 Um launcher para Android com design zenista focado em reduzir distrações e aumentar a produtividade.
@@ -93,4 +88,3 @@ Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar pull
 ## Licença
 
 Este projeto é licenciado sob a [Licença MIT](LICENSE).
-EOF

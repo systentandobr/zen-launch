@@ -1,8 +1,3 @@
-#!/bin/bash
-
-# Script 17 criado automaticamente
-echo "Executando claude-ai17.sh"
-cat << 'EOF' > CONTRIBUTING.md
 # Guia de Contribuição - Zen Launcher
 
 Obrigado pelo interesse em contribuir com o Zen Launcher! Este documento fornece orientações para ajudá-lo no processo de contribuição.
@@ -176,4 +171,3 @@ npm test
 ## Código de Conduta
 
 Por favor, leia nosso [Código de Conduta](CODE_OF_CONDUCT.md) antes de contribuir com o projeto.
-EOF
