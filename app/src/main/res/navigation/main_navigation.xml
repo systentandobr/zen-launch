@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.zenlauncher.presentation.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_apps"
+            app:destination="@id/appsFragment" />
+        <action
+            android:id="@+id/action_home_to_focus"
+            app:destination="@id/focusFragment" />
+        <action
+            android:id="@+id/action_home_to_standby"
+            app:destination="@id/standbyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/appsFragment"
+        android:name="com.zenlauncher.presentation.apps.AppsFragment"
+        android:label="Apps"
+        tools:layout="@layout/fragment_apps">
+    </fragment>
+
+    <fragment
+        android:id="@+id/focusFragment"
+        android:name="com.zenlauncher.presentation.focus.FocusFragment"
+        android:label="Foco"
+        tools:layout="@layout/fragment_focus">
+        <action
+            android:id="@+id/action_focus_to_app_block"
+            app:destination="@id/appBlockFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.zenlauncher.presentation.stats.StatsFragment"
+        android:label="Estatísticas"
+        tools:layout="@layout/fragment_stats">
+    </fragment>
+
+    <fragment
+        android:id="@+id/appBlockFragment"
+        android:name="com.zenlauncher.presentation.focus.appblock.AppBlockFragment"
+        android:label="Bloquear App"
+        tools:layout="@layout/fragment_app_block">
+        <argument
+            android:name="appPackage"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.zenlauncher.presentation.settings.SettingsFragment"
+        android:label="Configurações"
+        tools:layout="@layout/fragment_settings">
+    </fragment>
+    
+    <fragment
+        android:id="@+id/standbyFragment"
+        android:name="com.zenlauncher.presentation.standby.StandbyFragment"
+        android:label="Standby"
+        tools:layout="@layout/fragment_standby">
+    </fragment>
+
+</navigation>

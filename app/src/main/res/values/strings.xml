@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Zen Launcher</string>
+    
+    <!-- Tela Inicial -->
+    <string name="home_screen_welcome">Bem-vindo</string>
+    <string name="home_screen_focus_mode">Modo Foco</string>
+    <string name="home_screen_all_apps">Todos os Apps</string>
+    <string name="home_screen_settings">Configurações</string>
+    
+    <!-- Bloqueio de Apps -->
+    <string name="block_apps_title">Bloquear Apps</string>
+    <string name="block_apps_subtitle">Quando você precisa de uma pausa</string>
+    <string name="block_apps_duration">Duração do bloqueio</string>
+    <string name="block_apps_select">Selecione os aplicativos</string>
+    <string name="block_apps_hours">horas</string>
+    <string name="block_apps_minutes">minutos</string>
+    <string name="block_apps_days">dias</string>
+    <string name="block_apps_slide_to_block">DESLIZE PARA BLOQUEAR</string>
+    <string name="block_apps_blocked_until">Bloqueado até %1$s</string>
+    
+    <!-- Monitoramento de Tempo -->
+    <string name="time_tracking_screen_title">Tempo de Uso</string>
+    <string name="time_tracking_today">Hoje</string>
+    <string name="time_tracking_week">Últimos 7 dias</string>
+    <string name="time_tracking_month">Este mês</string>
+    <string name="time_tracking_hours">%1$d h %2$d min</string>
+    <string name="time_tracking_minutes">%1$d min</string>
+    <string name="time_tracking_most_used">Apps mais usados</string>
+    <string name="time_tracking_save_up_to">Economize até %1$d horas por semana</string>
+    
+    <!-- Notificações -->
+    <string name="notification_time_limit">Seu tempo para %1$s acabou</string>
+    <string name="notification_take_a_break">Que tal uma pausa?</string>
+    <string name="notification_add_more_time">Adicionar mais tempo</string>
+    <string name="notification_channel_name">Lembretes de Tempo</string>
+    <string name="notification_channel_description">Alertas sobre limites de tempo e lembretes de pausa</string>
+    
+    <!-- Configurações -->
+    <string name="settings_title">Configurações</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_notifications">Notificações</string>
+    <string name="settings_usage_access">Acesso ao uso</string>
+    <string name="settings_standby_mode">Modo Standby</string>
+    <string name="settings_about">Sobre</string>
+    <string name="settings_battery_optimization">Otimização de bateria</string>
+    <string name="settings_permissions_required">Permissões necessárias</string>
+    
+    <!-- Permissões -->
+    <string name="permission_usage_stats_title">Acesso de uso</string>
+    <string name="permission_usage_stats_message">Para monitorar o tempo de uso dos aplicativos, o Zen Launcher precisa de acesso às estatísticas de uso. Isso nos permite mostrar quanto tempo você gasta em cada app.</string>
+    <string name="permission_grant">Conceder</string>
+    <string name="permission_cancel">Cancelar</string>
+    
+    <!-- Mensagens gerais -->
+    <string name="general_save">Salvar</string>
+    <string name="general_cancel">Cancelar</string>
+    <string name="general_error">Algo deu errado</string>
+    <string name="general_try_again">Tentar novamente</string>
+</resources>

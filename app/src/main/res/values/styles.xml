@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base do aplicativo -->
+    <style name="Theme.ZenLauncher" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Cores primárias -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        
+        <!-- Cores secundárias -->
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_light</item>
+        <item name="colorOnSecondary">@color/text_primary</item>
+        
+        <!-- Cores de fundo -->
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        
+        <!-- Cores de texto -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        
+        <!-- Personalização de janela -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/primary_dark</item>
+        
+        <!-- Fonte padrão -->
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Estilos para textos -->
+    <style name="TextAppearance.ZenLauncher.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    
+    <style name="TextAppearance.ZenLauncher.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.ZenLauncher.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.ZenLauncher.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_hint</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Estilos para relógio na tela inicial -->
+    <style name="TextAppearance.ZenLauncher.Clock" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">56sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+    
+    <style name="TextAppearance.ZenLauncher.Date" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    
+    <!-- Botões -->
+    <style name="Widget.ZenLauncher.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:padding">12dp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+    
+    <style name="Widget.ZenLauncher.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/accent</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+</resources>
