@@ -5,80 +5,64 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zenlauncher.databinding.ItemAppFavoriteBinding
-import com.zenlauncher.domain.entities.App
+import com.zenlauncher.databinding.ItemAppBinding
+import com.zenlauncher.domain.entities.AppInfo
 
 /**
- * Adapter para exibir aplicativos no RecyclerView.
+ * Adaptador para exibir aplicativos em lista ou grade.
  * 
- * @param onAppClick Callback para quando um aplicativo for clicado
- * @param onAppLongClick Callback para quando um aplicativo for pressionado por tempo longo
+ * @property onAppClick Callback acionado quando um aplicativo é clicado
+ * @property onAppLongClick Callback acionado quando um aplicativo é pressionado por tempo prolongado
  */
 class AppAdapter(
-    private val onAppClick: (App) -> Unit,
-    private val onAppLongClick: (App) -> Unit = {}
-) : ListAdapter<App, AppAdapter.AppViewHolder>(AppDiffCallback()) {
+    private val onAppClick: (AppInfo) -> Unit,
+    private val onAppLongClick: (AppInfo) -> Unit
+) : ListAdapter<AppInfo, AppAdapter.ViewHolder>(AppDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
-        val binding = ItemAppFavoriteBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemAppBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return AppViewHolder(binding)
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val app = getItem(position)
+        holder.bind(app)
     }
 
-    inner class AppViewHolder(
-        private val binding: ItemAppFavoriteBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        init {
+    inner class ViewHolder(private val binding: ItemAppBinding) : RecyclerView.ViewHolder(binding.root) {
+        
+        fun bind(app: AppInfo) {
+            binding.appName.text = app.label
+            binding.appIcon.setImageDrawable(app.icon)
+            
+            // Configurar estado de favorito, se aplicável
+            if (app.isFavorite) {
+                binding.favoriteIcon.visibility = android.view.View.VISIBLE
+            } else {
+                binding.favoriteIcon.visibility = android.view.View.GONE
+            }
+            
             binding.root.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onAppClick(getItem(position))
-                }
+                onAppClick(app)
             }
             
             binding.root.setOnLongClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onAppLongClick(getItem(position))
-                }
+                onAppLongClick(app)
                 true
             }
         }
-
-        fun bind(app: App) {
-            binding.appName.text = app.appName
-            
-            // Carregar ícone do aplicativo usando o PackageManager
-            // Será implementado posteriormente com uma classe utilitária
-            try {
-                val packageManager = binding.root.context.packageManager
-                binding.appIcon.setImageDrawable(
-                    packageManager.getApplicationIcon(app.packageName)
-                )
-            } catch (e: Exception) {
-                // Fallback para um ícone padrão em caso de erro
-                binding.appIcon.setImageResource(android.R.drawable.sym_def_app_icon)
-            }
-        }
     }
-
-    /**
-     * DiffUtil.Callback para otimizar atualizações na lista de aplicativos.
-     */
-    private class AppDiffCallback : DiffUtil.ItemCallback<App>() {
-        override fun areItemsTheSame(oldItem: App, newItem: App): Boolean {
+    
+    private class AppDiffCallback : DiffUtil.ItemCallback<AppInfo>() {
+        override fun areItemsTheSame(oldItem: AppInfo, newItem: AppInfo): Boolean {
             return oldItem.packageName == newItem.packageName
         }
-
-        override fun areContentsTheSame(oldItem: App, newItem: App): Boolean {
+        
+        override fun areContentsTheSame(oldItem: AppInfo, newItem: AppInfo): Boolean {
             return oldItem == newItem
         }
     }

@@ -38,7 +38,8 @@ class AppSystemDataSource @Inject constructor(
                     appName = packageManager.getApplicationLabel(appInfo).toString(),
                     isSystemApp = isSystemApp,
                     isFavorite = false, // Será preenchido pelo repositório
-                    lastUsed = 0 // Será preenchido pelo repositório
+                    lastUsed = 0, // Será preenchido pelo repositório
+                    icon = packageManager.getApplicationIcon(packageName)
                 )
             }
             .sortedBy { it.appName.lowercase() }

@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
 
     <!-- Seção de Aplicativos Favoritos -->
-    <TextView
+    <!-- <TextView
         android:id="@+id/favoritesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,46 +52,48 @@
         android:text="Favoritos"
         android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divider" /> -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favoritesTitle"
-        tools:itemCount="4"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintBottom_toTopOf="@+id/phoneButton"
+        tools:itemCount="8"
         tools:listitem="@layout/item_app_favorite" />
+   <!-- app:layout_constraintTop_toBottomOf="@+id/favoritesTitle" -->
 
-    <!-- Botões de Ação -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/allAppsButton"
-        style="@style/Widget.ZenLauncher.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/home_screen_all_apps"
-        app:icon="@android:drawable/ic_menu_sort_by_size"
-        app:layout_constraintBottom_toTopOf="@+id/focusModeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Ícone Telefone alinhado à esquerda -->
+    <ImageButton
+        android:id="@+id/phoneButton"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_call"
+        android:contentDescription="@string/desc_phone"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/focusModeButton"
-        style="@style/Widget.ZenLauncher.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/home_screen_focus_mode"
-        app:icon="@android:drawable/ic_menu_crop"
+    <!-- Ícone Câmera alinhado à direita -->
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_camera"
+        android:contentDescription="@string/desc_camera"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

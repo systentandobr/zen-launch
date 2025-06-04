@@ -57,4 +57,7 @@
     <string name="general_cancel">Cancelar</string>
     <string name="general_error">Algo deu errado</string>
     <string name="general_try_again">Tentar novamente</string>
+    
+    <string name="desc_phone">Telefone</string>
+    <string name="desc_camera">Câmera</string>
 </resources>

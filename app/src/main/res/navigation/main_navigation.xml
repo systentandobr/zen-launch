@@ -14,11 +14,11 @@
             android:id="@+id/action_home_to_apps"
             app:destination="@id/appsFragment" />
         <action
-            android:id="@+id/action_home_to_focus"
-            app:destination="@id/focusFragment" />
-        <action
             android:id="@+id/action_home_to_standby"
             app:destination="@id/standbyFragment" />
+        <action
+            android:id="@+id/action_home_to_settings"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -26,6 +26,13 @@
         android:name="com.zenlauncher.presentation.apps.AppsFragment"
         android:label="Apps"
         tools:layout="@layout/fragment_apps">
+        <action
+            android:id="@+id/action_apps_to_focus"
+            app:destination="@id/focusFragment" />
+        <action
+            android:id="@+id/action_apps_to_stats"
+            app:destination="@id/statsFragment" />
+
     </fragment>
 
     <fragment

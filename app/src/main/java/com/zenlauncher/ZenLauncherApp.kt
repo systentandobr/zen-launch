@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -20,7 +21,13 @@ class ZenLauncherApp : Application(), Configuration.Provider {
     
     override fun onCreate() {
         super.onCreate()
-        // Inicialização de componentes globais
+        
+        // Inicializar Timber para logging
+        if (com.zenlauncher.BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+        
+        // Outras inicializações de componentes globais
     }
     
     override fun getWorkManagerConfiguration(): Configuration {

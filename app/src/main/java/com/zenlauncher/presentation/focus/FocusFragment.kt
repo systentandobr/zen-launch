@@ -1,5 +1,6 @@
 package com.zenlauncher.presentation.focus
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.zenlauncher.R
+import com.zenlauncher.data.services.AppBlockerService
 import com.zenlauncher.databinding.FragmentFocusBinding
 import com.zenlauncher.domain.entities.AppBlock
 import com.zenlauncher.presentation.focus.adapters.AppBlockAdapter
+import com.zenlauncher.presentation.focus.dialog.BlockConfirmationDialog
+import com.zenlauncher.presentation.focus.dialog.BlockSuccessDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -153,7 +157,47 @@ class FocusFragment : Fragment() {
      */
     private fun setupBlockButton() {
         binding.blockButton.setOnClickListener {
-            viewModel.blockSelectedApps()
+            showBlockConfirmationDialog()
+        }
+    }
+    
+    /**
+     * Mostra o diálogo de confirmação de bloqueio.
+     */
+    private fun showBlockConfirmationDialog() {
+        val selectedCount = viewModel.selectedApps.value.size
+        
+        if (selectedCount == 0) {
+            Snackbar.make(
+                binding.root,
+                "Selecione pelo menos um aplicativo para bloquear",
+                Snackbar.LENGTH_LONG
+            ).show()
+            return
+        }
+        
+        val blockLevel = viewModel.blockLevel.value
+        val duration = viewModel.blockDuration.value
+        
+        BlockConfirmationDialog.newInstance(selectedCount, duration, blockLevel).apply {
+            setOnConfirmListener { confirmedLevel ->
+                viewModel.setBlockLevel(confirmedLevel)
+                viewModel.blockSelectedApps()
+            }
+            show(parentFragmentManager, "block_confirmation")
+        }
+    }
+    
+    /**
+     * Mostra o diálogo de sucesso de bloqueio.
+     */
+    private fun showBlockSuccessDialog() {
+        BlockSuccessDialog().apply {
+            setOnDismissListener {
+                // Navegar de volta para a tela inicial
+                findNavController().popBackStack()
+            }
+            show(parentFragmentManager, "block_success")
         }
     }
     
@@ -203,19 +247,24 @@ class FocusFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.blockSuccess.collect { success ->
                 if (success) {
-                    Snackbar.make(
-                        binding.root,
-                        "Aplicativos bloqueados com sucesso!",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    // Iniciar serviço de bloqueio
+                    startBlockerService()
+                    
+                    // Mostrar diálogo de sucesso
+                    showBlockSuccessDialog()
                     
                     viewModel.clearBlockSuccess()
-                    
-                    // Navegar de volta para a tela inicial
-                    findNavController().popBackStack()
                 }
             }
         }
+    }
+    
+    /**
+     * Inicia o serviço de bloqueio de aplicativos.
+     */
+    private fun startBlockerService() {
+        val intent = AppBlockerService.getStartIntent(requireContext())
+        requireActivity().startService(intent)
     }
     
     override fun onDestroyView() {

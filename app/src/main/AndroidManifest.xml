@@ -32,11 +32,6 @@
                 android:name="androidx.work.WorkManagerInitializer"
                 android:value="androidx.startup"
                 tools:node="remove" />
-                
-            <!-- Adicionar o nosso inicializador personalizado -->
-            <meta-data
-                android:name="com.zenlauncher.WorkManagerInitializer"
-                android:value="androidx.startup" />
         </provider>
         
         <!-- Atividade principal do launcher -->
@@ -57,9 +52,33 @@
             
         </activity>
         
+        <!-- Atividade de standby -->
+        <activity
+            android:name=".presentation.standby.StandbyActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZenLauncher">
+        </activity>
+        
+        <!-- Atividade de bloqueio de apps -->
+        <activity
+            android:name=".presentation.focus.blockscreen.AppBlockScreenActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        
         <!-- Serviço para monitoramento de tempo de uso -->
         <service
             android:name=".data.services.UsageTrackingService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+            
+        <!-- Serviço para bloqueio de aplicativos -->
+        <service
+            android:name=".data.services.AppBlockerService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="dataSync" />

@@ -6,7 +6,7 @@ echo.
 
 rem Sempre recriar o keystore para garantir consistencia
 echo Criando keystore para assinatura...
-call create_keystore.bat
+echo call create_keystore.bat
 echo.
 
 echo Limpando builds anteriores...

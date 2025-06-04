@@ -3,63 +3,118 @@ package com.zenlauncher.presentation
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.view.ViewConfiguration
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.zenlauncher.R
 import com.zenlauncher.data.receivers.PowerConnectionReceiver
+import com.zenlauncher.data.services.AppBlockerService
 import com.zenlauncher.data.services.UsageTrackingService
 import com.zenlauncher.databinding.ActivityMainBinding
-import com.zenlauncher.presentation.navigation.NavigationChargingListener
+import com.zenlauncher.presentation.navigation.pager.MainPagerAdapter
+import com.zenlauncher.presentation.navigation.pager.ViewPagerExtensions.setTouchSlop
+import com.zenlauncher.presentation.standby.StandbyActivity
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 /**
  * Atividade principal do ZenLauncher.
  * 
  * Esta atividade serve como o ponto de entrada do launcher e contém
- * o NavHostFragment para navegação entre os diferentes fragmentos.
+ * o ViewPager2 para navegação entre os diferentes fragmentos.
  */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
+    private lateinit var pagerAdapter: MainPagerAdapter
     private lateinit var powerReceiver: PowerConnectionReceiver
+    private val dots = ArrayList<ImageView>()
     
-    @Inject
-    lateinit var navigationChargingListener: NavigationChargingListener
+    companion object {
+        private const val HOME_PAGE_INDEX = 0
+    }
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        setupNavigation()
+        setupViewPager()
         startServices()
         registerPowerReceiver()
         
-        // Configurar o listener de navegação
-        navigationChargingListener.setNavController(navController)
-        lifecycle.addObserver(navigationChargingListener)
-        
         // Verificar se o dispositivo está carregando ao iniciar
         if (PowerConnectionReceiver.isCharging(this)) {
-            navController.navigate(R.id.standbyFragment)
+            navigateToStandby()
         }
     }
     
     /**
-     * Configura a navegação.
+     * Configura o ViewPager2 e seu indicador.
      */
-    private fun setupNavigation() {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+    private fun setupViewPager() {
+        pagerAdapter = MainPagerAdapter(this)
         
-        // Configurar navegação com bottom navigation se existir
-        binding.bottomNavigation?.setupWithNavController(navController)
+        binding.viewPager.apply {
+            adapter = pagerAdapter
+            // Definir sensibilidade de deslize
+            val sensitivity = 0.75f // Ajustar conforme necessário
+            val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+            binding.viewPager.setTouchSlop((touchSlop * sensitivity).toInt())
+            
+            // Registrar callback de página
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    // Atualizar indicadores
+                    updatePageIndicators(position)
+                }
+            })
+        }
+        
+        // Configurar indicadores de página
+        setupPageIndicators()
+        updatePageIndicators(0) // Página inicial
+    }
+    
+    /**
+     * Configura os indicadores de página.
+     */
+    private fun setupPageIndicators() {
+        dots.clear()
+        binding.pageIndicator.removeAllViews()
+        
+        val size = pagerAdapter.itemCount
+        
+        // Criar pontos
+        for (i in 0 until size) {
+            val dot = ImageView(this)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(8, 0, 8, 0)
+            dot.layoutParams = params
+            
+            binding.pageIndicator.addView(dot)
+            dots.add(dot)
+        }
+    }
+    
+    /**
+     * Atualiza os indicadores de página.
+     */
+    private fun updatePageIndicators(currentPage: Int) {
+        for (i in dots.indices) {
+            if (i == currentPage) {
+                dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.indicator_dot))
+            } else {
+                dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.indicator_dot_unselected))
+            }
+        }
     }
     
     /**
@@ -67,8 +122,12 @@ class MainActivity : AppCompatActivity() {
      */
     private fun startServices() {
         // Iniciar serviço de monitoramento de uso
-        val serviceIntent = UsageTrackingService.getStartIntent(this)
-        startService(serviceIntent)
+        val usageServiceIntent = UsageTrackingService.getStartIntent(this)
+        startService(usageServiceIntent)
+        
+        // Iniciar serviço de bloqueio de aplicativos
+        val blockerServiceIntent = AppBlockerService.getStartIntent(this)
+        startService(blockerServiceIntent)
     }
     
     /**
@@ -86,11 +145,26 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(powerReceiver, filter)
     }
     
+    /**
+     * Navega para a tela de standby.
+     */
+    private fun navigateToStandby() {
+        val intent = Intent(this, StandbyActivity::class.java)
+        startActivity(intent)
+    }
+    
+    /**
+     * Navega para uma página específica do ViewPager.
+     */
+    fun navigateToPage(page: MainPagerAdapter.Page) {
+        binding.viewPager.setCurrentItem(pagerAdapter.getPositionForPage(page), true)
+    }
+    
     override fun onBackPressed() {
         // Se não estiver na tela inicial, navega para a tela inicial
         // Se estiver na tela inicial, não faz nada (não fecha o launcher)
-        if (navController.currentDestination?.id != R.id.homeFragment) {
-            navController.navigate(R.id.homeFragment)
+        if (binding.viewPager.currentItem != HOME_PAGE_INDEX) {
+            binding.viewPager.setCurrentItem(HOME_PAGE_INDEX, true)
         }
     }
     
