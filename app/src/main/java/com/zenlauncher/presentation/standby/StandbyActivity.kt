@@ -3,6 +3,7 @@ package com.zenlauncher.presentation.standby
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.zenlauncher.R
 import com.zenlauncher.databinding.ActivityStandbyBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +23,13 @@ class StandbyActivity : AppCompatActivity() {
         binding = ActivityStandbyBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
+        // Carregar o fragmento apenas se for a primeira criação
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, StandbyFragment())
+                .commit()
+        }
+        
         setupUI()
     }
     
@@ -39,6 +47,8 @@ class StandbyActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
     
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {

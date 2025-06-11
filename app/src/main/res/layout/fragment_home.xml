@@ -26,7 +26,7 @@
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10:14"
+                android:text="10:10"
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/text_size_display"
                 android:textStyle="normal" />
@@ -41,336 +41,21 @@
 
         </LinearLayout>
 
-        <!-- Card de Streak -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            app:cardBackgroundColor="@color/backgroundColorCard"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="@dimen/card_elevation">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/card_padding">
-
-                <!-- Círculo de Streak -->
-                <TextView
-                    android:id="@+id/streak_circle"
-                    android:layout_width="@dimen/streak_circle_size"
-                    android:layout_height="@dimen/streak_circle_size"
-                    android:background="@drawable/streak_circle_background"
-                    android:gravity="center"
-                    android:text="12"
-                    android:textColor="@color/streakColor"
-                    android:textSize="@dimen/streak_number_text_size"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:text="Streak Ativa: 12 dias"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_large"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modo Standby - Toque para retomar"
-                    android:textColor="@color/textColorSecondary"
-                    android:textSize="@dimen/text_size_small" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Seção "Use este tempo para:" -->
+        <!-- Seção Tempo de Uso -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_medium"
-            android:text="Use este tempo para:"
+            android:text="Tempo de Uso"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
-        <!-- Grid de Sugestões de Atividade -->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:layout_marginBottom="@dimen/spacing_large">
-
-            <!-- Dormir -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                app:cardBackgroundColor="@color/backgroundColorCard"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="💤"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="Dormir"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+15 min de sono"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Ler -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                app:cardBackgroundColor="@color/backgroundColorCard"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="📚"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="Ler"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+20 min de leitura"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Exercitar -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                app:cardBackgroundColor="@color/backgroundColorCard"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🏃"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="Exercitar"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+30 min ativo"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Estudar -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                app:cardBackgroundColor="@color/backgroundColorCard"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🎓"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="Estudar"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+25 min aprendendo"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Meditar -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                app:cardBackgroundColor="@color/backgroundColorCard"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🧘"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="Meditar"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Reduzir ansiedade"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Relaxar -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                app:cardBackgroundColor="@color/backgroundColorCard"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🌿"
-                        android:textSize="32sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="Relaxar"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/text_size_medium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Simplesmente não fazer nada"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </GridLayout>
-
-        <!-- Estatísticas de Hoje -->
+        <!-- Card de Tempo Total -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
             app:cardBackgroundColor="@color/backgroundColorCard"
             app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="@dimen/card_elevation">
@@ -381,118 +66,223 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/card_padding">
 
-                <!-- Tempo Hoje -->
+                <!-- Ícone e Informações -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1h 27m"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_large"
-                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_large"
+                        android:layout_height="@dimen/icon_size_large"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:src="@drawable/ic_stats"
+                        android:tint="@color/colorAccent"
+                        tools:ignore="UseAppTint" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Tempo hoje"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tempo total de tela"
+                            android:textColor="@color/textColorSecondary"
+                            android:textSize="@dimen/text_size_small" />
+
+                        <TextView
+                            android:id="@+id/tv_screen_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1h 27min"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <!-- Redução -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-35%"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_large"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="vs. ontem"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
+                <!-- Indicador de Trend -->
+                <ImageView
+                    android:layout_width="@dimen/icon_size_small"
+                    android:layout_height="@dimen/icon_size_small"
+                    android:src="@drawable/ic_trending_down"
+                    android:tint="@color/colorAccent"
+                    tools:ignore="UseAppTint" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Meta Diária e Próximo Foco -->
+        <!-- Progresso da Meta Semanal -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            app:cardBackgroundColor="@color/backgroundColorCard"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/spacing_small">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meta semanal"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/text_size_medium" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_weekly_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75%"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_weekly"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/progress_bar_height_thick"
+                    android:progress="75"
+                    android:progressTint="@color/colorAccent"
+                    android:progressBackgroundTint="@color/progressBackgroundColor" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card Deep Focus Mode -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_deep_focus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            app:cardBackgroundColor="@color/backgroundColorCard"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/card_padding">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_xlarge"
+                    android:layout_height="@dimen/icon_size_xlarge"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/habit_icon_background"
+                    android:padding="@dimen/spacing_small"
+                    android:src="@drawable/ic_focus"
+                    android:tint="@color/deepFocusColor"
+                    tools:ignore="UseAppTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Deep Focus Mode"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pronto para focar"
+                        android:textColor="@color/textColorSecondary"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_large"
+                    android:layout_height="@dimen/icon_size_large"
+                    android:background="@drawable/zen_button_primary_background"
+                    android:padding="@dimen/spacing_small"
+                    android:src="@drawable/ic_play_arrow"
+                    android:tint="@color/textColorPrimary"
+                    tools:ignore="UseAppTint" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Seção Apps mais usados -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/spacing_medium">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/spacing_small">
+                android:layout_weight="1"
+                android:text="Apps mais usados"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="•"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_medium" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:layout_weight="1"
-                    android:text="Meta diária: 75% concluída"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="@dimen/text_size_medium" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_see_all_apps"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/spacing_small">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="•"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_medium" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:layout_weight="1"
-                    android:text="Próximo foco: 14:30"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="@dimen/text_size_medium" />
-
-            </LinearLayout>
+                android:text="Ver todos"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_medium"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="@dimen/spacing_small" />
 
         </LinearLayout>
+
+        <!-- Lista de Apps mais usados -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_most_used_apps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_app_usage" />
 
     </LinearLayout>
 

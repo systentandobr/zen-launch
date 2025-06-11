@@ -1,187 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:padding="16dp"
-    tools:context=".presentation.focus.FocusFragment">
+    android:background="@color/deepFocusBackgroundColor"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/block_apps_title"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="@dimen/padding_default"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/subtitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/block_apps_subtitle"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleText" />
-
-    <TextView
-        android:id="@+id/durationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/block_apps_duration"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subtitleText" />
-
-    <TextView
-        android:id="@+id/durationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
-        app:layout_constraintBottom_toBottomOf="@+id/durationTitle"
-        app:layout_constraintStart_toEndOf="@+id/durationTitle"
-        app:layout_constraintTop_toTopOf="@+id/durationTitle"
-        tools:text="2 horas" />
-
-    <SeekBar
-        android:id="@+id/durationSeekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:max="47"
-        android:progress="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/durationTitle" />
-
-    <TextView
-        android:id="@+id/blockLevelTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Nível de bloqueio"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/durationSeekBar" />
-
-    <RadioGroup
-        android:id="@+id/blockLevelRadioGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blockLevelTitle">
-
-        <RadioButton
-            android:id="@+id/radioSoft"
-            android:layout_width="0dp"
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Leve"
-            android:textColor="@color/text_secondary" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_xxlarge">
 
-        <RadioButton
-            android:id="@+id/radioMedium"
-            android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deep Focus Mode"
+                android:textColor="@color/deepFocusColor"
+                android:textSize="@dimen/text_size_xxlarge"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="Bloqueie distrações e mantenha o foco"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_medium"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <!-- Timer Circular -->
+        <FrameLayout
+            android:layout_width="@dimen/focus_timer_size"
+            android:layout_height="@dimen/focus_timer_size"
+            android:layout_marginBottom="@dimen/spacing_large">
+
+            <!-- Círculo de fundo -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/focus_timer_background" />
+
+            <!-- Progress Circle (será implementado via código) -->
+            <View
+                android:id="@+id/progress_circle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Timer Text -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/timer_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25:00"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="Duração do foco"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_size_small" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Controle de Duração -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Médio"
-            android:textColor="@color/text_secondary" />
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/spacing_xxlarge">
 
-        <RadioButton
-            android:id="@+id/radioHard"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/duration_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Duração: 25 minutos"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_size_medium"
+                android:layout_marginBottom="@dimen/spacing_medium" />
+
+            <SeekBar
+                android:id="@+id/duration_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="105"
+                android:progress="25"
+                android:progressTint="@color/deepFocusColor"
+                android:thumbTint="@color/deepFocusColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_small">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15min"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_size_small" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2h"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/text_size_small" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Botão Principal -->
+        <Button
+            android:id="@+id/start_focus_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:background="@drawable/zen_button_primary_background"
+            android:text="▶ Iniciar Foco"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            android:elevation="@dimen/elevation_medium" />
+
+        <!-- Apps Bloqueados -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Rígido"
-            android:textColor="@color/text_secondary" />
-    </RadioGroup>
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/appsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/block_apps_select"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blockLevelRadioGroup" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="🔒 Apps que serão bloqueados"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/text_size_medium"
+                android:layout_marginBottom="@dimen/spacing_medium" />
 
-    <TextView
-        android:id="@+id/selectedAppsCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
-        app:layout_constraintBottom_toBottomOf="@+id/appsTitle"
-        app:layout_constraintStart_toEndOf="@+id/appsTitle"
-        app:layout_constraintTop_toTopOf="@+id/appsTitle"
-        tools:text="Selecionados: 0" />
+            <!-- Container para ícones de apps bloqueados -->
+            <LinearLayout
+                android:id="@+id/blocked_apps_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/surface"
-        android:iconifiedByDefault="false"
-        android:queryHint="Buscar aplicativos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appsTitle" />
+                <!-- Apps serão adicionados dinamicamente -->
+                <!-- Exemplo de apps que seriam bloqueados -->
+                <ImageView
+                    android:layout_width="@dimen/app_icon_size"
+                    android:layout_height="@dimen/app_icon_size"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:background="@drawable/blocked_app_background"
+                    android:padding="@dimen/spacing_small"
+                    android:src="@drawable/ic_apps"
+                    android:tint="@color/blockedAppColor"
+                    tools:ignore="UseAppTint" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/blockButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:listitem="@layout/item_app_block" />
+                <ImageView
+                    android:layout_width="@dimen/app_icon_size"
+                    android:layout_height="@dimen/app_icon_size"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:background="@drawable/blocked_app_background"
+                    android:padding="@dimen/spacing_small"
+                    android:src="@drawable/ic_stats"
+                    android:tint="@color/blockedAppColor"
+                    tools:ignore="UseAppTint" />
 
-    <TextView
-        android:id="@+id/emptyView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nenhum aplicativo encontrado"
-        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/blockButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:visibility="visible" />
+                <ImageView
+                    android:layout_width="@dimen/app_icon_size"
+                    android:layout_height="@dimen/app_icon_size"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:background="@drawable/blocked_app_background"
+                    android:padding="@dimen/spacing_small"
+                    android:src="@drawable/ic_home"
+                    android:tint="@color/blockedAppColor"
+                    tools:ignore="UseAppTint" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/blockButton"
-        style="@style/Widget.MindfulLauncher.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="@string/block_apps_slide_to_block"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:layout_width="@dimen/app_icon_size"
+                    android:layout_height="@dimen/app_icon_size"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:background="@drawable/blocked_app_background"
+                    android:padding="@dimen/spacing_small"
+                    android:src="@drawable/ic_trophy"
+                    android:tint="@color/blockedAppColor"
+                    tools:ignore="UseAppTint" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

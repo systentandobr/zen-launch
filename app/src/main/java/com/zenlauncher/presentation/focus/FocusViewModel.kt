@@ -4,9 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zenlauncher.domain.entities.App
 import com.zenlauncher.domain.entities.AppBlock
+import com.zenlauncher.domain.entities.FocusSessionState
 import com.zenlauncher.domain.usecases.BlockAppUseCase
 import com.zenlauncher.domain.usecases.GetAllAppsUseCase
+import com.zenlauncher.domain.usecases.GetFocusSessionStateUseCase
 import com.zenlauncher.domain.usecases.GetMostUsedAppsUseCase
+import com.zenlauncher.domain.usecases.StartFocusSessionUseCase
+import com.zenlauncher.domain.usecases.StopFocusSessionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +26,10 @@ import javax.inject.Inject
 class FocusViewModel @Inject constructor(
     private val getAllAppsUseCase: GetAllAppsUseCase,
     private val getMostUsedAppsUseCase: GetMostUsedAppsUseCase,
-    private val blockAppUseCase: BlockAppUseCase
+    private val blockAppUseCase: BlockAppUseCase,
+    private val startFocusSessionUseCase: StartFocusSessionUseCase,
+    private val stopFocusSessionUseCase: StopFocusSessionUseCase,
+    private val getFocusSessionStateUseCase: GetFocusSessionStateUseCase
 ) : ViewModel() {
     
     // Estado para aplicativos mais usados (sugestões para bloqueio)
@@ -65,9 +72,22 @@ class FocusViewModel @Inject constructor(
     private val _filteredApps = MutableStateFlow<List<App>>(emptyList())
     val filteredApps: StateFlow<List<App>> = _filteredApps.asStateFlow()
     
+    // Estado da sessão de foco
+    private val _focusSessionState = MutableStateFlow<FocusSessionState>(FocusSessionState.Idle)
+    val focusSessionState: StateFlow<FocusSessionState> = _focusSessionState.asStateFlow()
+    
+    // Estado do timer
+    private val _timerText = MutableStateFlow("25:00")
+    val timerText: StateFlow<String> = _timerText.asStateFlow()
+    
+    // Estado do botão de foco
+    private val _focusButtonText = MutableStateFlow("▶ Iniciar Foco")
+    val focusButtonText: StateFlow<String> = _focusButtonText.asStateFlow()
+    
     init {
         loadApps()
         loadMostUsedApps()
+        observeFocusSessionState()
     }
     
     /**
@@ -217,5 +237,96 @@ class FocusViewModel @Inject constructor(
      */
     fun clearBlockSuccess() {
         _blockSuccess.value = false
+    }
+    
+    /**
+     * Observa o estado da sessão de foco.
+     */
+    private fun observeFocusSessionState() {
+        viewModelScope.launch {
+            getFocusSessionStateUseCase().collect { state ->
+                _focusSessionState.value = state
+                updateUIBasedOnState(state)
+            }
+        }
+    }
+    
+    /**
+     * Atualiza a UI baseada no estado da sessão de foco.
+     */
+    private fun updateUIBasedOnState(state: FocusSessionState) {
+        when (state) {
+            is FocusSessionState.Idle -> {
+                _focusButtonText.value = "▶ Iniciar Foco"
+                _timerText.value = "25:00"
+            }
+            is FocusSessionState.Running -> {
+                _focusButtonText.value = "⏸ Pausar Foco"
+                val minutes = state.remainingTimeMinutes
+                val seconds = state.remainingTimeSeconds
+                _timerText.value = String.format("%02d:%02d", minutes, seconds)
+            }
+            is FocusSessionState.Paused -> {
+                _focusButtonText.value = "▶ Retomar Foco"
+                val minutes = state.remainingTimeMinutes
+                val seconds = state.remainingTimeSeconds
+                _timerText.value = String.format("%02d:%02d", minutes, seconds)
+            }
+            is FocusSessionState.Completed -> {
+                _focusButtonText.value = "▶ Iniciar Foco"
+                _timerText.value = "00:00"
+                // Mostrar notificação de conclusão
+                // TODO: Implementar notificação
+            }
+        }
+    }
+    
+    /**
+     * Inicia uma sessão de foco.
+     */
+    fun startFocusSession(durationMinutes: Int) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            
+            try {
+                // Usar apps selecionados ou apps mais usados como padrão
+                val appsToBlock = if (_selectedApps.value.isNotEmpty()) {
+                    _selectedApps.value.toList()
+                } else {
+                    _mostUsedApps.value.map { it.packageName }
+                }
+                
+                val result = startFocusSessionUseCase(durationMinutes, appsToBlock)
+                
+                result.onFailure { error ->
+                    _error.value = error.message ?: "Erro ao iniciar sessão de foco"
+                }
+            } catch (e: Exception) {
+                _error.value = e.message ?: "Erro ao iniciar sessão de foco"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+    
+    /**
+     * Para a sessão de foco atual.
+     */
+    fun stopFocusSession() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            
+            try {
+                val result = stopFocusSessionUseCase()
+                
+                result.onFailure { error ->
+                    _error.value = error.message ?: "Erro ao parar sessão de foco"
+                }
+            } catch (e: Exception) {
+                _error.value = e.message ?: "Erro ao parar sessão de foco"
+            } finally {
+                _isLoading.value = false
+            }
+        }
     }
 }

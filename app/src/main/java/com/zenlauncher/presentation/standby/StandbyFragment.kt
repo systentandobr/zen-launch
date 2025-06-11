@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,11 +18,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
-import com.zenlauncher.R
 import com.zenlauncher.databinding.FragmentStandbyBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.Timer
+import java.util.TimerTask
 
 /**
  * Fragment para o modo Standby/Always On quando o dispositivo está carregando.
@@ -38,33 +40,7 @@ class StandbyFragment : Fragment() {
     private val viewModel: StandbyViewModel by viewModels()
     
     private lateinit var batteryReceiver: BroadcastReceiver
-    
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentStandbyBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-    
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        
-        // Manter a tela ligada
-        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        
-        // Ocultar a barra de navegação e status para modo imersivo
-        enableImmersiveMode()
-        
-        setupBatteryReceiver()
-        setupBackButton()
-        setupDoubleTapToExit()
-        observeViewModel()
-        
-        viewModel.startClock()
-    }
-    
+
     /**
      * Habilita o modo imersivo para ocultar barras do sistema.
      */
@@ -96,7 +72,7 @@ class StandbyFragment : Fragment() {
                 
                 // Se não estiver carregando, sair do modo standby
                 if (!isCharging) {
-                    navigateBack()
+                    navigateToHome()
                 }
             }
         }
@@ -106,43 +82,92 @@ class StandbyFragment : Fragment() {
         }
         requireContext().registerReceiver(batteryReceiver, filter)
     }
-    
-    /**
-     * Configura o botão de voltar.
-     */
-    private fun setupBackButton() {
-        binding.backButton.setOnClickListener {
-            navigateBack()
-        }
+
+    private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("EEEE, d 'de' MMMM", Locale("pt", "BR"))
+    private var timer: Timer? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentStandbyBinding.inflate(inflater, container, false)
+        return binding.root;
     }
-    
-    /**
-     * Configura detector de duplo toque para sair.
-     */
-    private fun setupDoubleTapToExit() {
-        binding.standbyRootLayout.setOnClickListener {
-            // Opcional: implementar detector de duplo toque
-        }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupClock()
+        setupClickListeners()
+        observeData()
+
+        // Manter a tela ligada
+        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        // Ocultar a barra de navegação e status para modo imersivo
+        enableImmersiveMode()
+
+        setupBatteryReceiver()
+        observeViewModel()
+
+        viewModel.startClock()
+
     }
-    
+
+    private fun setupClock() {
+        // Atualiza o relógio a cada minuto
+        timer = Timer()
+        timer?.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                activity?.runOnUiThread {
+                    updateDateTime()
+                }
+            }
+        }, 0, 60000) // Atualiza a cada minuto
+
+        // Atualização inicial
+        updateDateTime()
+    }
+
+    private fun updateDateTime() {
+        val now = Calendar.getInstance().time
+        // binding.tvTime.text = timeFormat.format(now)
+        // binding.tvDate.text = dateFormat.format(now)
+    }
+
+    private fun setupClickListeners() {
+        // TODO: Implementar cliques nos cards de atividades
+        // Por exemplo:
+        // binding.cardSleep.setOnClickListener {
+        //     // Ação para dormir
+        // }
+
+        // Click no card de streak para mais detalhes
+        // binding.streakCircle.setOnClickListener {
+            // TODO: Navegar para tela de detalhes do streak
+        // }
+    }
+
+    private fun observeData() {
+        // Observar dados do ViewModel quando implementado
+        viewLifecycleOwner.lifecycleScope.launch {
+            // viewModel.streakData.collect { streak ->
+            //     binding.streakCircle.text = streak.toString()
+            // }
+        }
+
+        // TODO: Observar outras estatísticas
+    }
+
     /**
      * Observa mudanças no ViewModel e atualiza a UI.
      */
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.currentTime.collect { time ->
-                        binding.clockTextView.text = time
-                    }
-                }
-                
-                launch {
-                    viewModel.currentDate.collect { date ->
-                        binding.dateTextView.text = date
-                    }
-                }
-                
+
                 launch {
                     viewModel.batteryLevel.collect { level ->
                         binding.batteryLevelText.text = "$level%"
@@ -153,7 +178,7 @@ class StandbyFragment : Fragment() {
                 launch {
                     viewModel.isCharging.collect { isCharging ->
                         if (!isCharging) {
-                            navigateBack()
+                            navigateToHome()
                         }
                     }
                 }
@@ -164,8 +189,10 @@ class StandbyFragment : Fragment() {
     /**
      * Navega de volta para a tela inicial.
      */
-    private fun navigateBack() {
-        findNavController().popBackStack()
+    private fun navigateToHome() {
+        // Como agora usamos Bottom Navigation, precisamos finalizar a StandbyActivity
+        // para voltar para a MainActivity
+        requireActivity().finish()
     }
     
     override fun onDestroyView() {

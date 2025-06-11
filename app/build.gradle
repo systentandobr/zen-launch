@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'kotlinx-serialization'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
@@ -132,6 +133,9 @@ dependencies {
     
     // Timber para logging
     implementation 'com.jakewharton.timber:timber:5.0.1'
+    
+    // Kotlinx Serialization
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1'
     
     // Testes
     testImplementation "junit:junit:$junit_version"

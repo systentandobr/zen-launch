@@ -19,6 +19,7 @@ import com.zenlauncher.presentation.apps.AppsFragment
 import com.zenlauncher.presentation.focus.FocusFragment
 import com.zenlauncher.presentation.ranking.RankingFragment
 import com.zenlauncher.presentation.stats.StatsFragment
+import com.zenlauncher.presentation.standby.StandbyFragment
 import com.zenlauncher.presentation.permissions.UsagePermissionActivity
 import com.zenlauncher.presentation.standby.StandbyActivity
 import com.zenlauncher.MindfulLauncherApp
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity(), ChargingStateListener {
         private const val FRAGMENT_FOCUS = "fragment_focus"
         private const val FRAGMENT_RANKING = "fragment_ranking"
         private const val FRAGMENT_STATS = "fragment_stats"
+        private const val FRAGMENT_STANDBY = "fragment_standby"
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {

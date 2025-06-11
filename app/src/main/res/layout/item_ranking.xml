@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="@dimen/spacing_medium"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Posição no ranking -->
+    <TextView
+        android:id="@+id/tv_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:text="4"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        android:minWidth="32dp"
+        android:gravity="center"
+        tools:text="4" />
+
+    <!-- Avatar do usuário -->
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/ranking_avatar_size"
+        android:layout_height="@dimen/ranking_avatar_size"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/habit_icon_background"
+        android:padding="@dimen/spacing_small"
+        android:src="@drawable/ic_person"
+        android:tint="@color/rankingOtherPlace"
+        tools:ignore="UseAppTint" />
+
+    <!-- Informações do usuário -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marina"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            tools:text="Marina" />
+
+        <TextView
+            android:id="@+id/tv_reduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25% tempo de tela"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/text_size_small"
+            tools:text="25% tempo de tela" />
+
+    </LinearLayout>
+
+    <!-- Pontuação -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="vertical"
+        android:layout_marginEnd="@dimen/spacing_medium">
+
+        <TextView
+            android:id="@+id/tv_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1100"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            tools:text="1100" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pontos"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/text_size_tiny" />
+
+    </LinearLayout>
+
+    <!-- Streak -->
+    <TextView
+        android:id="@+id/tv_streak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🔥 6 dias"
+        android:textColor="@color/streakColor"
+        android:textSize="@dimen/text_size_small"
+        tools:text="🔥 6 dias" />
+
+</LinearLayout>
