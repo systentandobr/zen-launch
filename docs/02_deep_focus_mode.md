@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Implementar o modo Deep Focus, uma funcionalidade central do ZenLauncher refatorado. Este modo ajuda usuários a manterem o foco eliminando distrações, limitando o acesso a aplicativos distrativos durante períodos configurados e exibindo uma interface minimalista.
+Implementar o modo Deep Focus, uma funcionalidade central do MindfulLauncher refatorado. Este modo ajuda usuários a manterem o foco eliminando distrações, limitando o acesso a aplicativos distrativos durante períodos configurados e exibindo uma interface minimalista.
 
 ## Componentes Principais
 

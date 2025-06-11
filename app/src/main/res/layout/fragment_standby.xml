@@ -12,7 +12,7 @@
         android:id="@+id/clockTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Clock"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Clock"
         android:textColor="@color/text_primary"
         android:textSize="96sp"
         app:layout_constraintBottom_toTopOf="@+id/dateTextView"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Date"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Date"
         android:textColor="@color/text_secondary"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/batteryProgressBar"
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+            android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
             android:textColor="@color/accent"
             android:textSize="22sp"
             tools:text="75%" />
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Carregando"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Caption"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Caption"
         android:textColor="@color/text_secondary"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +97,7 @@
 
     <Button
         android:id="@+id/backButton"
-        style="@style/Widget.ZenLauncher.Button.Text"
+        style="@style/Widget.MindfulLauncher.Button.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -112,7 +112,7 @@
         android:layout_margin="16dp"
         android:alpha="0.6"
         android:text="Toque na tela para acordar"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Caption"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Caption"
         android:textColor="@color/text_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

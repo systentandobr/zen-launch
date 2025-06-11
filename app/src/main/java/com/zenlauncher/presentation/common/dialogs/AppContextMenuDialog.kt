@@ -17,7 +17,7 @@ import com.zenlauncher.domain.entities.AppInfoParcelable
 
 /**
  * Dialog minimalista para menu de contexto de apps
- * Segue os princípios de design minimalista do ZenLauncher
+ * Segue os princípios de design minimalista do MindfulLauncher
  */
 class AppContextMenuDialog : BottomSheetDialogFragment() {
 

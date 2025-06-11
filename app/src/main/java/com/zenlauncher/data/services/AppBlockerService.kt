@@ -152,7 +152,7 @@ class AppBlockerService : Service() {
         
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("ZenLauncher - Modo Foco")
+            .setContentTitle("MindfulLauncher - Modo Foco")
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setContentIntent(pendingIntent)
             .setSilent(true)
@@ -188,7 +188,7 @@ class AppBlockerService : Service() {
      */
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "ZenLauncher Modo Foco"
+            val name = "MindfulLauncher Modo Foco"
             val descriptionText = "Notificações do serviço de bloqueio de aplicativos"
             val importance = NotificationManager.IMPORTANCE_LOW
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
@@ -231,7 +231,7 @@ class AppBlockerService : Service() {
     }
     
     companion object {
-        private const val CHANNEL_ID = "zenlauncher_focus_mode_channel"
+        private const val CHANNEL_ID = "mindfulauncher_focus_mode_channel"
         private const val NOTIFICATION_ID = 1001
         
         const val ACTION_START = "com.zenlauncher.action.START_APP_BLOCKER"

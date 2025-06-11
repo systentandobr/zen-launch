@@ -1,0 +1,39 @@
+/*
+package com.zenlauncher
+
+import android.content.Context
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.startup.Initializer
+import androidx.work.Configuration
+import androidx.work.WorkManager
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+
+/**
+ * Inicializador do WorkManager com configurações para compatibilidade com Android 12+
+ */
+class WorkManagerInitializer : Initializer<WorkManager> {
+    
+    @Inject
+    @ApplicationContext
+    lateinit var context: Context
+    
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
+    
+    override fun create(context: Context): WorkManager {
+        val configuration = Configuration.Builder()
+            .setWorkerFactory(workerFactory)
+            .build()
+        
+        // Inicializar o WorkManager com a configuração personalizada
+        WorkManager.initialize(context, configuration)
+        return WorkManager.getInstance(context)
+    }
+    
+    override fun dependencies(): List<Class<out Initializer<*>>> {
+        // Sem dependências
+        return emptyList()
+    }
+}
+*/

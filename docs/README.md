@@ -1,13 +1,13 @@
-# Documentação de Refatoração do ZenLauncher
+# Documentação de Refatoração do MindfulLauncher
 
-Este diretório contém a documentação abrangente para a refatoração do ZenLauncher em um launcher com foco em produtividade, bem-estar digital e minimalismo.
+Este diretório contém a documentação abrangente para a refatoração do MindfulLauncher em um launcher com foco em produtividade, bem-estar digital e minimalismo.
 
 ## Estrutura da Documentação
 
 Os documentos estão organizados de forma lógica e progressiva para facilitar a implementação gradual:
 
 ### 1. [Visão Geral](00_visao_geral.md)
-Uma introdução ao projeto de refatoração, seus objetivos, estado atual da aplicação e a visão para o ZenLauncher reformulado.
+Uma introdução ao projeto de refatoração, seus objetivos, estado atual da aplicação e a visão para o MindfulLauncher reformulado.
 
 ### 2. [Arquitetura e Modelos de Dados](01_arquitetura_e_modelos.md)
 Detalhes sobre os novos modelos de dados, interfaces de repositório e casos de uso necessários para implementar as novas funcionalidades.

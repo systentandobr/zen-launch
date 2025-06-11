@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Bloqueio Ativo"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         android:textColor="?colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appIcon"
@@ -79,7 +79,7 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Este aplicativo está atualmente bloqueado para ajudar você a manter o foco."
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appNameTextView" />
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+                android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
                 android:textColor="?colorPrimary"
                 tools:text="Tempo restante: 01:30:45" />
 
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ZenLauncher.Body2"
+                android:textAppearance="@style/TextAppearance.MindfulLauncher.Body2"
                 tools:text="Bloqueado até: 18:30" />
 
             <ProgressBar

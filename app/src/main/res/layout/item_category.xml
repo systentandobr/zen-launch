@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAppearance="@style/TextAppearance.ZenLauncher.Subtitle1"
+            android:textAppearance="@style/TextAppearance.MindfulLauncher.Subtitle1"
             android:textStyle="bold"
             tools:text="Produtividade" />
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ver mais"
-            android:textAppearance="@style/TextAppearance.ZenLauncher.Button"
+            android:textAppearance="@style/TextAppearance.MindfulLauncher.Button"
             android:textColor="?colorPrimary" />
 
     </LinearLayout>

@@ -110,7 +110,7 @@ class AppUsageMonitorService : Service() {
         )
 
         return NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-            .setContentTitle("ZenLauncher")
+            .setContentTitle("MindfulLauncher")
             .setContentText("Monitorando uso de aplicativos")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentIntent(pendingIntent)

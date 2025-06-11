@@ -70,7 +70,7 @@
             android:layout_marginTop="24dp"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
-            android:text="O ZenLauncher precisa de acesso às estatísticas de uso para monitorar o tempo de tela e promover um uso mais consciente dos aplicativos."
+            android:text="O MindfulLauncher precisa de acesso às estatísticas de uso para monitorar o tempo de tela e promover um uso mais consciente dos aplicativos."
             android:textSize="14sp"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +107,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="💡 Nas configurações, encontre 'ZenLauncher' na lista e ative a permissão 'Acesso de estatísticas de uso'"
+                android:text="💡 Nas configurações, encontre 'MindfulLauncher' na lista e ative a permissão 'Acesso de estatísticas de uso'"
                 android:textSize="12sp"
                 android:textColor="@android:color/darker_gray" />
 
@@ -117,7 +117,7 @@
         <Button
             android:id="@+id/grantPermissionButton"
             android:layout_width="0dp"
-            style="@style/TextAppearance.ZenLauncher.Button"
+            style="@style/TextAppearance.MindfulLauncher.Button"
             android:layout_height="56dp"
             android:layout_marginTop="32dp"
             android:text="Conceder Permissão"
@@ -130,7 +130,7 @@
         <!-- Botão secundário -->
         <Button
             android:id="@+id/skipButton"
-            style="@style/Widget.ZenLauncher.Button.Text"
+            style="@style/Widget.MindfulLauncher.Button.Text"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"

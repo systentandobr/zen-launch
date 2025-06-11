@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Fundo gradiente -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="@color/colorPrimary"
+                android:centerColor="@color/colorPrimaryLight"
+                android:endColor="@color/colorAccentDark"
+                android:type="linear" />
+        </shape>
+    </item>
+    
+    <!-- Logo ou ícone central (opcional) -->
+    <item
+        android:gravity="center"
+        android:width="120dp"
+        android:height="120dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/colorAccent" />
+        </shape>
+    </item>
+    
+</layer-list>
+

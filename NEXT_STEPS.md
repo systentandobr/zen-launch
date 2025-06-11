@@ -1,217 +1,210 @@
-# Próximos Passos para Implementação
+# Próximos Passos - MindfulLauncher UI Redesign
 
-Este documento detalha as tarefas que precisam ser executadas para completar a funcionalidade de monitoramento de apps e resolver os gargalos identificados.
+## 🎯 Fase 1: Migração para Bottom Navigation (1-2 dias)
 
-## 🚨 PRIORIDADE CRÍTICA - Resolver Compilação
+### Tarefa 1.1: Implementar Bottom Navigation
+**Prioridade**: Crítica  
+**Estimativa**: 4-6 horas
 
-### 1. Implementar UsageStatsRepositoryImpl
-**Estimativa**: 2-3 horas  
-**Complexidade**: Alta  
-**Arquivo**: `app/src/main/java/com/zenlauncher/data/repositories/UsageStatsRepositoryImpl.kt`
+**Subtarefas**:
+- [ ] Atualizar `activity_main.xml` substituindo ViewPager2 por BottomNavigationView
+- [ ] Criar menu de navegação inferior (`menu/bottom_navigation.xml`)
+- [ ] Atualizar `MainActivity.kt` para usar FragmentTransaction
+- [ ] Remover sistema de page indicators
+- [ ] Implementar navegação baseada em Fragment replacement
 
-**Tarefas específicas**:
-- [ ] Implementar interface `UsageStatsRepository`
-- [ ] Integrar com `UsageStatsManager` do Android
-- [ ] Adicionar persistência com DataStore
-- [ ] Implementar cache em memória para performance
-- [ ] Tratar permissões `PACKAGE_USAGE_STATS`
-- [ ] Adicionar logging adequado
+**Arquivos Afetados**:
+- `app/src/main/res/layout/activity_main.xml`
+- `app/src/main/java/com/zenlauncher/presentation/MainActivity.kt`
+- `app/src/main/res/menu/bottom_navigation.xml` (novo)
 
-**Dependências**:
-- Precisa de `Context` e `DataStore<Preferences>`
-- Requer verificação de permissão PACKAGE_USAGE_STATS
-- Integração com `ServiceLocator` ou Hilt
+### Tarefa 1.2: Atualizar Design System
+**Prioridade**: Alta  
+**Estimativa**: 2-3 horas
 
-### 2. Implementar AppMonitoringRepositoryImpl  
-**Estimativa**: 1-2 horas  
-**Complexidade**: Média  
-**Arquivo**: `app/src/main/java/com/zenlauncher/data/repositories/AppMonitoringRepositoryImpl.kt`
+**Subtarefas**:
+- [ ] Expandir `colors.xml` com nova paleta baseada nas imagens
+- [ ] Atualizar `styles.xml` com estilos para cards e componentes
+- [ ] Criar `dimens.xml` padronizado
+- [ ] Implementar tema escuro refinado em `themes.xml`
 
-**Tarefas específicas**:
-- [ ] Implementar persistência de `AppMonitoringConfig`
-- [ ] Usar DataStore para salvar configurações
-- [ ] Implementar métodos de CRUD
-- [ ] Adicionar observabilidade via Flow
-- [ ] Cache de configurações para performance
+**Arquivos Afetados**:
+- `app/src/main/res/values/colors.xml`
+- `app/src/main/res/values/styles.xml`
+- `app/src/main/res/values/dimens.xml`
+- `app/src/main/res/values/themes.xml`
 
-### 3. Criar AppUsageMonitorService Real
-**Estimativa**: 3-4 horas  
-**Complexidade**: Alta  
-**Arquivo**: `app/src/main/java/com/zenlauncher/data/services/AppUsageMonitorService.kt`
+## 🎯 Fase 2: Layout Principal com Cards (2-3 dias)
 
-**Tarefas específicas**:
-- [ ] Implementar como `WorkManager` periodic work
-- [ ] Monitorar tempo de uso contínuo por app
-- [ ] Detectar thresholds de 1h (warning) e 2h (block)
-- [ ] Integrar com `AppMonitoringRepository`
-- [ ] Respeitar apps excluídos do monitoramento  
-- [ ] Implementar lógica de "snooze" após warning
+### Tarefa 2.1: Tela Principal Redesenhada
+**Prioridade**: Alta  
+**Estimativa**: 6-8 horas
 
-## 🎯 PRIORIDADE ALTA - Funcionalidades Core
+**Implementar baseado na Imagem 2 (10:14 screen)**:
+- [ ] Header com relógio e data centralizados
+- [ ] Card de tempo de uso com progresso visual
+- [ ] Círculo de streak (12 dias) com animação
+- [ ] Grid de sugestões de atividades (6 cards)
+- [ ] Seção de estatísticas na parte inferior
+- [ ] Scroll vertical para melhor navegação
 
-### 4. Integrar Status Visual no AppsFragment
-**Estimativa**: 2-3 horas  
-**Complexidade**: Média  
-**Arquivos**: `AppsFragment.kt`, `AppListAdapter.kt`
+**Arquivos Novos**:
+- `layout/fragment_home_new.xml`
+- `layout/card_usage_time.xml`
+- `layout/card_streak_circle.xml`
+- `layout/card_activity_suggestion.xml`
+- `layout/item_usage_stat.xml`
 
-**Tarefas específicas**:
-- [ ] Adicionar indicador visual para apps bloqueados
-- [ ] Mostrar ícone/badge para apps com bloqueio ativo
-- [ ] Atualizar `item_app.xml` com indicator
-- [ ] Implementar colors/styles para estado bloqueado
-- [ ] Integrar com `AppBlockRepository` para status real-time
+### Tarefa 2.2: Componentes Interativos
+**Prioridade**: Média  
+**Estimativa**: 4-5 horas
 
-### 5. Dialog de Informações de Bloqueio (Long Press)
-**Estimativa**: 1-2 horas  
-**Complexidade**: Baixa  
-**Arquivo**: `presentation/common/dialogs/BlockedAppInfoDialog.kt`
+**Subtarefas**:
+- [ ] Implementar ViewModel para nova home
+- [ ] Criar animação para círculo de streak
+- [ ] Implementar cliques nas sugestões de atividade
+- [ ] Binding de dados reais de tempo de uso
+- [ ] Estados de loading para cards dinâmicos
 
-**Tarefas específicas**:
-- [ ] Criar dialog para mostrar tempo restante de bloqueio
-- [ ] Exibir motivo do bloqueio (manual vs. tempo de uso)
-- [ ] Mostrar quando o bloqueio termina
-- [ ] Interface read-only (usuário não pode interagir)
-- [ ] Integração com long press no `AppsFragment`
+## 🎯 Fase 3: Deep Focus Mode (1-2 dias)
 
-### 6. Otimizar Performance do AppBlockMonitor
-**Estimativa**: 1-2 horas  
-**Complexidade**: Média  
-**Arquivo**: `AppBlockMonitor.kt`
+### Tarefa 3.1: Redesign do Deep Focus
+**Prioridade**: Alta  
+**Estimativa**: 5-6 horas
 
-**Tarefas específicas**:
-- [ ] Reduzir polling de 500ms para 2-3 segundos
-- [ ] Implementar polling inteligente (só quando necessário)
-- [ ] Usar `BroadcastReceiver` para mudanças de foreground
-- [ ] Cache de estado para evitar verificações desnecessárias
-- [ ] Logs de performance e debugging
+**Implementar baseado na Imagem 3**:
+- [ ] Interface minimalista com timer central
+- [ ] Slider para seleção de duração (25:00 padrão)
+- [ ] Lista visual de apps que serão bloqueados
+- [ ] Botão "Iniciar Foco" proeminente
+- [ ] Indicador visual de progresso
 
-## 🔧 PRIORIDADE MÉDIA - Integrações e Melhorias
+**Arquivos Afetados**:
+- `layout/fragment_focus.xml`
+- `FocusFragment.kt`
+- `FocusViewModel.kt`
 
-### 7. Sistema de Configuração de Apps Excluídos
-**Estimativa**: 2-3 horas  
-**Complexidade**: Média  
-**Arquivos**: Settings/Preferences screens
+### Tarefa 3.2: Timer e Controles
+**Prioridade**: Média  
+**Estimativa**: 3-4 horas
 
-**Tarefas específicas**:
-- [ ] Tela de configurações para excluir apps do monitoramento
-- [ ] Lista de apps instalados com toggle on/off
-- [ ] Integração com `AppMonitoringRepository`
-- [ ] Configurações de tempo customizado por app
-- [ ] Export/import de configurações
+**Subtarefas**:
+- [ ] Implementar timer circular customizado
+- [ ] Controles de play/pause/stop
+- [ ] Notificações durante sessão de foco
+- [ ] Persistência de sessões ativas
 
-### 8. Melhorar Fluxo de Permissões
-**Estimativa**: 1-2 horas  
-**Complexidade**: Baixa  
-**Arquivo**: `presentation/permissions/UsagePermissionActivity.kt`
+## 🎯 Fase 4: Sistema de Ranking (2-3 dias)
 
-**Tarefas específicas**:
-- [ ] Tela dedicada para solicitar PACKAGE_USAGE_STATS
-- [ ] Tutorial explicando necessidade da permissão
-- [ ] Verificação automática de permissão no início do app
-- [ ] Fallback graceful quando permissão não concedida
-- [ ] Deep link para configurações do sistema
+### Tarefa 4.1: Interface de Ranking
+**Prioridade**: Média  
+**Estimativa**: 6-8 horas
 
-### 9. Persistência de Sessões de "Continue Using"
-**Estimativa**: 1 hora  
-**Complexidade**: Baixa  
-**Arquivos**: `UsageWarningActivity.kt`, repositórios
+**Implementar baseado na Imagem 4**:
+- [ ] Header com streak atual e melhor sequência
+- [ ] Pódio visual para top 3 usuários
+- [ ] Lista rolável com ranking completo
+- [ ] Tabs para diferentes períodos (Semanal/Mensal/Amigos)
+- [ ] Cards de recompensas próximas
 
-**Tarefas específicas**:
-- [ ] Salvar quando usuário escolhe "continuar por X minutos"
-- [ ] Evitar múltiplos warnings no período escolhido
-- [ ] Reset automático após período configurado
-- [ ] Integração com `AppUsageMonitorService`
+**Arquivos Novos**:
+- `layout/fragment_ranking.xml`
+- `layout/card_ranking_podium.xml`
+- `layout/item_ranking_entry.xml`
+- `layout/card_next_reward.xml`
+- `RankingFragment.kt`
+- `RankingViewModel.kt`
 
-## 🧹 PRIORIDADE BAIXA - Refinamentos
+### Tarefa 4.2: Sistema de Pontuação
+**Prioridade**: Baixa  
+**Estimativa**: 4-6 horas
 
-### 10. Testes e Qualidade de Código
-**Estimativa**: 3-4 horas  
-**Complexidade**: Média
+**Subtarefas**:
+- [ ] Implementar cálculo de pontos
+- [ ] Sistema de streaks
+- [ ] Definir recompensas e conquistas
+- [ ] Backend mock para ranking (futuro: real)
 
-**Tarefas específicas**:
-- [ ] Testes unitários para Use Cases
-- [ ] Testes de integração para repositórios  
-- [ ] Testes de UI para dialogs críticos
-- [ ] Code coverage report
-- [ ] Lint fixes e otimizações
+## 🎯 Fase 5: Configurações Redesenhadas (1 dia)
 
-### 11. Métricas e Analytics
-**Estimativa**: 2-3 horas  
-**Complexidade**: Baixa
+### Tarefa 5.1: Interface de Configurações
+**Prioridade**: Baixa  
+**Estimativa**: 3-4 horas
 
-**Tarefas específicas**:
-- [ ] Logging estruturado para debugging
-- [ ] Métricas de uso das funcionalidades
-- [ ] Performance monitoring
-- [ ] Crash reporting integration
-- [ ] User behavior analytics (opcional)
-
-### 12. Documentação e Comments
-**Estimativa**: 1-2 horas  
-**Complexidade**: Baixa
-
-**Tarefas específicas**:
-- [ ] KDoc para todas as classes públicas
-- [ ] Comments para lógica complexa
-- [ ] README atualizado com novas funcionalidades
-- [ ] Architecture decision records (ADRs)
-
-## 🔨 Gargalos de Compilação Identificados
-
-### Issues Críticos que Impedem Compilação:
-
-1. **Missing Implementation**: `UsageStatsRepository` não implementado
-   - **Solução**: Criar `UsageStatsRepositoryImpl` (Tarefa #1)
-   - **Bloqueador**: Use Cases falham na injeção de dependência
-
-2. **Undefined Service**: `AppUsageMonitorService` referenciado mas inexistente  
-   - **Solução**: Implementar serviço real (Tarefa #3)
-   - **Bloqueador**: Activities de warning/block não funcionam
-
-3. **Missing DI Configuration**: Repositories não configurados no ServiceLocator
-   - **Solução**: Atualizar `ServiceLocator` com novas implementações
-   - **Bloqueador**: Injection failures em runtime
-
-4. **Permission Handling**: PACKAGE_USAGE_STATS não está sendo solicitada
-   - **Solução**: Implementar fluxo de permissão (Tarefa #8)  
-   - **Bloqueador**: Funcionalidade não funciona sem permissão
+**Implementar baseado na Imagem 1**:
+- [ ] Reorganizar seções (Personalização, Foco, Social, Sobre)
+- [ ] Toggles visuais melhorados
+- [ ] Cards agrupados por categoria
+- [ ] Navegação hierárquica para sub-configurações
 
 ## 📋 Checklist de Implementação
 
-### Fase 1 - Resolver Compilação (1 dia)
-- [ ] Implementar `UsageStatsRepositoryImpl`
-- [ ] Implementar `AppMonitoringRepositoryImpl` 
-- [ ] Atualizar `ServiceLocator` com novas dependências
-- [ ] Criar `AppUsageMonitorService` básico
-- [ ] Teste de compilação e build successful
+### Semana 1
+- [ ] **Dia 1-2**: Migração para Bottom Navigation (Fase 1)
+- [ ] **Dia 3-4**: Layout Principal com Cards (Fase 2) 
+- [ ] **Dia 5**: Deep Focus Mode básico (Fase 3.1)
 
-### Fase 2 - Funcionalidades Core (1-2 dias)  
-- [ ] Integrar status visual no `AppsFragment`
-- [ ] Implementar dialog de informações de bloqueio
-- [ ] Otimizar performance do `AppBlockMonitor`
-- [ ] Implementar fluxo de permissões
-- [ ] Teste de funcionalidades básicas
+### Semana 2
+- [ ] **Dia 1**: Finalizar Deep Focus (Fase 3.2)
+- [ ] **Dia 2-3**: Interface de Ranking (Fase 4.1)
+- [ ] **Dia 4**: Sistema de Pontuação (Fase 4.2)
+- [ ] **Dia 5**: Configurações (Fase 5)
 
-### Fase 3 - Refinamentos (1 dia)
-- [ ] Sistema de configuração de apps excluídos
-- [ ] Persistência de "continue using"
-- [ ] Testes básicos
-- [ ] Documentation e cleanup
+## 🛠️ Considerações Técnicas
 
-## ⚠️ Riscos e Considerações
+### Navigation Component
+- **Decisão**: Usar Navigation Component + BottomNavigationView
+- **Motivo**: Melhor controle de navegação e lifecycle dos fragments
+- **Impacto**: Precisa migrar de ViewPager para Fragment transactions
 
-### Riscos Técnicos:
-- **Performance**: Monitoramento contínuo pode impactar bateria
-- **Permissions**: Users podem não conceder PACKAGE_USAGE_STATS
-- **Android Versions**: Comportamento diferente entre versões do Android
-- **Memory**: Cache de configurações pode consumir memória
+### ViewBinding vs DataBinding
+- **Decisão**: Manter ViewBinding, adicionar DataBinding apenas se necessário
+- **Motivo**: Simplicidade e performance
+- **Impacto**: Binding manual de dados nos cards dinâmicos
 
-### Mitigações:
-- Polling inteligente e otimizado
-- Fallback graceful sem permissões
-- Testes em múltiplas versões do Android  
-- LRU cache com limits de memória
+### Estado e Persistência
+- **Decisão**: Manter StateFlow/LiveData para UI state
+- **Motivo**: Reatividade e lifecycle awareness
+- **Impacto**: ViewModels precisam expor novos estados para cards
+
+## 🔍 Testes e Validação
+
+### Testes de UI
+- [ ] Navegação entre tabs funciona corretamente
+- [ ] Cards de tempo de uso mostram dados reais
+- [ ] Animações são suaves e responsivas
+- [ ] Deep Focus timer funciona corretamente
+- [ ] Ranking mostra dados mockados
+
+### Testes de Performance
+- [ ] Scroll vertical é fluido
+- [ ] Navegação entre tabs não causa lag
+- [ ] Animações não impactam bateria
+- [ ] Loading states funcionam corretamente
+
+### Testes de Compatibilidade
+- [ ] Android 7.0+ (API 24+)
+- [ ] Diferentes tamanhos de tela
+- [ ] Modo claro/escuro
+- [ ] Diferentes densidades de tela
+
+## 🚨 Riscos e Mitigações
+
+### Risco 1: Quebra de Funcionalidades Existentes
+- **Mitigação**: Manter ViewPager em branch separada como fallback
+- **Teste**: Validar todas funcionalidades após migração
+
+### Risco 2: Performance com Muitos Cards
+- **Mitigação**: Implementar lazy loading e view recycling
+- **Teste**: Teste de stress com muitos dados
+
+### Risco 3: Complexidade da Animação de Streak
+- **Mitigação**: Usar bibliotecas testadas (Lottie) ou implementação simples
+- **Teste**: Testar em dispositivos com diferentes capacidades
 
 ---
 
-**Objetivo**: Ter funcionalidade completa de monitoramento e bloqueio funcionando em 2-3 dias de desenvolvimento focado.
+**Objetivo**: Interface mais intuitiva e visualmente atrativa  
+**Timeline**: 2 semanas para implementação completa  
+**Milestone 1**: Bottom Navigation funcionando (fim da primeira semana)  
+**Milestone 2**: Todas as telas redesenhadas (fim da segunda semana)

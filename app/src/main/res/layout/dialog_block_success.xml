@@ -22,7 +22,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Aplicativos Bloqueados!"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         android:textColor="?colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/successIcon" />
 
@@ -33,7 +33,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Os aplicativos selecionados foram bloqueados com sucesso. Se você tentar acessá-los, será notificado de acordo com o nível de bloqueio escolhido."
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Dica: Para maior produtividade, defina metas claras para o período de concentração."
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Caption"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Caption"
         android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView" />
 

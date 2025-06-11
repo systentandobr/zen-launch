@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-O modo Standby Always-On é uma funcionalidade que transforma o ZenLauncher em uma tela de informações útil quando o dispositivo está conectado ao carregador. Este modo exibe informações como hora, data, clima, próximos eventos e outras informações relevantes em uma interface minimalista e de baixo consumo de energia.
+O modo Standby Always-On é uma funcionalidade que transforma o MindfulLauncher em uma tela de informações útil quando o dispositivo está conectado ao carregador. Este modo exibe informações como hora, data, clima, próximos eventos e outras informações relevantes em uma interface minimalista e de baixo consumo de energia.
 
 ## Componentes Principais
 

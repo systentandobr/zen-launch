@@ -42,7 +42,7 @@
 -keep public class * extends android.preference.Preference
 -keep public class * extends android.view.View
 
-# Regras específicas para o ZenLauncher
+# Regras específicas para o MindfulLauncher
 -keep class com.zenlauncher.domain.entities.** { *; }
 -keep class com.zenlauncher.data.datasources.system.** { *; }
 -keep class com.zenlauncher.data.receivers.** { *; }

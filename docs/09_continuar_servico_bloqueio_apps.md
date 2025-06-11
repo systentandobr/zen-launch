@@ -2,31 +2,31 @@
 ## segue lista de arquivos gerados que você precisa apenas avaliar se precisa continuar ou aperfeiçoar para evitar desperdícios de código; Cujo vou precisar repetir o prompt anterior que deu Request timeout na geração, para avaliar o que será necessário para continuar; Coloque as tarefas pendentes para continuar essa implementação nos arquivos IMPLEMENTED_TASKS.md e NEXTS_STEPS.md, assim posso garantir uma boa execução posterior; Não implemente o código apenas documente o que precisa ser realizado; quais arquivos precisam de atenção ou reparo; quais arquivos parecem estar completos;  Lista de arquivos alterados no Prompt anterior >>
 
 ```
- app/src/main/java/com/zenlauncher/WorkManagerInitializer.kt.bak
-        app/src/main/java/com/zenlauncher/data/extensions/
-        app/src/main/java/com/zenlauncher/data/services/AppBlockMonitor.kt
-        app/src/main/java/com/zenlauncher/data/services/AppBlockerService.kt
-        app/src/main/java/com/zenlauncher/domain/entities/AppCategory.kt
-        app/src/main/java/com/zenlauncher/domain/entities/AppInfo.kt
-        app/src/main/java/com/zenlauncher/domain/entities/AppInfoParcelable.kt
-        app/src/main/java/com/zenlauncher/domain/entities/AppMonitoringConfig.kt
-        app/src/main/java/com/zenlauncher/domain/entities/AppUsageSession.kt
-        app/src/main/java/com/zenlauncher/domain/entities/AppUsageStat.kt
-        app/src/main/java/com/zenlauncher/domain/repositories/AppMonitoringRepository.kt
-        app/src/main/java/com/zenlauncher/domain/services/
-        app/src/main/java/com/zenlauncher/domain/usecases/GetAppUsageStatsUseCase.kt
-        app/src/main/java/com/zenlauncher/presentation/apps/adapters/
-        app/src/main/java/com/zenlauncher/presentation/common/adapters/RecommendedAppsAdapter.kt
-        app/src/main/java/com/zenlauncher/presentation/common/dialogs/
-        app/src/main/java/com/zenlauncher/presentation/common/extensions/
-        app/src/main/java/com/zenlauncher/presentation/common/views/
-        app/src/main/java/com/zenlauncher/presentation/focus/UsageBlockActivity.kt
-        app/src/main/java/com/zenlauncher/presentation/focus/UsageWarningActivity.kt
-        app/src/main/java/com/zenlauncher/presentation/focus/blockscreen/
-        app/src/main/java/com/zenlauncher/presentation/focus/dialog/
-        app/src/main/java/com/zenlauncher/presentation/home/adapters/FavoriteAppsAdapter.kt
-        app/src/main/java/com/zenlauncher/presentation/navigation/pager/
-        app/src/main/java/com/zenlauncher/presentation/standby/StandbyActivity.kt
+ app/src/main/java/com/mindfulauncher/WorkManagerInitializer.kt.bak
+        app/src/main/java/com/mindfulauncher/data/extensions/
+        app/src/main/java/com/mindfulauncher/data/services/AppBlockMonitor.kt
+        app/src/main/java/com/mindfulauncher/data/services/AppBlockerService.kt
+        app/src/main/java/com/mindfulauncher/domain/entities/AppCategory.kt
+        app/src/main/java/com/mindfulauncher/domain/entities/AppInfo.kt
+        app/src/main/java/com/mindfulauncher/domain/entities/AppInfoParcelable.kt
+        app/src/main/java/com/mindfulauncher/domain/entities/AppMonitoringConfig.kt
+        app/src/main/java/com/mindfulauncher/domain/entities/AppUsageSession.kt
+        app/src/main/java/com/mindfulauncher/domain/entities/AppUsageStat.kt
+        app/src/main/java/com/mindfulauncher/domain/repositories/AppMonitoringRepository.kt
+        app/src/main/java/com/mindfulauncher/domain/services/
+        app/src/main/java/com/mindfulauncher/domain/usecases/GetAppUsageStatsUseCase.kt
+        app/src/main/java/com/mindfulauncher/presentation/apps/adapters/
+        app/src/main/java/com/mindfulauncher/presentation/common/adapters/RecommendedAppsAdapter.kt
+        app/src/main/java/com/mindfulauncher/presentation/common/dialogs/
+        app/src/main/java/com/mindfulauncher/presentation/common/extensions/
+        app/src/main/java/com/mindfulauncher/presentation/common/views/
+        app/src/main/java/com/mindfulauncher/presentation/focus/UsageBlockActivity.kt
+        app/src/main/java/com/mindfulauncher/presentation/focus/UsageWarningActivity.kt
+        app/src/main/java/com/mindfulauncher/presentation/focus/blockscreen/
+        app/src/main/java/com/mindfulauncher/presentation/focus/dialog/
+        app/src/main/java/com/mindfulauncher/presentation/home/adapters/FavoriteAppsAdapter.kt
+        app/src/main/java/com/mindfulauncher/presentation/navigation/pager/
+        app/src/main/java/com/mindfulauncher/presentation/standby/StandbyActivity.kt
         app/src/main/res/drawable/indicator_dot.xml
         app/src/main/res/drawable/indicator_dot_unselected.xml
         app/src/main/res/drawable/rounded_button_filled.xml

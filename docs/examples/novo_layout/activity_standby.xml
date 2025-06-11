@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ZenStandbyContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StandbyActivity">
+
+    <!-- Relógio Principal -->
+    <TextView
+        style="@style/ZenStandbyClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:text="10:14"
+        android:textColor="@color/standbyTextColor" />
+
+    <!-- Data -->
+    <TextView
+        style="@style/ZenStandbyDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:text="Quarta-Feira, 11 De Junho"
+        android:textColor="@color/standbyTextColor" />
+
+    <!-- Streak Ativa -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/ZenStreakView"
+            android:layout_width="@dimen/standby_streak_size"
+            android:layout_height="@dimen/standby_streak_size"
+            android:background="@drawable/streak_circle_background"
+            android:gravity="center"
+            android:text="12"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_xxlarge" />
+
+        <TextView
+            style="@style/ZenTextAppearance.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="Streak Ativa: 12 dias"
+            android:textColor="@color/standbyAccentColor" />
+
+        <TextView
+            style="@style/ZenTextAppearance.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modo Standby • Toque para retornar"
+            android:textColor="@color/standbyTextColor" />
+
+    </LinearLayout>
+
+    <!-- Sugestões de Atividades -->
+    <TextView
+        style="@style/ZenTextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:text="Use este tempo para:"
+        android:textColor="@color/standbyAccentColor" />
+
+    <!-- Grid de Atividades -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Dormir -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="@dimen/standby_habit_icon_size"
+                android:layout_height="@dimen/standby_habit_icon_size"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:src="@drawable/ic_sleep"
+                android:tint="@color/habitSleepColor"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:text="Dormir"
+                android:textColor="@color/standbyTextColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+15 min de sono"
+                android:textColor="@color/habitSleepColor" />
+
+        </LinearLayout>
+
+        <!-- Ler -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="@dimen/standby_habit_icon_size"
+                android:layout_height="@dimen/standby_habit_icon_size"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:src="@drawable/ic_book"
+                android:tint="@color/habitReadingColor"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:text="Ler"
+                android:textColor="@color/standbyTextColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+20 min de leitura"
+                android:textColor="@color/habitReadingColor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Exercitar -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="@dimen/standby_habit_icon_size"
+                android:layout_height="@dimen/standby_habit_icon_size"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:src="@drawable/ic_exercise"
+                android:tint="@color/habitExerciseColor"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:text="Exercitar"
+                android:textColor="@color/standbyTextColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+30 min ativo"
+                android:textColor="@color/habitExerciseColor" />
+
+        </LinearLayout>
+
+        <!-- Estudar -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="@dimen/standby_habit_icon_size"
+                android:layout_height="@dimen/standby_habit_icon_size"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:src="@drawable/ic_study"
+                android:tint="@color/habitStudyColor"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:text="Estudar"
+                android:textColor="@color/standbyTextColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+25 min aprendendo"
+                android:textColor="@color/habitStudyColor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Meditar -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="@dimen/standby_habit_icon_size"
+                android:layout_height="@dimen/standby_habit_icon_size"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:src="@drawable/ic_meditation"
+                android:tint="@color/habitMeditationColor"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:text="Meditar"
+                android:textColor="@color/standbyTextColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reduzir ansiedade"
+                android:textColor="@color/habitMeditationColor" />
+
+        </LinearLayout>
+
+        <!-- Relaxar -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="@dimen/standby_habit_icon_size"
+                android:layout_height="@dimen/standby_habit_icon_size"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:src="@drawable/ic_leaf"
+                android:tint="@color/habitNutritionColor"
+                tools:ignore="UseAppTint" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:text="Relaxar"
+                android:textColor="@color/standbyTextColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simplesmente não fazer nada"
+                android:textColor="@color/habitNutritionColor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Estatísticas do Dia -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Tempo Hoje -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ZenTextAppearance.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1h 27m"
+                android:textColor="@color/standbyAccentColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tempo hoje"
+                android:textColor="@color/standbyTextColor" />
+
+        </LinearLayout>
+
+        <!-- Redução vs Ontem -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ZenTextAppearance.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-35%"
+                android:textColor="@color/standbyAccentColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="vs. ontem"
+                android:textColor="@color/standbyTextColor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Informações Adicionais -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/spacing_small"
+                android:layout_height="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:background="@drawable/streak_circle_background" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meta diária: 75% concluída"
+                android:textColor="@color/standbyTextColor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/spacing_small"
+                android:layout_height="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:background="@color/habitWaterColor" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Próximo foco: 14:30"
+                android:textColor="@color/standbyTextColor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

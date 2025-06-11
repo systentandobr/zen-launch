@@ -25,9 +25,9 @@ android {
     signingConfigs {
         release {
             // Caminho do keystore fixo e senhas definidas diretamente para simplicidade
-            storeFile file(rootProject.projectDir.absolutePath + "\\keystore\\zenlauncher.keystore")
+            storeFile file(rootProject.projectDir.absolutePath + "\\keystore\\mindfulauncher.keystore")
             storePassword "systentandoBRa2025"
-            keyAlias "zenlauncher"
+            keyAlias "mindfulauncher"
             keyPassword "systentandoBRa2025"
         }
     }

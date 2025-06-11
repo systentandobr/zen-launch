@@ -3,7 +3,7 @@ package com.zenlauncher.di.modules
 import android.content.Context
 import androidx.room.Room
 import com.zenlauncher.data.datasources.local.db.AppBlockDao
-import com.zenlauncher.data.datasources.local.db.ZenLauncherDatabase
+import com.zenlauncher.data.datasources.local.db.MindfulLauncherDatabase
 import com.zenlauncher.data.repositories.AppBlockRepositoryImpl
 import com.zenlauncher.domain.repositories.AppBlockRepository
 import dagger.Module
@@ -24,11 +24,11 @@ object DatabaseModule {
     @Singleton
     fun provideAppDatabase(
         @ApplicationContext context: Context
-    ): ZenLauncherDatabase {
+    ): MindfulLauncherDatabase {
         return Room.databaseBuilder(
             context,
-            ZenLauncherDatabase::class.java,
-            ZenLauncherDatabase.DATABASE_NAME
+            MindfulLauncherDatabase::class.java,
+            MindfulLauncherDatabase.DATABASE_NAME
         )
             .fallbackToDestructiveMigration()
             .build()
@@ -36,7 +36,7 @@ object DatabaseModule {
     
     @Provides
     @Singleton
-    fun provideAppBlockDao(database: ZenLauncherDatabase): AppBlockDao {
+    fun provideAppBlockDao(database: MindfulLauncherDatabase): AppBlockDao {
         return database.appBlockDao()
     }
     

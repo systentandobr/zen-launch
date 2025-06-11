@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/block_apps_title"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/block_apps_subtitle"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/block_apps_duration"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitleText" />
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintBottom_toBottomOf="@+id/durationTitle"
         app:layout_constraintStart_toEndOf="@+id/durationTitle"
         app:layout_constraintTop_toTopOf="@+id/durationTitle"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Nível de bloqueio"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/durationSeekBar" />
 
@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/block_apps_select"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blockLevelRadioGroup" />
 
@@ -119,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintBottom_toBottomOf="@+id/appsTitle"
         app:layout_constraintStart_toEndOf="@+id/appsTitle"
         app:layout_constraintTop_toTopOf="@+id/appsTitle"
@@ -154,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nenhum aplicativo encontrado"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/blockButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +164,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/blockButton"
-        style="@style/Widget.ZenLauncher.Button"
+        style="@style/Widget.MindfulLauncher.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:enabled="false"

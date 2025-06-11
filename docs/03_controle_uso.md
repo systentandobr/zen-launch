@@ -85,14 +85,14 @@ O módulo de Controle de Uso permite monitorar e limitar o tempo de uso de aplic
 #### Exemplos de Notificações
 ```
 ┌─────────────────────────────────────────────────┐
-│ ZenLauncher                                 now │
+│ MindfulLauncher                                 now │
 ├─────────────────────────────────────────────────┤
 │ Limite de Uso: Instagram                        │
 │ Você tem 5 minutos restantes hoje.              │
 └─────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────┐
-│ ZenLauncher                                 now │
+│ MindfulLauncher                                 now │
 ├─────────────────────────────────────────────────┤
 │ Resumo de Uso: Hoje                             │
 │ Tempo total: 3h 45min                           │

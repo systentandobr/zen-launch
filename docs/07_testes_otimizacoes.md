@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este documento descreve as estratégias de testes e otimizações necessárias para garantir que o ZenLauncher refatorado seja estável, eficiente e tenha um bom desempenho em diferentes dispositivos. As recomendações cobrem testes unitários, de integração e de interface, bem como otimizações de memória, bateria e desempenho geral.
+Este documento descreve as estratégias de testes e otimizações necessárias para garantir que o MindfulLauncher refatorado seja estável, eficiente e tenha um bom desempenho em diferentes dispositivos. As recomendações cobrem testes unitários, de integração e de interface, bem como otimizações de memória, bateria e desempenho geral.
 
 ## Estratégias de Teste
 
@@ -553,7 +553,7 @@ class PerformanceMonitor {
 #### Exemplo de Configuração de Crashlytics
 
 ```kotlin
-class ZenLauncherApplication : Application() {
+class MindfulLauncherApplication : Application() {
     
     override fun onCreate() {
         super.onCreate()

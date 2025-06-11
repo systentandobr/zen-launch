@@ -1,6 +1,6 @@
 # Plano de Implementação Gradual
 
-Este documento apresenta um cronograma sugerido para a implementação gradual das melhorias do ZenLauncher, dividido em fases para facilitar o desenvolvimento e os testes incrementais.
+Este documento apresenta um cronograma sugerido para a implementação gradual das melhorias do MindfulLauncher, dividido em fases para facilitar o desenvolvimento e os testes incrementais.
 
 ## Fase 1: Fundação e Arquitetura (2 Semanas)
 

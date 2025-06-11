@@ -1,8 +1,8 @@
-# Visão Geral da Refatoração do ZenLauncher
+# Visão Geral da Refatoração do MindfulLauncher
 
 ## Objetivo Principal
 
-Transformar o ZenLauncher em um launcher focado em produtividade e bem-estar digital, com recursos de Deep Focus Mode, modo Standby durante carregamento (Always On) e controle de uso de aplicativos, mantendo uma interface minimalista.
+Transformar o MindfulLauncher em um launcher focado em produtividade e bem-estar digital, com recursos de Deep Focus Mode, modo Standby durante carregamento (Always On) e controle de uso de aplicativos, mantendo uma interface minimalista.
 
 ## Estado Atual da Aplicação
 

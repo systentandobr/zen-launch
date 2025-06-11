@@ -1,31 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Cores principais -->
-    <color name="primary">#FF121212</color>
-    <color name="primary_dark">#FF000000</color>
-    <color name="primary_light">#FF2C2C2C</color>
-    <color name="accent">#FF4CAF50</color>
-    <color name="accent_light">#FF8BC34A</color>
+    <!-- Cores Primárias -->
+    <color name="colorPrimary">#1A1A1A</color>
+    <color name="colorPrimaryDark">#0F0F0F</color>
+    <color name="colorPrimaryLight">#2A2A2A</color>
     
-    <!-- Cores de texto -->
-    <color name="text_primary">#FFFFFFFF</color>
-    <color name="text_secondary">#B3FFFFFF</color>
-    <color name="text_hint">#80FFFFFF</color>
+    <!-- Cores de Destaque -->
+    <color name="colorAccent">#4CAF50</color>
+    <color name="colorAccentLight">#81C784</color>
+    <color name="colorAccentDark">#388E3C</color>
     
-    <!-- Cores de fundo -->
-    <color name="background">#FF121212</color>
-    <color name="background_dark">#FF000000</color>
-    <color name="background_button">#FFF0F0F0</color>
-    <color name="surface">#FF1E1E1E</color>
-    <color name="card">#FF242424</color>
+    <!-- Cores de Alerta e Atenção -->
+    <color name="colorWarning">#FFC107</color>
+    <color name="colorWarningLight">#FFD54F</color>
+    <color name="colorWarningDark">#F57C00</color>
     
-    <!-- Cores de estado -->
-    <color name="success">#FF4CAF50</color>
-    <color name="warning">#FFFFEB3B</color>
-    <color name="error">#FFF44336</color>
-    <color name="info">#FF2196F3</color>
+    <!-- Cores de Erro -->
+    <color name="colorError">#F44336</color>
+    <color name="colorErrorLight">#EF5350</color>
+    <color name="colorErrorDark">#D32F2F</color>
     
-    <!-- Cores complementares -->
-    <color name="divider">#1FFFFFFF</color>
-    <color name="ripple">#33FFFFFF</color>
+    <!-- Cores de Texto -->
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#B0B0B0</color>
+    <color name="textColorTertiary">#808080</color>
+    <color name="textColorHint">#606060</color>
+    
+    <!-- Cores de Fundo -->
+    <color name="backgroundColor">#1A1A1A</color>
+    <color name="backgroundColorLight">#2A2A2A</color>
+    <color name="backgroundColorCard">#2D2D2D</color>
+    <color name="backgroundColorDialog">#333333</color>
+    
+    <!-- Cores de Superfície -->
+    <color name="surfaceColor">#2A2A2A</color>
+    <color name="surfaceColorVariant">#3A3A3A</color>
+    <color name="onSurfaceColor">#FFFFFF</color>
+    <color name="onSurfaceColorVariant">#B0B0B0</color>
+    
+    <!-- Cores de Divisores e Bordas -->
+    <color name="dividerColor">#404040</color>
+    <color name="borderColor">#505050</color>
+    <color name="rippleColor">#40FFFFFF</color>
+    
+    <!-- Cores Específicas para Gamificação -->
+    <color name="streakColor">#FF6B35</color>
+    <color name="streakColorLight">#FF8A65</color>
+    <color name="progressColor">#4CAF50</color>
+    <color name="progressBackgroundColor">#404040</color>
+    
+    <!-- Cores para Ícones de Hábitos -->
+    <color name="habitWaterColor">#2196F3</color>
+    <color name="habitExerciseColor">#FF6B35</color>
+    <color name="habitReadingColor">#E91E63</color>
+    <color name="habitMeditationColor">#9C27B0</color>
+    <color name="habitStudyColor">#3F51B5</color>
+    <color name="habitSleepColor">#00BCD4</color>
+    <color name="habitNutritionColor">#4CAF50</color>
+    <color name="habitFocusColor">#FF9800</color>
+    
+    <!-- Cores para Estados -->
+    <color name="stateActiveColor">#4CAF50</color>
+    <color name="stateInactiveColor">#808080</color>
+    <color name="stateDisabledColor">#404040</color>
+    <color name="stateSelectedColor">#4CAF50</color>
+    
+    <!-- Cores Transparentes -->
+    <color name="transparent">#00000000</color>
+    <color name="semiTransparentBlack">#80000000</color>
+    <color name="semiTransparentWhite">#80FFFFFF</color>
+    
+    <!-- Cores para Deep Focus Mode -->
+    <color name="deepFocusColor">#4CAF50</color>
+    <color name="deepFocusBackgroundColor">#1A1A1A</color>
+    <color name="blockedAppColor">#B71C1C</color>
+    <color name="blockedAppBackgroundColor">#4D1F1F</color>
+    
+    <!-- Cores para Ranking -->
+    <color name="rankingFirstPlace">#FFD700</color>
+    <color name="rankingSecondPlace">#C0C0C0</color>
+    <color name="rankingThirdPlace">#CD7F32</color>
+    <color name="rankingOtherPlace">#808080</color>
+    
+    <!-- Cores para Standby Mode -->
+    <color name="standbyBackgroundColor">#000000</color>
+    <color name="standbyTextColor">#FFFFFF</color>
+    <color name="standbyAccentColor">#4CAF50</color>
+    
+    <!-- Cores Legadas (Manter compatibilidade) -->
+    <color name="primary">#1A1A1A</color>
+    <color name="primary_dark">#0F0F0F</color>
+    <color name="primary_light">#2A2A2A</color>
+    <color name="accent">#4CAF50</color>
+    <color name="accent_light">#81C784</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="text_hint">#606060</color>
+    <color name="background">#1A1A1A</color>
+    <color name="background_dark">#0F0F0F</color>
+    <color name="background_button">#2A2A2A</color>
+    <color name="surface">#2A2A2A</color>
+    <color name="card">#2D2D2D</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FFC107</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+    <color name="divider">#404040</color>
+    <color name="ripple">#40FFFFFF</color>
+
+    <!-- Bottom Navigation Colors -->
+    <color name="bottom_nav_selected">#4CAF50</color>
+    <color name="bottom_nav_unselected">#808080</color>
 </resources>

@@ -14,13 +14,13 @@
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" /><!-- Para acessar a barra de notificações -->
 
     <application
-        android:name=".ZenLauncherApp"
+        android:name=".MindfulLauncherApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ZenLauncher">
+        android:theme="@style/Theme.MindfulLauncher">
         
         <!-- Desabilitar inicialização automática do WorkManager -->
         <provider
@@ -58,7 +58,7 @@
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZenLauncher">
+            android:theme="@style/Theme.MindfulLauncher">
         </activity>
         
         <!-- Atividade de bloqueio de apps -->
@@ -91,7 +91,7 @@
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZenLauncher">
+            android:theme="@style/Theme.MindfulLauncher">
         </activity>
         
         <!-- Serviço para monitoramento de tempo de uso -->

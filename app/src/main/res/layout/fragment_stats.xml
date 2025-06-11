@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/time_tracking_screen_title"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,14 +62,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tempo total de tela"
-            android:textAppearance="@style/TextAppearance.ZenLauncher.Body1" />
+            android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1" />
 
         <TextView
             android:id="@+id/totalTimeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+            android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
             android:textColor="@color/accent"
             tools:text="3h 42min" />
 
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/time_tracking_most_used"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalLayout" />
 
@@ -102,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nenhuma estatística disponível"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

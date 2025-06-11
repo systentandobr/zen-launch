@@ -11,13 +11,13 @@ import timber.log.Timber
 import javax.inject.Inject
 
 /**
- * Classe de aplicação principal do ZenLauncher.
+ * Classe de aplicação principal do MindfulLauncher.
  * 
  * Esta classe é responsável pela inicialização de componentes globais
  * e configuração da injeção de dependência via Hilt.
  */
 @HiltAndroidApp
-class ZenLauncherApp : Application(), Configuration.Provider {
+class MindfulLauncherApp : Application(), Configuration.Provider {
     
     @Inject
     lateinit var workerFactory: HiltWorkerFactory

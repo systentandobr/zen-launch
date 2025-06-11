@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_default">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <TextView
+                style="@style/ZenTextAppearance.Headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ranking"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Competição saudável por bem-estar digital"
+                android:textColor="@color/textColorSecondary" />
+
+        </LinearLayout>
+
+        <!-- Card de Jornada Mindful -->
+        <androidx.cardview.widget.CardView
+            style="@style/ZenCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/spacing_medium">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:layout_marginEnd="@dimen/spacing_small"
+                        android:src="@drawable/ic_streak"
+                        android:tint="@color/streakColor"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sua Jornada Mindful"
+                        android:textColor="@color/textColorPrimary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/spacing_medium">
+
+                    <!-- Streak Atual -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/ZenStreakView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/streak_circle_background"
+                            android:gravity="center"
+                            android:text="12"
+                            android:textColor="@color/textColorPrimary" />
+
+                        <TextView
+                            style="@style/ZenTextAppearance.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:text="Dias consecutivos"
+                            android:textColor="@color/textColorSecondary" />
+
+                    </LinearLayout>
+
+                    <!-- Melhor Sequência -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_size_xlarge"
+                            android:layout_height="@dimen/icon_size_xlarge"
+                            android:background="@drawable/habit_icon_background"
+                            android:padding="@dimen/spacing_small"
+                            android:src="@drawable/ic_trophy"
+                            android:tint="@color/rankingFirstPlace"
+                            tools:ignore="UseAppTint" />
+
+                        <TextView
+                            style="@style/ZenTextAppearance.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:text="18"
+                            android:textColor="@color/rankingFirstPlace" />
+
+                        <TextView
+                            style="@style/ZenTextAppearance.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Melhor sequência"
+                            android:textColor="@color/textColorSecondary" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Próximas Recompensas -->
+                <TextView
+                    style="@style/ZenTextAppearance.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:text="Próximas Recompensas:"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold" />
+
+                <!-- Recompensa 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/surfaceColorVariant"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_medium">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_medium"
+                        android:layout_height="@dimen/icon_size_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:src="@drawable/ic_sleep"
+                        android:tint="@color/habitSleepColor"
+                        tools:ignore="UseAppTint" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/ZenTextAppearance.Body"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15 min extras de sono"
+                            android:textColor="@color/textColorPrimary" />
+
+                        <TextView
+                            style="@style/ZenTextAppearance.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Menos tempo de tela no descanso"
+                            android:textColor="@color/textColorSecondary" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7 dias ✓"
+                        android:textColor="@color/colorAccent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tabs de Ranking -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/ZenButton.Primary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_weight="1"
+                android:text="Semanal" />
+
+            <Button
+                style="@style/ZenButton.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_weight="1"
+                android:text="Mensal" />
+
+            <Button
+                style="@style/ZenButton.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Amigos" />
+
+        </LinearLayout>
+
+        <!-- Pódio (Top 3) -->
+        <androidx.cardview.widget.CardView
+            style="@style/ZenCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/card_padding">
+
+                <!-- 2º Lugar -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/ranking_avatar_size"
+                        android:layout_height="@dimen/ranking_avatar_size"
+                        android:background="@color/rankingSecondPlace"
+                        android:src="@drawable/ic_person"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="Ana Silva"
+                        android:textColor="@color/textColorPrimary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1180 pts"
+                        android:textColor="@color/textColorSecondary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔥 8"
+                        android:textColor="@color/streakColor" />
+
+                </LinearLayout>
+
+                <!-- 1º Lugar -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/avatar_size_large"
+                        android:layout_height="@dimen/avatar_size_large"
+                        android:background="@color/rankingFirstPlace"
+                        android:src="@drawable/ic_trophy"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="Você"
+                        android:textColor="@color/textColorPrimary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1240 pts"
+                        android:textColor="@color/rankingFirstPlace" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔥 12"
+                        android:textColor="@color/streakColor" />
+
+                </LinearLayout>
+
+                <!-- 3º Lugar -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/ranking_avatar_size"
+                        android:layout_height="@dimen/ranking_avatar_size"
+                        android:background="@color/rankingThirdPlace"
+                        android:src="@drawable/ic_person"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="Carlos"
+                        android:textColor="@color/textColorPrimary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1150 pts"
+                        android:textColor="@color/textColorSecondary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔥 15"
+                        android:textColor="@color/streakColor" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Lista de Ranking Completa -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Item 4 -->
+            <LinearLayout
+                style="@style/ZenRankingItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/ZenTextAppearance.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:text="4"
+                    android:textColor="@color/textColorSecondary" />
+
+                <ImageView
+                    android:layout_width="@dimen/ranking_avatar_size"
+                    android:layout_height="@dimen/ranking_avatar_size"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@color/rankingOtherPlace"
+                    android:src="@drawable/ic_person"
+                    tools:ignore="UseAppTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Marina"
+                        android:textColor="@color/textColorPrimary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25% tempo de tela"
+                        android:textColor="@color/textColorSecondary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1100"
+                        android:textColor="@color/textColorPrimary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="pontos"
+                        android:textColor="@color/textColorSecondary" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ZenTextAppearance.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:text="🔥 6 dias"
+                    android:textColor="@color/streakColor" />
+
+            </LinearLayout>
+
+            <!-- Item 5 -->
+            <LinearLayout
+                style="@style/ZenRankingItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/ZenTextAppearance.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:text="5"
+                    android:textColor="@color/textColorSecondary" />
+
+                <ImageView
+                    android:layout_width="@dimen/ranking_avatar_size"
+                    android:layout_height="@dimen/ranking_avatar_size"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@color/rankingOtherPlace"
+                    android:src="@drawable/ic_person"
+                    tools:ignore="UseAppTint" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="João"
+                        android:textColor="@color/textColorPrimary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22% tempo de tela"
+                        android:textColor="@color/textColorSecondary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1050"
+                        android:textColor="@color/textColorPrimary" />
+
+                    <TextView
+                        style="@style/ZenTextAppearance.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="pontos"
+                        android:textColor="@color/textColorSecondary" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ZenTextAppearance.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:text="🔥 3 dias"
+                    android:textColor="@color/streakColor" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+

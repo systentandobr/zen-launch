@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Início"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_apps"
+        android:enabled="true"
+        android:icon="@drawable/ic_apps"
+        android:title="Apps"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_focus"
+        android:enabled="true"
+        android:icon="@drawable/ic_focus"
+        android:title="Foco"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_ranking"
+        android:enabled="true"
+        android:icon="@drawable/ic_trophy"
+        android:title="Ranking"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_stats"
+        android:enabled="true"
+        android:icon="@drawable/ic_stats"
+        android:title="Estatísticas"
+        app:showAsAction="ifRoom" />
+
+</menu>

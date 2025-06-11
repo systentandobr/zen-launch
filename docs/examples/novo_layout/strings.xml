@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MindfulLauncher Sample</string>
+    
+    <!-- Títulos das Telas -->
+    <string name="title_main">Início</string>
+    <string name="title_deep_focus">Deep Focus Mode</string>
+    <string name="title_ranking">Ranking</string>
+    <string name="title_standby">Modo Standby</string>
+    <string name="title_settings">Configurações</string>
+    
+    <!-- Textos Gerais -->
+    <string name="time_usage">Tempo de Uso</string>
+    <string name="screen_time_total">Tempo total de tela</string>
+    <string name="weekly_goal">Meta semanal</string>
+    <string name="most_used_apps">Apps mais usados</string>
+    <string name="see_all">Ver todos</string>
+    
+    <!-- Deep Focus Mode -->
+    <string name="deep_focus_title">Deep Focus Mode</string>
+    <string name="deep_focus_subtitle">Bloqueie distrações e mantenha o foco</string>
+    <string name="focus_duration">Duração do foco</string>
+    <string name="start_focus">▶ Iniciar Foco</string>
+    <string name="apps_to_block">Apps que serão bloqueados</string>
+    <string name="ready_to_focus">Pronto para focar</string>
+    
+    <!-- Ranking -->
+    <string name="ranking_title">Ranking</string>
+    <string name="ranking_subtitle">Competição saudável por bem-estar digital</string>
+    <string name="mindful_journey">Sua Jornada Mindful</string>
+    <string name="consecutive_days">Dias consecutivos</string>
+    <string name="best_sequence">Melhor sequência</string>
+    <string name="next_rewards">Próximas Recompensas:</string>
+    <string name="weekly_tab">Semanal</string>
+    <string name="monthly_tab">Mensal</string>
+    <string name="friends_tab">Amigos</string>
+    <string name="points">pontos</string>
+    
+    <!-- Standby Mode -->
+    <string name="standby_subtitle">Modo Standby • Toque para retornar</string>
+    <string name="active_streak">Streak Ativa: %d dias</string>
+    <string name="use_time_for">Use este tempo para:</string>
+    <string name="sleep_activity">Dormir</string>
+    <string name="read_activity">Ler</string>
+    <string name="exercise_activity">Exercitar</string>
+    <string name="study_activity">Estudar</string>
+    <string name="meditate_activity">Meditar</string>
+    <string name="relax_activity">Relaxar</string>
+    <string name="extra_sleep">+15 min de sono</string>
+    <string name="extra_reading">+20 min de leitura</string>
+    <string name="active_time">+30 min ativo</string>
+    <string name="learning_time">+25 min aprendendo</string>
+    <string name="reduce_anxiety">Reduzir ansiedade</string>
+    <string name="do_nothing">Simplesmente não fazer nada</string>
+    <string name="time_today">Tempo hoje</string>
+    <string name="vs_yesterday">vs. ontem</string>
+    <string name="daily_goal_completed">Meta diária: 75% concluída</string>
+    <string name="next_focus_time">Próximo foco: 14:30</string>
+    
+    <!-- Hábitos -->
+    <string name="habit_water">Beba água</string>
+    <string name="habit_exercise">Exercite-se</string>
+    <string name="habit_reading">Ler</string>
+    <string name="habit_meditation">Meditar</string>
+    <string name="habit_study">Estude on-line</string>
+    <string name="habit_sleep">Dormir</string>
+    <string name="habit_nutrition">Coma uma refeição saudável</string>
+    <string name="habit_focus">Foque com o Pomodoro</string>
+    
+    <!-- Botões -->
+    <string name="button_start">Iniciar</string>
+    <string name="button_stop">Parar</string>
+    <string name="button_pause">Pausar</string>
+    <string name="button_resume">Retomar</string>
+    <string name="button_next">Próximo</string>
+    <string name="button_back">Voltar</string>
+    <string name="button_save">Salvar</string>
+    <string name="button_cancel">Cancelar</string>
+    
+    <!-- Mensagens -->
+    <string name="focus_session_started">Sessão de foco iniciada</string>
+    <string name="focus_session_completed">Sessão de foco concluída!</string>
+    <string name="streak_maintained">Streak mantida!</string>
+    <string name="new_achievement">Nova conquista desbloqueada!</string>
+    
+    <!-- Configurações -->
+    <string name="settings_personalization">Personalização</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_dark_mode">Modo escuro</string>
+    <string name="settings_focus_productivity">Foco e Produtividade</string>
+    <string name="settings_focus_mode">Modo Foco</string>
+    <string name="settings_focus_reminders">Lembretes de foco</string>
+    <string name="settings_notifications">Notificações</string>
+    <string name="settings_sounds">Sons</string>
+    <string name="settings_vibration">Vibração</string>
+    <string name="settings_social">Social</string>
+    <string name="settings_ranking">Ranking</string>
+    <string name="settings_about">Sobre</string>
+    <string name="settings_privacy">Privacidade</string>
+    <string name="settings_about_app">Sobre o MindfulLauncher</string>
+    
+    <!-- Descrições -->
+    <string name="theme_description">Escuro</string>
+    <string name="dark_mode_description">Sempre ativo</string>
+    <string name="focus_mode_description">Configurar bloqueios</string>
+    <string name="focus_reminders_description">Notificações de pausa</string>
+    <string name="notifications_description">Alertas do sistema</string>
+    <string name="sounds_description">Feedback sonoro</string>
+    <string name="vibration_description">Feedback tátil</string>
+    <string name="ranking_description">Configurar privacidade</string>
+    <string name="privacy_description">Política e termos</string>
+    <string name="about_description">Versão 1.0.0</string>
+</resources>
+

@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nenhum aplicativo encontrado"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

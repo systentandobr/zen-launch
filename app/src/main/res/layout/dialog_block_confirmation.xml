@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Confirmar Bloqueio"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Você está prestes a bloquear 3 aplicativos por 2 horas. Escolha o nível de bloqueio desejado:"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <RadioGroup

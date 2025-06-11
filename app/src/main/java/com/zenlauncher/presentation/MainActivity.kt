@@ -5,42 +5,46 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.view.ViewConfiguration
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.viewpager2.widget.ViewPager2
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zenlauncher.R
 import com.zenlauncher.data.receivers.PowerConnectionReceiver
 import com.zenlauncher.data.services.AppBlockerService
 import com.zenlauncher.data.services.UsageTrackingService
 import com.zenlauncher.databinding.ActivityMainBinding
-import com.zenlauncher.presentation.navigation.pager.MainPagerAdapter
-import com.zenlauncher.presentation.navigation.pager.ViewPagerExtensions.setTouchSlop
+import com.zenlauncher.presentation.home.HomeFragment
+import com.zenlauncher.presentation.apps.AppsFragment
+import com.zenlauncher.presentation.focus.FocusFragment
+import com.zenlauncher.presentation.ranking.RankingFragment
+import com.zenlauncher.presentation.stats.StatsFragment
 import com.zenlauncher.presentation.permissions.UsagePermissionActivity
 import com.zenlauncher.presentation.standby.StandbyActivity
-import com.zenlauncher.ZenLauncherApp
+import com.zenlauncher.MindfulLauncherApp
 import com.zenlauncher.domain.interfaces.ChargingStateListener
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * Atividade principal do ZenLauncher.
+ * Atividade principal do MindfulLauncher.
  * 
  * Esta atividade serve como o ponto de entrada do launcher e contém
- * o ViewPager2 para navegação entre os diferentes fragmentos.
+ * a navegação por bottom navigation entre os diferentes fragmentos.
  */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ChargingStateListener {
     
     private lateinit var binding: ActivityMainBinding
-    private lateinit var pagerAdapter: MainPagerAdapter
     private lateinit var powerReceiver: PowerConnectionReceiver
-    private val dots = ArrayList<ImageView>()
+    private var currentFragment: Fragment? = null
     
     companion object {
-        private const val HOME_PAGE_INDEX = 0
         private const val PERMISSION_REQUEST_CODE = 1001
+        private const val FRAGMENT_HOME = "fragment_home"
+        private const val FRAGMENT_APPS = "fragment_apps"
+        private const val FRAGMENT_FOCUS = "fragment_focus"
+        private const val FRAGMENT_RANKING = "fragment_ranking"
+        private const val FRAGMENT_STATS = "fragment_stats"
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,9 +52,15 @@ class MainActivity : AppCompatActivity(), ChargingStateListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        setupViewPager()
+        setupBottomNavigation()
         startServices()
         registerPowerReceiver()
+        
+        // Carregar fragment inicial se não há estado salvo
+        if (savedInstanceState == null) {
+            showFragment(HomeFragment(), FRAGMENT_HOME)
+            binding.bottomNavigation.selectedItemId = R.id.nav_home
+        }
         
         // Verificar permissões de uso
         checkUsagePermission()
@@ -62,68 +72,60 @@ class MainActivity : AppCompatActivity(), ChargingStateListener {
     }
     
     /**
-     * Configura o ViewPager2 e seu indicador.
+     * Configura o Bottom Navigation e seus listeners.
      */
-    private fun setupViewPager() {
-        pagerAdapter = MainPagerAdapter(this)
-        
-        binding.viewPager.apply {
-            adapter = pagerAdapter
-            // Definir sensibilidade de deslize
-            val sensitivity = 0.75f // Ajustar conforme necessário
-            val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
-            binding.viewPager.setTouchSlop((touchSlop * sensitivity).toInt())
-            
-            // Registrar callback de página
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    // Atualizar indicadores
-                    updatePageIndicators(position)
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    showFragment(HomeFragment(), FRAGMENT_HOME)
+                    true
                 }
-            })
-        }
-        
-        // Configurar indicadores de página
-        setupPageIndicators()
-        updatePageIndicators(0) // Página inicial
-    }
-    
-    /**
-     * Configura os indicadores de página.
-     */
-    private fun setupPageIndicators() {
-        dots.clear()
-        binding.pageIndicator.removeAllViews()
-        
-        val size = pagerAdapter.itemCount
-        
-        // Criar pontos
-        for (i in 0 until size) {
-            val dot = ImageView(this)
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            params.setMargins(8, 0, 8, 0)
-            dot.layoutParams = params
-            
-            binding.pageIndicator.addView(dot)
-            dots.add(dot)
-        }
-    }
-    
-    /**
-     * Atualiza os indicadores de página.
-     */
-    private fun updatePageIndicators(currentPage: Int) {
-        for (i in dots.indices) {
-            if (i == currentPage) {
-                dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.indicator_dot))
-            } else {
-                dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.indicator_dot_unselected))
+                R.id.nav_apps -> {
+                    showFragment(AppsFragment(), FRAGMENT_APPS)
+                    true
+                }
+                R.id.nav_focus -> {
+                    showFragment(FocusFragment(), FRAGMENT_FOCUS)
+                    true
+                }
+                R.id.nav_ranking -> {
+                    showFragment(RankingFragment(), FRAGMENT_RANKING)
+                    true
+                }
+                R.id.nav_stats -> {
+                    showFragment(StatsFragment(), FRAGMENT_STATS)
+                    true
+                }
+                else -> false
             }
         }
+    }
+    
+    /**
+     * Mostra um fragment no container principal.
+     */
+    private fun showFragment(fragment: Fragment, tag: String) {
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        
+        // Esconder fragment atual se existir
+        currentFragment?.let {
+            transaction.hide(it)
+        }
+        
+        // Verificar se o fragment já existe
+        val existingFragment = supportFragmentManager.findFragmentByTag(tag)
+        if (existingFragment != null) {
+            // Fragment já existe, apenas mostrar
+            transaction.show(existingFragment)
+            currentFragment = existingFragment
+        } else {
+            // Criar novo fragment
+            transaction.add(R.id.fragmentContainer, fragment, tag)
+            currentFragment = fragment
+        }
+        
+        transaction.commit()
     }
     
     /**
@@ -163,19 +165,12 @@ class MainActivity : AppCompatActivity(), ChargingStateListener {
     }
     
     /**
-     * Navega para uma página específica do ViewPager.
-     */
-    fun navigateToPage(page: MainPagerAdapter.Page) {
-        binding.viewPager.setCurrentItem(pagerAdapter.getPositionForPage(page), true)
-    }
-    
-    /**
      * Verifica se temos permissão para acessar estatísticas de uso.
      */
     private fun checkUsagePermission() {
         if (!hasUsageStatsPermission()) {
             // Mostrar tela de permissão após um pequeno delay para não interferir com a inicialização
-            binding.viewPager.postDelayed({
+            binding.fragmentContainer.postDelayed({
                 showUsagePermissionScreen()
             }, 2000)
         }
@@ -209,7 +204,7 @@ class MainActivity : AppCompatActivity(), ChargingStateListener {
             val permissionGranted = data?.getBooleanExtra("permission_granted", false) ?: false
             if (permissionGranted) {
                 // Permissão concedida, iniciar monitoramento
-                (application as ZenLauncherApp).restartMonitoring()
+                (application as MindfulLauncherApp).restartMonitoring()
             }
         }
     }
@@ -217,8 +212,8 @@ class MainActivity : AppCompatActivity(), ChargingStateListener {
     override fun onBackPressed() {
         // Se não estiver na tela inicial, navega para a tela inicial
         // Se estiver na tela inicial, não faz nada (não fecha o launcher)
-        if (binding.viewPager.currentItem != HOME_PAGE_INDEX) {
-            binding.viewPager.setCurrentItem(HOME_PAGE_INDEX, true)
+        if (binding.bottomNavigation.selectedItemId != R.id.nav_home) {
+            binding.bottomNavigation.selectedItemId = R.id.nav_home
         }
     }
     

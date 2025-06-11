@@ -23,7 +23,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Caption"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Caption"
         android:paddingTop="4dp"
         tools:text="Nome do Aplicativo" />
 

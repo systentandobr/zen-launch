@@ -49,7 +49,7 @@ class UsagePermissionActivity : AppCompatActivity() {
     private fun setupUI() {
         binding.titleText.text = "Permissão Necessária"
         binding.descriptionText.text = 
-            "O ZenLauncher precisa de acesso às estatísticas de uso para monitorar " +
+            "O MindfulLauncher precisa de acesso às estatísticas de uso para monitorar " +
             "o tempo de tela e promover um uso mais consciente dos aplicativos."
         
         binding.benefitsText.text = 
@@ -116,7 +116,7 @@ class UsagePermissionActivity : AppCompatActivity() {
             
             Snackbar.make(
                 binding.root,
-                "Encontre o ZenLauncher na lista e ative a permissão",
+                "Encontre o MindfulLauncher na lista e ative a permissão",
                 Snackbar.LENGTH_LONG
             ).show()
         } catch (e: Exception) {

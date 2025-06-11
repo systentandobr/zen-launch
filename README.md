@@ -67,7 +67,7 @@ O projeto segue a arquitetura Clean Architecture com MVVM:
 app/
 ├── src/
 │   ├── main/
-│   │   ├── java/com/zenlauncher/
+│   │   ├── java/com/mindfulauncher/
 │   │   │   ├── data/            # Implementação de repositórios, fontes de dados
 │   │   │   ├── domain/          # Entidades, casos de uso, interfaces
 │   │   │   ├── presentation/    # Activities, Fragments, ViewModels

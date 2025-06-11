@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema Principal do MindfulLauncher -->
+    <style name="MindfulLauncherTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Cores Primárias -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryLight</item>
+        
+        <!-- Cores de Destaque -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryVariant">@color/colorAccentDark</item>
+        
+        <!-- Cores de Fundo -->
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="colorSurface">@color/surfaceColor</item>
+        <item name="colorOnSurface">@color/onSurfaceColor</item>
+        
+        <!-- Cores de Texto -->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorTertiary">@color/textColorTertiary</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        
+        <!-- Cores de Estado -->
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/textColorPrimary</item>
+        
+        <!-- Configurações de Janela -->
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <item name="android:statusBarColor">@color/backgroundColor</item>
+        <item name="android:navigationBarColor">@color/backgroundColor</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        
+        <!-- Estilos de Componentes -->
+        <item name="materialButtonStyle">@style/ZenButton</item>
+        <item name="materialCardViewStyle">@style/ZenCard</item>
+        <item name="switchStyle">@style/ZenSwitch</item>
+        <item name="textInputStyle">@style/ZenEditText</item>
+        <item name="toolbarStyle">@style/ZenToolbar</item>
+        <item name="bottomNavigationStyle">@style/ZenBottomNavigation</item>
+        <item name="floatingActionButtonStyle">@style/ZenFAB</item>
+        
+        <!-- Configurações de Animação -->
+        <item name="android:windowAnimationStyle">@style/ZenWindowAnimation</item>
+        <item name="android:windowEnterAnimation">@anim/zen_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/zen_fade_out</item>
+    </style>
+    
+    <!-- Tema para Deep Focus Mode -->
+    <style name="MindfulLauncherTheme.DeepFocus">
+        <item name="android:windowBackground">@color/deepFocusBackgroundColor</item>
+        <item name="android:statusBarColor">@color/deepFocusBackgroundColor</item>
+        <item name="android:navigationBarColor">@color/deepFocusBackgroundColor</item>
+        <item name="colorPrimary">@color/deepFocusColor</item>
+        <item name="colorAccent">@color/deepFocusColor</item>
+    </style>
+    
+    <!-- Tema para Standby Mode -->
+    <style name="MindfulLauncherTheme.Standby">
+        <item name="android:windowBackground">@color/standbyBackgroundColor</item>
+        <item name="android:statusBarColor">@color/standbyBackgroundColor</item>
+        <item name="android:navigationBarColor">@color/standbyBackgroundColor</item>
+        <item name="android:textColorPrimary">@color/standbyTextColor</item>
+        <item name="colorAccent">@color/standbyAccentColor</item>
+    </style>
+    
+    <!-- Tema para Splash Screen -->
+    <style name="MindfulLauncherTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    
+    <!-- Tema para Dialogs -->
+    <style name="MindfulLauncherTheme.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/backgroundColorDialog</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="materialButtonStyle">@style/ZenButton</item>
+    </style>
+    
+    <!-- Tema para Bottom Sheet -->
+    <style name="MindfulLauncherTheme.BottomSheet" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/surfaceColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="bottomSheetStyle">@style/ZenBottomSheet</item>
+    </style>
+    
+    <!-- Estilo para Bottom Sheet -->
+    <style name="ZenBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/ZenBottomSheetShape</item>
+        <item name="android:background">@color/surfaceColor</item>
+    </style>
+    
+    <style name="ZenBottomSheetShape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/bottom_sheet_corner_radius</item>
+        <item name="cornerSizeTopRight">@dimen/bottom_sheet_corner_radius</item>
+    </style>
+    
+    <!-- Estilos de Animação -->
+    <style name="ZenWindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/zen_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/zen_slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/zen_slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/zen_slide_out_right</item>
+    </style>
+    
+    <!-- Tema para Configurações -->
+    <style name="MindfulLauncherTheme.Settings">
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="android:divider">@color/dividerColor</item>
+        <item name="android:dividerHeight">@dimen/divider_height</item>
+    </style>
+    
+    <!-- Tema para Widgets -->
+    <style name="MindfulLauncherTheme.Widget">
+        <item name="android:colorBackground">@color/transparent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <!-- Tema para Notificações -->
+    <style name="MindfulLauncherTheme.Notification">
+        <item name="android:colorBackground">@color/surfaceColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <!-- Tema para Launcher (Home Screen) -->
+    <style name="MindfulLauncherTheme.Launcher">
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <item name="android:windowShowWallpaper">true</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+    
+    <!-- Tema para Tela de Onboarding -->
+    <style name="MindfulLauncherTheme.Onboarding">
+        <item name="android:windowBackground">@drawable/onboarding_background</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>
+

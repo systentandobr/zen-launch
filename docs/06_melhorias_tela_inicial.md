@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este documento detalha as melhorias necessárias para completar as funcionalidades da tela inicial do ZenLauncher, incluindo o preenchimento das páginas atualmente vazias (relógios, widgets, fotos, ferramentas) e a implementação de uma experiência mais integrada e minimalista.
+Este documento detalha as melhorias necessárias para completar as funcionalidades da tela inicial do MindfulLauncher, incluindo o preenchimento das páginas atualmente vazias (relógios, widgets, fotos, ferramentas) e a implementação de uma experiência mais integrada e minimalista.
 
 ## Componentes Principais
 

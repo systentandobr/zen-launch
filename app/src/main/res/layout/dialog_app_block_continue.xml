@@ -22,7 +22,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Continuar mesmo assim?"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintTop_toBottomOf="@+id/warningIcon" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Este aplicativo foi bloqueado para ajudar na sua concentração. Tem certeza de que deseja usá-lo agora?"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Dica: Tente concluir sua tarefa atual antes de acessar este aplicativo."
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Caption"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Caption"
         android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@+id/messageTextView" />
 

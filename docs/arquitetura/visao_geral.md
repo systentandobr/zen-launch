@@ -1,10 +1,10 @@
-# Arquitetura do ZenLauncher
+# Arquitetura do MindfulLauncher
 
-Este documento descreve a arquitetura técnica do ZenLauncher, seguindo os princípios de Clean Architecture e SOLID.
+Este documento descreve a arquitetura técnica do MindfulLauncher, seguindo os princípios de Clean Architecture e SOLID.
 
 ## Visão Geral da Arquitetura
 
-O ZenLauncher utiliza uma arquitetura em camadas, separando claramente as responsabilidades:
+O MindfulLauncher utiliza uma arquitetura em camadas, separando claramente as responsabilidades:
 
 ```
 +----------------+
@@ -84,7 +84,7 @@ Utilizado para comportamentos intercambiáveis.
 
 ## Injeção de Dependência
 
-O ZenLauncher utiliza Hilt para injeção de dependência, facilitando:
+O MindfulLauncher utiliza Hilt para injeção de dependência, facilitando:
 
 - Testabilidade
 - Desacoplamento
@@ -155,4 +155,4 @@ com.zenlauncher/
 - **Validation**: Validação de entrada e saída de dados
 - **Sanitization**: Limpeza de dados antes do processamento
 
-Este documento serve como guia para a arquitetura do ZenLauncher e deve ser consultado durante o desenvolvimento para garantir a consistência e qualidade do código.
+Este documento serve como guia para a arquitetura do MindfulLauncher e deve ser consultado durante o desenvolvimento para garantir a consistência e qualidade do código.

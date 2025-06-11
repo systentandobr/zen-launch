@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Atributos Customizados para Componentes MindfulLauncher -->
+    
+    <!-- Atributos para ZenCard (Card customizado) -->
+    <declare-styleable name="ZenCard">
+        <attr name="zenCardBackgroundColor" format="color" />
+        <attr name="zenCardCornerRadius" format="dimension" />
+        <attr name="zenCardElevation" format="dimension" />
+        <attr name="zenCardPadding" format="dimension" />
+        <attr name="zenCardMargin" format="dimension" />
+        <attr name="zenCardStrokeWidth" format="dimension" />
+        <attr name="zenCardStrokeColor" format="color" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenProgressBar (Barra de progresso customizada) -->
+    <declare-styleable name="ZenProgressBar">
+        <attr name="zenProgressColor" format="color" />
+        <attr name="zenProgressBackgroundColor" format="color" />
+        <attr name="zenProgressHeight" format="dimension" />
+        <attr name="zenProgressCornerRadius" format="dimension" />
+        <attr name="zenProgressAnimationDuration" format="integer" />
+        <attr name="zenProgressShowPercentage" format="boolean" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenButton (Botão customizado) -->
+    <declare-styleable name="ZenButton">
+        <attr name="zenButtonStyle" format="enum">
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+            <enum name="outline" value="2" />
+            <enum name="text" value="3" />
+        </attr>
+        <attr name="zenButtonSize" format="enum">
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+        </attr>
+        <attr name="zenButtonCornerRadius" format="dimension" />
+        <attr name="zenButtonRippleColor" format="color" />
+        <attr name="zenButtonIconSize" format="dimension" />
+        <attr name="zenButtonIconTint" format="color" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenStreakView (Visualização de streak) -->
+    <declare-styleable name="ZenStreakView">
+        <attr name="zenStreakCount" format="integer" />
+        <attr name="zenStreakColor" format="color" />
+        <attr name="zenStreakBackgroundColor" format="color" />
+        <attr name="zenStreakSize" format="dimension" />
+        <attr name="zenStreakTextSize" format="dimension" />
+        <attr name="zenStreakIconSize" format="dimension" />
+        <attr name="zenStreakAnimationEnabled" format="boolean" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenHabitIcon (Ícone de hábito) -->
+    <declare-styleable name="ZenHabitIcon">
+        <attr name="zenHabitType" format="enum">
+            <enum name="water" value="0" />
+            <enum name="exercise" value="1" />
+            <enum name="reading" value="2" />
+            <enum name="meditation" value="3" />
+            <enum name="study" value="4" />
+            <enum name="sleep" value="5" />
+            <enum name="nutrition" value="6" />
+            <enum name="focus" value="7" />
+        </attr>
+        <attr name="zenHabitIconSize" format="dimension" />
+        <attr name="zenHabitBackgroundColor" format="color" />
+        <attr name="zenHabitIconColor" format="color" />
+        <attr name="zenHabitCornerRadius" format="dimension" />
+        <attr name="zenHabitCompleted" format="boolean" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenTimerView (Visualização de timer) -->
+    <declare-styleable name="ZenTimerView">
+        <attr name="zenTimerSize" format="dimension" />
+        <attr name="zenTimerStrokeWidth" format="dimension" />
+        <attr name="zenTimerProgressColor" format="color" />
+        <attr name="zenTimerBackgroundColor" format="color" />
+        <attr name="zenTimerTextColor" format="color" />
+        <attr name="zenTimerTextSize" format="dimension" />
+        <attr name="zenTimerDuration" format="integer" />
+        <attr name="zenTimerShowMilliseconds" format="boolean" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenRankingItem (Item de ranking) -->
+    <declare-styleable name="ZenRankingItem">
+        <attr name="zenRankingPosition" format="integer" />
+        <attr name="zenRankingAvatarSize" format="dimension" />
+        <attr name="zenRankingHighlightColor" format="color" />
+        <attr name="zenRankingShowBadge" format="boolean" />
+        <attr name="zenRankingBadgeColor" format="color" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenAppUsageItem (Item de uso de app) -->
+    <declare-styleable name="ZenAppUsageItem">
+        <attr name="zenAppIconSize" format="dimension" />
+        <attr name="zenAppUsageBarHeight" format="dimension" />
+        <attr name="zenAppUsageBarColor" format="color" />
+        <attr name="zenAppUsageTextSize" format="dimension" />
+        <attr name="zenAppUsageShowTime" format="boolean" />
+        <attr name="zenAppUsageShowPercentage" format="boolean" />
+    </declare-styleable>
+    
+    <!-- Atributos para ZenStatsCard (Card de estatísticas) -->
+    <declare-styleable name="ZenStatsCard">
+        <attr name="zenStatsTitle" format="string" />
+        <attr name="zenStatsValue" format="string" />
+        <attr name="zenStatsUnit" format="string" />
+        <attr name="zenStatsIconResource" format="reference" />
+        <attr name="zenStatsIconColor" format="color" />
+        <attr name="zenStatsValueColor" format="color" />
+        <attr name="zenStatsShowTrend" format="boolean" />
+        <attr name="zenStatsTrendDirection" format="enum">
+            <enum name="up" value="0" />
+            <enum name="down" value="1" />
+            <enum name="neutral" value="2" />
+        </attr>
+    </declare-styleable>
+    
+    <!-- Atributos para ZenToggleSwitch (Switch customizado) -->
+    <declare-styleable name="ZenToggleSwitch">
+        <attr name="zenToggleTrackColor" format="color" />
+        <attr name="zenToggleThumbColor" format="color" />
+        <attr name="zenToggleTrackColorDisabled" format="color" />
+        <attr name="zenToggleThumbColorDisabled" format="color" />
+        <attr name="zenToggleSize" format="enum">
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+        </attr>
+    </declare-styleable>
+    
+    <!-- Atributos Gerais -->
+    <attr name="zenThemeStyle" format="enum">
+        <enum name="dark" value="0" />
+        <enum name="light" value="1" />
+        <enum name="auto" value="2" />
+    </attr>
+    
+    <attr name="zenAnimationDuration" format="integer" />
+    <attr name="zenAnimationInterpolator" format="enum">
+        <enum name="linear" value="0" />
+        <enum name="accelerate" value="1" />
+        <enum name="decelerate" value="2" />
+        <enum name="accelerateDecelerate" value="3" />
+        <enum name="bounce" value="4" />
+        <enum name="overshoot" value="5" />
+    </attr>
+</resources>
+

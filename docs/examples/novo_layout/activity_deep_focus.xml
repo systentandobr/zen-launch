@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ZenDeepFocusContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeepFocusActivity">
+
+    <!-- Ícone Central -->
+    <ImageView
+        android:layout_width="@dimen/focus_timer_size"
+        android:layout_height="@dimen/focus_timer_size"
+        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:background="@drawable/streak_circle_background"
+        android:padding="@dimen/spacing_xlarge"
+        android:src="@drawable/ic_focus"
+        android:tint="@color/textColorPrimary"
+        tools:ignore="UseAppTint" />
+
+    <!-- Título -->
+    <TextView
+        style="@style/ZenTextAppearance.Display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:text="Deep Focus Mode"
+        android:textColor="@color/deepFocusColor" />
+
+    <!-- Subtítulo -->
+    <TextView
+        style="@style/ZenTextAppearance.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_xxlarge"
+        android:gravity="center"
+        android:text="Bloqueie distrações e mantenha o foco"
+        android:textColor="@color/textColorSecondary" />
+
+    <!-- Card do Timer -->
+    <androidx.cardview.widget.CardView
+        style="@style/ZenCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_xlarge">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_xlarge">
+
+            <!-- Timer Display -->
+            <TextView
+                style="@style/ZenTimerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:text="25:00"
+                android:textColor="@color/textColorPrimary" />
+
+            <TextView
+                style="@style/ZenTextAppearance.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:text="Duração do foco"
+                android:textColor="@color/textColorSecondary" />
+
+            <!-- Slider de Duração -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/ZenTextAppearance.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duração: 25 minutos"
+                    android:textColor="@color/textColorPrimary" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                style="@style/ZenProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:progress="50" />
+
+            <!-- Botão Iniciar -->
+            <Button
+                style="@style/ZenButton.Primary.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="▶ Iniciar Foco"
+                android:textSize="@dimen/text_size_large" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Seção Apps Bloqueados -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/spacing_medium">
+
+        <ImageView
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:src="@drawable/ic_lock"
+            android:tint="@color/colorAccent"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            style="@style/ZenTextAppearance.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apps que serão bloqueados"
+            android:textColor="@color/textColorPrimary" />
+
+    </LinearLayout>
+
+    <!-- Grid de Apps Bloqueados -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/focus_app_icon_size"
+            android:layout_height="@dimen/focus_app_icon_size"
+            android:layout_margin="@dimen/spacing_small"
+            android:alpha="0.5"
+            android:background="@color/blockedAppBackgroundColor"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_apps"
+            tools:ignore="UseAppTint" />
+
+        <ImageView
+            android:layout_width="@dimen/focus_app_icon_size"
+            android:layout_height="@dimen/focus_app_icon_size"
+            android:layout_margin="@dimen/spacing_small"
+            android:alpha="0.5"
+            android:background="@color/blockedAppBackgroundColor"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_camera"
+            tools:ignore="UseAppTint" />
+
+        <ImageView
+            android:layout_width="@dimen/focus_app_icon_size"
+            android:layout_height="@dimen/focus_app_icon_size"
+            android:layout_margin="@dimen/spacing_small"
+            android:alpha="0.5"
+            android:background="@color/blockedAppBackgroundColor"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_music"
+            tools:ignore="UseAppTint" />
+
+        <ImageView
+            android:layout_width="@dimen/focus_app_icon_size"
+            android:layout_height="@dimen/focus_app_icon_size"
+            android:layout_margin="@dimen/spacing_small"
+            android:alpha="0.5"
+            android:background="@color/blockedAppBackgroundColor"
+            android:padding="@dimen/spacing_small"
+            android:src="@drawable/ic_chat"
+            tools:ignore="UseAppTint" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

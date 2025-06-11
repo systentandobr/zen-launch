@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dimensões de Espaçamento -->
+    <dimen name="spacing_micro">2dp</dimen>
+    <dimen name="spacing_tiny">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="spacing_xxlarge">48dp</dimen>
+    <dimen name="spacing_xxxlarge">64dp</dimen>
+    
+    <!-- Margens e Padding -->
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="padding_default">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    
+    <!-- Cantos Arredondados -->
+    <dimen name="corner_radius_small">4dp</dimen>
+    <dimen name="corner_radius_medium">8dp</dimen>
+    <dimen name="corner_radius_large">12dp</dimen>
+    <dimen name="corner_radius_xlarge">16dp</dimen>
+    <dimen name="corner_radius_round">50dp</dimen>
+    
+    <!-- Elevação (Sombras) -->
+    <dimen name="elevation_none">0dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+    <dimen name="elevation_medium">4dp</dimen>
+    <dimen name="elevation_large">8dp</dimen>
+    <dimen name="elevation_xlarge">16dp</dimen>
+    
+    <!-- Tamanhos de Texto -->
+    <dimen name="text_size_micro">10sp</dimen>
+    <dimen name="text_size_tiny">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">20sp</dimen>
+    <dimen name="text_size_xxlarge">24sp</dimen>
+    <dimen name="text_size_xxxlarge">32sp</dimen>
+    <dimen name="text_size_display">48sp</dimen>
+    
+    <!-- Alturas de Componentes -->
+    <dimen name="button_height_small">32dp</dimen>
+    <dimen name="button_height_medium">48dp</dimen>
+    <dimen name="button_height_large">56dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="bottom_navigation_height">56dp</dimen>
+    <dimen name="list_item_height">56dp</dimen>
+    <dimen name="list_item_height_large">72dp</dimen>
+    
+    <!-- Larguras -->
+    <dimen name="button_min_width">64dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    
+    <!-- Tamanhos de Ícones -->
+    <dimen name="icon_size_tiny">16dp</dimen>
+    <dimen name="icon_size_small">20dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="icon_size_xlarge">48dp</dimen>
+    <dimen name="icon_size_xxlarge">64dp</dimen>
+    
+    <!-- Tamanhos de Avatar -->
+    <dimen name="avatar_size_small">32dp</dimen>
+    <dimen name="avatar_size_medium">48dp</dimen>
+    <dimen name="avatar_size_large">64dp</dimen>
+    <dimen name="avatar_size_xlarge">96dp</dimen>
+    
+    <!-- Dimensões Específicas para Cards -->
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    
+    <!-- Dimensões para Progress Bars -->
+    <dimen name="progress_bar_height">4dp</dimen>
+    <dimen name="progress_bar_height_thick">8dp</dimen>
+    <dimen name="progress_circle_stroke_width">4dp</dimen>
+    
+    <!-- Dimensões para Deep Focus Mode -->
+    <dimen name="focus_timer_size">200dp</dimen>
+    <dimen name="focus_button_height">56dp</dimen>
+    <dimen name="focus_app_icon_size">48dp</dimen>
+    
+    <!-- Dimensões para Ranking -->
+    <dimen name="ranking_avatar_size">48dp</dimen>
+    <dimen name="ranking_podium_height">120dp</dimen>
+    <dimen name="ranking_item_height">64dp</dimen>
+    
+    <!-- Dimensões para Standby Mode -->
+    <dimen name="standby_clock_size">80sp</dimen>
+    <dimen name="standby_date_size">18sp</dimen>
+    <dimen name="standby_streak_size">64dp</dimen>
+    <dimen name="standby_habit_icon_size">40dp</dimen>
+    
+    <!-- Dimensões para Streaks -->
+    <dimen name="streak_circle_size">80dp</dimen>
+    <dimen name="streak_number_size">24sp</dimen>
+    <dimen name="streak_icon_size">32dp</dimen>
+    
+    <!-- Dimensões para Badges/Conquistas -->
+    <dimen name="badge_size_small">24dp</dimen>
+    <dimen name="badge_size_medium">32dp</dimen>
+    <dimen name="badge_size_large">48dp</dimen>
+    
+    <!-- Dimensões para Dividers -->
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="divider_margin">16dp</dimen>
+    
+    <!-- Dimensões para Bottom Sheet -->
+    <dimen name="bottom_sheet_peek_height">64dp</dimen>
+    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
+</resources>
+

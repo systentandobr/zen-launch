@@ -4,14 +4,14 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 
 /**
- * Banco de dados Room para o ZenLauncher.
+ * Banco de dados Room para o MindfulLauncher.
  */
 @Database(
     entities = [AppBlockEntity::class],
     version = 1,
     exportSchema = false
 )
-abstract class ZenLauncherDatabase : RoomDatabase() {
+abstract class MindfulLauncherDatabase : RoomDatabase() {
     
     /**
      * Acesso ao DAO de bloqueio de aplicativos.

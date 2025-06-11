@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilos Base para Texto -->
+    <style name="ZenTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Display">
+        <item name="android:textSize">@dimen/text_size_display</item>
+        <item name="android:fontWeight">300</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Headline">
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Title">
+        <item name="android:textSize">@dimen/text_size_xxlarge</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Subtitle">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Body">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Caption">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+    
+    <style name="ZenTextAppearance.Overline">
+        <item name="android:textSize">@dimen/text_size_tiny</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textColor">@color/textColorTertiary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+    
+    <!-- Estilos para Botões -->
+    <style name="ZenButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_height">@dimen/button_height_medium</item>
+        <item name="android:minWidth">@dimen/button_min_width</item>
+        <item name="android:textAppearance">@style/ZenTextAppearance.Body</item>
+        <item name="android:fontWeight">500</item>
+        <item name="cornerRadius">@dimen/corner_radius_large</item>
+        <item name="android:elevation">@dimen/elevation_small</item>
+        <item name="rippleColor">@color/rippleColor</item>
+    </style>
+    
+    <style name="ZenButton.Primary">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+    
+    <style name="ZenButton.Secondary">
+        <item name="backgroundTint">@color/surfaceColor</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="strokeColor">@color/borderColor</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    
+    <style name="ZenButton.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_height">@dimen/button_height_medium</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">@dimen/corner_radius_large</item>
+        <item name="rippleColor">@color/rippleColor</item>
+    </style>
+    
+    <style name="ZenButton.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="rippleColor">@color/rippleColor</item>
+    </style>
+    
+    <style name="ZenButton.Small">
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+    
+    <style name="ZenButton.Large">
+        <item name="android:layout_height">@dimen/button_height_large</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+    
+    <!-- Estilos para Cards -->
+    <style name="ZenCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/backgroundColorCard</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+        <item name="rippleColor">@color/rippleColor</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+    
+    <style name="ZenCard.Flat">
+        <item name="cardElevation">@dimen/elevation_none</item>
+    </style>
+    
+    <style name="ZenCard.Elevated">
+        <item name="cardElevation">@dimen/elevation_large</item>
+    </style>
+    
+    <!-- Estilos para Progress Bars -->
+    <style name="ZenProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressTint">@color/progressColor</item>
+        <item name="android:progressBackgroundTint">@color/progressBackgroundColor</item>
+        <item name="android:minHeight">@dimen/progress_bar_height</item>
+        <item name="android:maxHeight">@dimen/progress_bar_height</item>
+    </style>
+    
+    <style name="ZenProgressBar.Thick">
+        <item name="android:minHeight">@dimen/progress_bar_height_thick</item>
+        <item name="android:maxHeight">@dimen/progress_bar_height_thick</item>
+    </style>
+    
+    <style name="ZenProgressBar.Circular" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/progressColor</item>
+    </style>
+    
+    <!-- Estilos para Switches -->
+    <style name="ZenSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/colorAccent</item>
+        <item name="trackTint">@color/progressBackgroundColor</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textAppearance">@style/ZenTextAppearance.Body</item>
+    </style>
+    
+    <!-- Estilos para EditText -->
+    <style name="ZenEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_medium</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_medium</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_medium</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_medium</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+    </style>
+    
+    <!-- Estilos para Dividers -->
+    <style name="ZenDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/dividerColor</item>
+        <item name="android:layout_marginStart">@dimen/divider_margin</item>
+        <item name="android:layout_marginEnd">@dimen/divider_margin</item>
+    </style>
+    
+    <!-- Estilos para Toolbar -->
+    <style name="ZenToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/backgroundColor</item>
+        <item name="titleTextColor">@color/textColorPrimary</item>
+        <item name="subtitleTextColor">@color/textColorSecondary</item>
+        <item name="android:elevation">@dimen/elevation_small</item>
+    </style>
+    
+    <!-- Estilos para Bottom Navigation -->
+    <style name="ZenBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/surfaceColor</item>
+        <item name="itemIconTint">@color/colorAccent</item>
+        <item name="itemTextColor">@color/textColorSecondary</item>
+        <item name="android:elevation">@dimen/elevation_medium</item>
+    </style>
+    
+    <!-- Estilos para FAB -->
+    <style name="ZenFAB" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="tint">@color/textColorPrimary</item>
+        <item name="android:elevation">@dimen/elevation_medium</item>
+        <item name="rippleColor">@color/rippleColor</item>
+    </style>
+    
+    <!-- Estilos Específicos para MindfulLauncher -->
+    
+    <!-- Estilo para Streak View -->
+    <style name="ZenStreakView">
+        <item name="android:layout_width">@dimen/streak_circle_size</item>
+        <item name="android:layout_height">@dimen/streak_circle_size</item>
+        <item name="android:background">@drawable/streak_circle_background</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/streak_number_size</item>
+        <item name="android:fontWeight">700</item>
+    </style>
+    
+    <!-- Estilo para Timer View -->
+    <style name="ZenTimerView">
+        <item name="android:layout_width">@dimen/focus_timer_size</item>
+        <item name="android:layout_height">@dimen/focus_timer_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+        <item name="android:fontWeight">300</item>
+    </style>
+    
+    <!-- Estilo para Habit Icons -->
+    <style name="ZenHabitIcon">
+        <item name="android:layout_width">@dimen/icon_size_xlarge</item>
+        <item name="android:layout_height">@dimen/icon_size_xlarge</item>
+        <item name="android:background">@drawable/habit_icon_background</item>
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+    
+    <!-- Estilo para App Usage Items -->
+    <style name="ZenAppUsageItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/list_item_height_large</item>
+        <item name="android:padding">@dimen/padding_default</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    
+    <!-- Estilo para Ranking Items -->
+    <style name="ZenRankingItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/ranking_item_height</item>
+        <item name="android:padding">@dimen/padding_default</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    
+    <!-- Estilo para Stats Cards -->
+    <style name="ZenStatsCard" parent="ZenCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <!-- Estilo para Deep Focus Mode -->
+    <style name="ZenDeepFocusContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/deepFocusBackgroundColor</item>
+        <item name="android:padding">@dimen/padding_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    
+    <!-- Estilo para Standby Mode -->
+    <style name="ZenStandbyContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/standbyBackgroundColor</item>
+        <item name="android:padding">@dimen/padding_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    
+    <style name="ZenStandbyClock">
+        <item name="android:textSize">@dimen/standby_clock_size</item>
+        <item name="android:textColor">@color/standbyTextColor</item>
+        <item name="android:fontWeight">300</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="ZenStandbyDate">
+        <item name="android:textSize">@dimen/standby_date_size</item>
+        <item name="android:textColor">@color/standbyTextColor</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:gravity">center</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+</resources>
+

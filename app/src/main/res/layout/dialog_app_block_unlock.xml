@@ -22,7 +22,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Desbloquear Aplicativo?"
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Headline2"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Headline2"
         app:layout_constraintTop_toBottomOf="@+id/warningIcon" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Tem certeza de que deseja remover o bloqueio deste aplicativo? Isso irá reverter seu compromisso com o foco."
-        android:textAppearance="@style/TextAppearance.ZenLauncher.Body1"
+        android:textAppearance="@style/TextAppearance.MindfulLauncher.Body1"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <Button

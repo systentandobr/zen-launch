@@ -9,7 +9,7 @@ import com.zenlauncher.presentation.home.HomeFragment
 import com.zenlauncher.presentation.stats.StatsFragment
 
 /**
- * Adaptador para o ViewPager2 que gerencia os fragmentos principais do ZenLauncher.
+ * Adaptador para o ViewPager2 que gerencia os fragmentos principais do MindfulLauncher.
  * 
  * Este adaptador é responsável por criar, gerenciar e reutilizar os fragmentos
  * exibidos no ViewPager2, permitindo navegação por deslize entre as páginas.
