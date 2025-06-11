@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="80dp"
-    android:layout_height="100dp"
-    android:layout_margin="4dp"
-    app:cardBackgroundColor="@color/card"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="8dp">
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Ícone do aplicativo"
+        tools:src="@android:drawable/sym_def_app_icon" />
 
-        <!-- <ImageView
-            android:id="@+id/appIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="8dp"
-            android:contentDescription="Ícone do aplicativo"
-            tools:src="@android:drawable/sym_def_app_icon" /> -->
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        tools:text="Nome do Aplicativo" />
 
-        <TextView
-            android:id="@+id/appName"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.ZenLauncher.Caption"
-            tools:text="Nome do App" />
-
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

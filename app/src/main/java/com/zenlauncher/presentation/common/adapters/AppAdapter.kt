@@ -16,7 +16,8 @@ import com.zenlauncher.domain.entities.AppInfo
  */
 class AppAdapter(
     private val onAppClick: (AppInfo) -> Unit,
-    private val onAppLongClick: (AppInfo) -> Unit
+    private val onAppLongClick: (AppInfo) -> Unit,
+    private val onBlockedAppLongClick: ((AppInfo) -> Unit)? = null
 ) : ListAdapter<AppInfo, AppAdapter.ViewHolder>(AppDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,22 +37,38 @@ class AppAdapter(
     inner class ViewHolder(private val binding: ItemAppBinding) : RecyclerView.ViewHolder(binding.root) {
         
         fun bind(app: AppInfo) {
-            binding.appName.text = app.label
+            binding.appName.text = app.displayLabel
             binding.appIcon.setImageDrawable(app.icon)
             
-            // Configurar estado de favorito, se aplicável
+            // Configurar estado de favorito
             if (app.isFavorite) {
                 binding.favoriteIcon.visibility = android.view.View.VISIBLE
             } else {
                 binding.favoriteIcon.visibility = android.view.View.GONE
             }
             
+            // Configurar estado de bloqueio
+            if (app.isBlocked) {
+                binding.blockedIcon.visibility = android.view.View.VISIBLE
+                // Deixar o item com aparência desabilitada
+                binding.root.alpha = 0.6f
+            } else {
+                binding.blockedIcon.visibility = android.view.View.GONE
+                binding.root.alpha = 1.0f
+            }
+            
             binding.root.setOnClickListener {
-                onAppClick(app)
+                if (!app.isBlocked) {
+                    onAppClick(app)
+                }
             }
             
             binding.root.setOnLongClickListener {
-                onAppLongClick(app)
+                if (app.isBlocked && onBlockedAppLongClick != null) {
+                    onBlockedAppLongClick.invoke(app)
+                } else {
+                    onAppLongClick(app)
+                }
                 true
             }
         }

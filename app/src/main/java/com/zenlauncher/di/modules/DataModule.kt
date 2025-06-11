@@ -1,11 +1,15 @@
 package com.zenlauncher.di.modules
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import com.zenlauncher.data.datasources.local.AppPreferencesDataSource
 import com.zenlauncher.data.datasources.system.AppSystemDataSource
 import com.zenlauncher.data.datasources.system.UsageStatsDataSource
+import com.zenlauncher.data.repositories.AppMonitoringRepositoryImpl
 import com.zenlauncher.data.repositories.AppRepositoryImpl
 import com.zenlauncher.data.repositories.UsageStatsRepositoryImpl
+import com.zenlauncher.domain.repositories.AppMonitoringRepository
 import com.zenlauncher.domain.repositories.AppRepository
 import com.zenlauncher.domain.repositories.UsageStatsRepository
 import dagger.Module
@@ -65,5 +69,13 @@ object DataModule {
         usageStatsDataSource: UsageStatsDataSource
     ): UsageStatsRepository {
         return UsageStatsRepositoryImpl(usageStatsDataSource)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideAppMonitoringRepository(
+        dataStore: DataStore<Preferences>
+    ): AppMonitoringRepository {
+        return AppMonitoringRepositoryImpl(dataStore)
     }
 }

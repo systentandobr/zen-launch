@@ -7,6 +7,7 @@ import com.zenlauncher.domain.entities.App
 import com.zenlauncher.domain.entities.AppCategory
 import com.zenlauncher.domain.entities.AppInfo
 import com.zenlauncher.domain.repositories.AppRepository
+import com.zenlauncher.domain.repositories.AppBlockRepository
 import com.zenlauncher.domain.usecases.GetAllAppsUseCase
 import com.zenlauncher.domain.usecases.GetAppUsageStatsUseCase
 import com.zenlauncher.domain.usecases.LaunchAppUseCase
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -29,6 +31,7 @@ class AppsViewModel @Inject constructor(
     private val getAppUsageStatsUseCase: GetAppUsageStatsUseCase,
     private val launchAppUseCase: LaunchAppUseCase,
     private val appRepository: AppRepository,
+    private val appBlockRepository: AppBlockRepository,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
     
@@ -86,17 +89,17 @@ class AppsViewModel @Inject constructor(
                                 label = app.appName,
                                 icon = app.icon ?: context.packageManager.getApplicationIcon(app.packageName),
                                 isSystemApp = app.isSystemApp,
-                                isFavorite = app.isFavorite
+                                isFavorite = app.isFavorite,
+                                isBlocked = false // Será atualizado na próxima etapa
                             )
                         } catch (e: Exception) {
                             // Se não conseguir carregar o ícone, continue com os aplicativos que têm ícone
                             null
                         }
                     }
-                    _apps.value = appInfoList
-                    filterApps()
-                    categorizeApps()
-                    _isLoading.value = false
+                    
+                    // Atualizar status de bloqueio
+                    updateBlockedStatus(appInfoList)
                 }
         }
     }
@@ -413,5 +416,33 @@ class AppsViewModel @Inject constructor(
     enum class ViewMode {
         LIST,       // Visualização em lista alfabética
         CATEGORIES  // Visualização em categorias
+    }
+    
+    /**
+     * Atualiza o status de bloqueio para uma lista de aplicativos.
+     */
+    private suspend fun updateBlockedStatus(appList: List<AppInfo>) {
+        try {
+            appBlockRepository.getActiveBlocks().collect { blockedApps ->
+                val blockedPackages = blockedApps.filter { it.isActive() }.map { it.packageName }.toSet()
+                
+                // Atualizar status de bloqueio em todas as listas
+                val updatedApps = appList.map { app ->
+                    app.copy(isBlocked = blockedPackages.contains(app.packageName))
+                }
+                
+                _apps.value = updatedApps
+                filterApps()
+                categorizeApps()
+                _isLoading.value = false
+            }
+        } catch (e: Exception) {
+            // Em caso de erro, continuar sem o status de bloqueio
+            Timber.w(e, "Erro ao verificar status de bloqueio")
+            _apps.value = appList
+            filterApps()
+            categorizeApps()
+            _isLoading.value = false
+        }
     }
 }

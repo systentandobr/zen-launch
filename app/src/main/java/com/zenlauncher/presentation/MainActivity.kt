@@ -1,5 +1,7 @@
 package com.zenlauncher.presentation
 
+import android.app.AppOpsManager
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
@@ -16,7 +18,10 @@ import com.zenlauncher.data.services.UsageTrackingService
 import com.zenlauncher.databinding.ActivityMainBinding
 import com.zenlauncher.presentation.navigation.pager.MainPagerAdapter
 import com.zenlauncher.presentation.navigation.pager.ViewPagerExtensions.setTouchSlop
+import com.zenlauncher.presentation.permissions.UsagePermissionActivity
 import com.zenlauncher.presentation.standby.StandbyActivity
+import com.zenlauncher.ZenLauncherApp
+import com.zenlauncher.domain.interfaces.ChargingStateListener
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -26,7 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * o ViewPager2 para navegação entre os diferentes fragmentos.
  */
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ChargingStateListener {
     
     private lateinit var binding: ActivityMainBinding
     private lateinit var pagerAdapter: MainPagerAdapter
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     
     companion object {
         private const val HOME_PAGE_INDEX = 0
+        private const val PERMISSION_REQUEST_CODE = 1001
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         setupViewPager()
         startServices()
         registerPowerReceiver()
+        
+        // Verificar permissões de uso
+        checkUsagePermission()
         
         // Verificar se o dispositivo está carregando ao iniciar
         if (PowerConnectionReceiver.isCharging(this)) {
@@ -160,6 +169,51 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.setCurrentItem(pagerAdapter.getPositionForPage(page), true)
     }
     
+    /**
+     * Verifica se temos permissão para acessar estatísticas de uso.
+     */
+    private fun checkUsagePermission() {
+        if (!hasUsageStatsPermission()) {
+            // Mostrar tela de permissão após um pequeno delay para não interferir com a inicialização
+            binding.viewPager.postDelayed({
+                showUsagePermissionScreen()
+            }, 2000)
+        }
+    }
+    
+    /**
+     * Verifica se temos permissão para acessar estatísticas de uso.
+     */
+    private fun hasUsageStatsPermission(): Boolean {
+        val appOpsManager = getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode = appOpsManager.checkOpNoThrow(
+            AppOpsManager.OPSTR_GET_USAGE_STATS,
+            android.os.Process.myUid(),
+            packageName
+        )
+        return mode == AppOpsManager.MODE_ALLOWED
+    }
+    
+    /**
+     * Mostra a tela de solicitação de permissão.
+     */
+    private fun showUsagePermissionScreen() {
+        val intent = UsagePermissionActivity.createIntent(this)
+        startActivityForResult(intent, PERMISSION_REQUEST_CODE)
+    }
+    
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val permissionGranted = data?.getBooleanExtra("permission_granted", false) ?: false
+            if (permissionGranted) {
+                // Permissão concedida, iniciar monitoramento
+                (application as ZenLauncherApp).restartMonitoring()
+            }
+        }
+    }
+    
     override fun onBackPressed() {
         // Se não estiver na tela inicial, navega para a tela inicial
         // Se estiver na tela inicial, não faz nada (não fecha o launcher)
@@ -177,5 +231,21 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             // Ignorar se não estiver registrado
         }
+    }
+    
+    // Implementação da interface ChargingStateListener
+    override fun onChargingStarted() {
+        // Dispositivo começou a carregar - navegar para modo standby
+        navigateToStandby()
+    }
+    
+    override fun onChargingStopped() {
+        // Dispositivo parou de carregar - voltar para o launcher normal
+        // Não fazemos nada aqui pois o StandbyActivity se fecha sozinho
+    }
+    
+    override fun onBatteryLevelChanged(level: Int) {
+        // Monitorar nível da bateria se necessário
+        // Por enquanto não fazemos nada
     }
 }

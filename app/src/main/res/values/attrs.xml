@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Atributos customizados para SlideToConfirmView -->
+    <declare-styleable name="SlideToConfirmView">
+        <attr name="confirmText" format="string" />
+        <attr name="trackColor" format="color" />
+        <attr name="sliderColor" format="color" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+</resources>

@@ -109,7 +109,7 @@ class HomeFragment : Fragment() {
             adapter = favoriteAppsAdapter
             layoutManager = LinearLayoutManager(
                 context, 
-                LinearLayoutManager.HORIZONTAL,
+                LinearLayoutManager.VERTICAL,
                 false
             )
         }

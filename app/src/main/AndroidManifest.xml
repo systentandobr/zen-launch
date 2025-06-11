@@ -69,9 +69,41 @@
             android:screenOrientation="portrait">
         </activity>
         
+        <!-- Atividade de aviso de uso excessivo -->
+        <activity
+            android:name=".presentation.focus.UsageWarningActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <!-- Atividade de bloqueio por uso excessivo -->
+        <activity
+            android:name=".presentation.focus.UsageBlockActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <!-- Atividade para solicitar permissões de uso -->
+        <activity
+            android:name=".presentation.permissions.UsagePermissionActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZenLauncher">
+        </activity>
+        
         <!-- Serviço para monitoramento de tempo de uso -->
         <service
             android:name=".data.services.UsageTrackingService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+            
+        <!-- Serviço para monitoramento de aplicativos -->
+        <service
+            android:name=".domain.services.AppUsageMonitorService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="dataSync" />

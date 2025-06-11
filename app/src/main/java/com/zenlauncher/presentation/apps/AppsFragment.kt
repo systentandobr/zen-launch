@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.zenlauncher.R
 import com.zenlauncher.databinding.FragmentAppsBinding
 import com.zenlauncher.domain.entities.AppInfo
+import com.zenlauncher.domain.entities.AppInfoParcelable
 import com.zenlauncher.presentation.common.adapters.AppAdapter
 import com.zenlauncher.presentation.apps.adapters.CategoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,9 @@ import android.content.Intent
 import android.provider.Settings
 import com.zenlauncher.presentation.focus.dialog.BlockConfirmationDialog
 import com.zenlauncher.domain.entities.AppBlock
+import com.zenlauncher.presentation.common.dialogs.AppContextMenuDialog
+import com.zenlauncher.presentation.common.dialogs.BlockedAppInfoDialog
+import com.zenlauncher.presentation.common.views.AlphabeticalFastScroller
 
 /**
  * Fragment para exibir todos os aplicativos instalados.
@@ -71,30 +75,47 @@ class AppsFragment : Fragment() {
     }
     
     fun openDialogChoice(app: AppInfo) {
-        val options = arrayOf(
-            if (app.isFavorite) "Remover dos favoritos" else "Adicionar aos favoritos",
-            "Bloquear",
-            "Renomear",
-            "Ocultar",
-            "Mover para pasta",
-            "Desinstalar",
-            "Informações do app"
-        )
-
-        AlertDialog.Builder(requireContext())
-            .setTitle(app.label)
-            .setItems(options) { dialog, which ->
-                when (which) {
-                    0 -> setBookmark(app)
-                    1 -> showBlockDialog(app)
-                    2 -> showRenameDialog(app)
-                    3 -> hideApp(app)
-                    4 -> moveToFolder(app)
-                    5 -> uninstallApp(app)
-                    6 -> showAppInfo(app)
-                }
+        val dialog = AppContextMenuDialog.newInstance(app)
+        dialog.setOnMenuActionListener(object : AppContextMenuDialog.OnMenuActionListener {
+            override fun onToggleTimeReminder(enabled: Boolean) {
+                // TODO: Implementar persistência do lembrete de tempo
+                Snackbar.make(
+                    binding.root, 
+                    if (enabled) "Lembrete de tempo ativado para ${app.displayLabel}" 
+                    else "Lembrete de tempo desativado para ${app.displayLabel}",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
-            .show()
+            
+            override fun onToggleFavorite() {
+                setBookmark(app)
+            }
+            
+            override fun onBlockApp() {
+                showBlockDialog(app)
+            }
+            
+            override fun onRenameApp() {
+                showRenameDialog(app)
+            }
+            
+            override fun onHideApp() {
+                hideApp(app)
+            }
+            
+            override fun onMoveToFolder() {
+                moveToFolder(app)
+            }
+            
+            override fun onUninstallApp() {
+                uninstallApp(app)
+            }
+            
+            override fun onShowAppInfo() {
+                showAppInfo(app)
+            }
+        })
+        dialog.show(parentFragmentManager, "AppContextMenuDialog")
     }
     
     fun showBlockDialog(app: AppInfo) {
@@ -148,6 +169,15 @@ class AppsFragment : Fragment() {
         intent.data = android.net.Uri.parse("package:" + app.packageName)
         startActivity(intent)
     }
+    
+    /**
+     * Mostra as informações de um app bloqueado (tempo restante, motivo, etc).
+     */
+    fun showBlockedAppInfo(app: AppInfo) {
+        val appInfoParcelable = AppInfoParcelable.fromAppInfo(app)
+        val dialog = BlockedAppInfoDialog.newInstance(appInfoParcelable)
+        dialog.show(parentFragmentManager, "BlockedAppInfoDialog")
+    }
 
     /**
      * Configura os RecyclerViews para exibir os aplicativos.
@@ -156,16 +186,30 @@ class AppsFragment : Fragment() {
         // Configurar o adaptador para a visualização em lista
         appAdapter = AppAdapter(
             onAppClick = { app ->
+                // TODO: consultar as regras de bloqueio do APP
                 viewModel.launchApp(app.packageName)
             },
             onAppLongClick = { app ->
                 openDialogChoice(app)
+            },
+            onBlockedAppLongClick = { app ->
+                showBlockedAppInfo(app)
             }
         )
         
         binding.appsRecyclerView.apply {
             adapter = appAdapter
-            layoutManager = GridLayoutManager(context, 4) // 4 apps por linha
+            layoutManager = LinearLayoutManager(context) // Mudar para lista vertical
+        }
+        
+        // Configurar rolagem alfabética rápida
+        binding.alphabeticalScroller.apply {
+            attachToRecyclerView(binding.appsRecyclerView)
+            setOnLetterSelectedListener(object : AlphabeticalFastScroller.OnLetterSelectedListener {
+                override fun onLetterSelected(letter: Char) {
+                    scrollToLetter(letter)
+                }
+            })
         }
         
         // Configurar o adaptador para a visualização em categorias
@@ -278,13 +322,30 @@ class AppsFragment : Fragment() {
             AppsViewModel.ViewMode.LIST -> {
                 binding.categoriesRecyclerView.visibility = View.GONE
                 binding.swipeRefresh.visibility = View.VISIBLE
+                binding.alphabeticalScroller.visibility = View.VISIBLE
                 binding.filterButton.setImageResource(android.R.drawable.ic_menu_sort_by_size)
             }
             AppsViewModel.ViewMode.CATEGORIES -> {
                 binding.categoriesRecyclerView.visibility = View.VISIBLE
                 binding.swipeRefresh.visibility = View.GONE
+                binding.alphabeticalScroller.visibility = View.GONE
                 binding.filterButton.setImageResource(android.R.drawable.ic_menu_sort_alphabetically)
             }
+        }
+    }
+    
+    /**
+     * Rola a lista para a primeira app que começa com a letra especificada
+     */
+    private fun scrollToLetter(letter: Char) {
+        val apps = appAdapter.currentList
+        val position = apps.indexOfFirst { 
+            it.displayLabel.firstOrNull()?.uppercaseChar() == letter 
+        }
+        
+        if (position >= 0) {
+            (binding.appsRecyclerView.layoutManager as? LinearLayoutManager)
+                ?.scrollToPositionWithOffset(position, 0)
         }
     }
     

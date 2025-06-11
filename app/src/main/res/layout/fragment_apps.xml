@@ -7,6 +7,16 @@
     android:background="@color/background"
     tools:context=".presentation.apps.AppsFragment">
 
+    <!-- Espaçamento superior -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:id="@+id/topSpace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
     <!-- Visualização de categorias (quando o modo categoria está ativo) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoriesRecyclerView"
@@ -16,8 +26,8 @@
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/searchContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/topSpace"
+        app:layout_constraintTop_toTopOf="@id/topSpace"
         android:visibility="visible" />
 
     <!-- Visualização de lista alfabética (quando o modo lista está ativo) -->
@@ -26,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/searchContainer"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/alphabeticalScroller"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone">
@@ -41,6 +51,17 @@
             tools:listitem="@layout/item_app_favorite" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    
+    <!-- Rolagem alfabética rápida -->
+    <com.zenlauncher.presentation.common.views.AlphabeticalFastScroller
+        android:id="@+id/alphabeticalScroller"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/searchContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/emptyView"

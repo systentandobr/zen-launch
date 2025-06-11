@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:padding="24dp">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escolher app de Câmera"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Slide to Confirm -->
+    <com.zenlauncher.presentation.common.views.SlideToConfirmView
+        android:id="@+id/slideToConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="24dp"
+        app:confirmText="DESLIZE PARA CONFIRMAR" />
+
+    <!-- Botão Cancelar -->
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="CANCELAR"
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Linha divisória -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#333333"
+        android:layout_marginVertical="16dp" />
+
+    <!-- Botão Usar App Padrão -->
+    <Button
+        android:id="@+id/useDefaultButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="USAR APP PADRÃO"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_button_outline"
+        android:foreground="?attr/selectableItemBackground" />
+
+</LinearLayout>
