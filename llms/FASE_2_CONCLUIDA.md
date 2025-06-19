@@ -48,7 +48,7 @@
 
 **Integração**:
 - `MainActivity.kt` - Verificação automática com delay de 2s
-- `ZenLauncherApp.kt` - Método `restartMonitoring()` e verificação de permissão
+- `MindfulLauncherApp.kt` - Método `restartMonitoring()` e verificação de permissão
 - `AndroidManifest.xml` - Activity registrada corretamente
 
 ### ✅ 4. **Otimizações Adicionais**
@@ -98,7 +98,7 @@ UsagePermissionActivity
 ├── Verificação automática quando volta -> onResume()
 └── finishWithResult() -> informa MainActivity do status
 
-ZenLauncherApp
+MindfulLauncherApp
 ├── hasUsageStatsPermission() -> verificação inicial
 └── restartMonitoring() -> inicia após concessão
 ```

@@ -1,8 +1,8 @@
-# Plano Estratégico de Refatoração do ZenLauncher
+# Plano Estratégico de Refatoração do MindfulLauncher
 
 ## Visão Geral
 
-Após análise do código atual do ZenLauncher, foram identificados alguns problemas principais:
+Após análise do código atual do MindfulLauncher, foram identificados alguns problemas principais:
 1. O código está muito verboso e complicado
 2. Algumas funcionalidades da tela inicial estão vazias ou incompletas
 3. A lista de aplicativos não está seguindo o conceito minimalista original
@@ -278,4 +278,4 @@ A refatoração será considerada bem-sucedida se:
 3. Simplificar a base de código comum, incluindo classes utilitárias e de extensão
 4. Revisar e otimizar o sistema de temas para maior simplicidade mantendo a personalização
 
-Esta abordagem permitirá tornar o ZenLauncher mais próximo da visão original de um launcher minimalista, mantendo a funcionalidade existente enquanto adiciona novos recursos de forma limpa e bem estruturada.
+Esta abordagem permitirá tornar o MindfulLauncher mais próximo da visão original de um launcher minimalista, mantendo a funcionalidade existente enquanto adiciona novos recursos de forma limpa e bem estruturada.

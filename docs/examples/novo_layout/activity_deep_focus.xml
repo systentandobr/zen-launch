@@ -117,7 +117,7 @@
             android:layout_height="@dimen/icon_size_medium"
             android:layout_marginEnd="@dimen/spacing_small"
             android:src="@drawable/ic_lock"
-            android:tint="@color/colorAccent"
+            android:tint="@color/colorAccentLight"
             tools:ignore="UseAppTint" />
 
         <TextView

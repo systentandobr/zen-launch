@@ -1,9 +1,11 @@
 package com.zenlauncher.presentation.apps
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zenlauncher.domain.entities.App
+import com.zenlauncher.domain.entities.AppBlock
 import com.zenlauncher.domain.entities.AppCategory
 import com.zenlauncher.domain.entities.AppInfo
 import com.zenlauncher.domain.repositories.AppRepository
@@ -18,9 +20,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.util.Date
 import javax.inject.Inject
+import kotlin.math.log
 
 /**
  * ViewModel para a tela de listagem de todos os aplicativos.
@@ -34,7 +39,9 @@ class AppsViewModel @Inject constructor(
     private val appBlockRepository: AppBlockRepository,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
-    
+
+    private val TAG: String = AppsViewModel::class.simpleName.toString();
+
     // Estado para a lista de aplicativos
     private val _apps = MutableStateFlow<List<AppInfo>>(emptyList())
     val apps: StateFlow<List<AppInfo>> = _apps.asStateFlow()
@@ -103,7 +110,22 @@ class AppsViewModel @Inject constructor(
                 }
         }
     }
-    
+
+    /**
+    * 
+    * @param packageName
+    */
+    fun blockApp(packageName: String, date: Date, blockLevel: AppBlock.BlockLevel) {
+        // set app to Block
+        toggleBlocked(packageName, date, blockLevel);
+    }
+
+    suspend fun isBlockedApp(packageName: String): Boolean {
+        var isBlocked = appBlockRepository.isAppBlocked(packageName);
+        Log.w(TAG, "isBlocked >> " + isBlocked + "packageName >> " + packageName);
+        return isBlocked;
+    }
+
     /**
      * Atualiza o filtro de pesquisa e filtra a lista de aplicativos.
      * 
@@ -290,6 +312,27 @@ class AppsViewModel @Inject constructor(
                 
             } catch (e: Exception) {
                 _error.value = "Erro ao atualizar favoritos: ${e.message}"
+            }
+        }
+    }
+
+    /**
+     * Alterna o status de favorito de um aplicativo.
+     *
+     * @param packageName Nome do pacote do aplicativo
+     */
+    private fun toggleBlocked(packageName: String, date: Date, blockLevel: AppBlock.BlockLevel) {
+        viewModelScope.launch {
+            try {
+                // Encontrar o app na lista atual
+                val app = _apps.value.find { it.packageName == packageName }
+                    ?: return@launch
+
+                // Atualizar no repositório
+                appBlockRepository.blockApp(app.packageName, date, blockLevel);
+
+            } catch (e: Exception) {
+                _error.value = "Erro ao atualizar app bloqueados: ${e.message}"
             }
         }
     }

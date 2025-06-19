@@ -38,7 +38,7 @@
   - Remoção de referências desnecessárias
   - Otimização de polling (500ms → 2-3 segundos)
   - Activities adicionadas ao `AndroidManifest.xml`
-  - Inicialização automática no `ZenLauncherApp.kt`
+  - Inicialização automática no `MindfulLauncherApp.kt`
 
 ### ✅ 6. Verificar se compila sem erros
 - **Status**: ✅ **PRONTO PARA COMPILAÇÃO**

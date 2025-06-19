@@ -1,6 +1,6 @@
-# Passos de Implementação do ZenLauncher
+# Passos de Implementação do MindfulLauncher
 
-Este documento rastreia o progresso da implementação do ZenLauncher, um launcher Android minimalista focado em produtividade e bem-estar digital.
+Este documento rastreia o progresso da implementação do MindfulLauncher, um launcher Android minimalista focado em produtividade e bem-estar digital.
 
 ## Fase 1: Configuração Inicial (Fundação)
 

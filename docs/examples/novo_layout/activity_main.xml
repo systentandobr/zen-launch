@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tempo de Uso"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccentLight" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                     android:layout_height="@dimen/icon_size_medium"
                     android:layout_marginEnd="@dimen/spacing_small"
                     android:src="@drawable/ic_clock"
-                    android:tint="@color/colorAccent"
+                    android:tint="@color/colorAccentLight"
                     tools:ignore="UseAppTint" />
 
                 <LinearLayout
@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1h 27min"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="@color/colorAccentLight" />
 
                 </LinearLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_width="@dimen/icon_size_small"
                     android:layout_height="@dimen/icon_size_small"
                     android:src="@drawable/ic_trending_up"
-                    android:tint="@color/colorAccent"
+                    android:tint="@color/colorAccentLight"
                     tools:ignore="UseAppTint" />
 
             </LinearLayout>
@@ -125,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="75%"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorAccentLight"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -212,14 +212,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Apps mais usados"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccentLight" />
 
         <TextView
             style="@style/ZenTextAppearance.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ver todos"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorAccentLight" />
 
     </LinearLayout>
 
@@ -331,7 +331,7 @@
                     android:layout_width="@dimen/icon_size_small"
                     android:layout_height="@dimen/icon_size_small"
                     android:src="@drawable/ic_star"
-                    android:tint="@color/colorAccent"
+                    android:tint="@color/colorAccentLight"
                     tools:ignore="UseAppTint" />
 
                 <ImageView

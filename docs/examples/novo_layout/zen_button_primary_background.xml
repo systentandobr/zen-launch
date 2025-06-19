@@ -12,7 +12,7 @@
     <!-- Estado focado -->
     <item android:state_focused="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorAccent" />
+            <solid android:color="@color/colorAccentLight" />
             <corners android:radius="@dimen/corner_radius_large" />
             <stroke
                 android:width="2dp"
@@ -23,7 +23,7 @@
     <!-- Estado normal -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorAccent" />
+            <solid android:color="@color/colorAccentLight" />
             <corners android:radius="@dimen/corner_radius_large" />
         </shape>
     </item>

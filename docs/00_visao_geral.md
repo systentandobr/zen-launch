@@ -1,54 +1,156 @@
-# Visão Geral da Refatoração do MindfulLauncher
+# Visão Geral - MindfulLauncher
 
-## Objetivo Principal
+## Status: ✅ PROJETO MADURO E FUNCIONAL
 
-Transformar o MindfulLauncher em um launcher focado em produtividade e bem-estar digital, com recursos de Deep Focus Mode, modo Standby durante carregamento (Always On) e controle de uso de aplicativos, mantendo uma interface minimalista.
+O MindfulLauncher é um launcher Android focado em **produtividade e bem-estar digital**, com recursos avançados de controle de distrações e monitoramento de uso consciente.
 
 ## Estado Atual da Aplicação
 
-- Arquitetura Clean com MVVM
-- Interface funcional, mas com elementos desnecessários
-- Estrutura de gaveta de aplicativos convencional
-- Tela inicial com várias páginas (widgets, relógios, fotos, ferramentas) parcialmente implementadas
-- Suporte a temas e customização básica
+### ✅ **Funcionalidades Implementadas**
+- **Arquitetura Clean** com MVVM + Hilt DI
+- **Deep Focus Mode** com timer real e bloqueio de apps
+- **Sistema de Bloqueio** com telas personalizadas
+- **Modo Standby Always-On** durante carregamento
+- **Estatísticas de Uso** detalhadas e ranking
+- **Navegação Bottom Tab** com 5 telas principais
+- **Monitoramento em Tempo Real** de aplicativos
 
-## Visão do Projeto Refatorado
+### 🎯 **Objetivos Atingidos**
+- ✅ Launcher funcional substituindo o padrão
+- ✅ Controle efetivo de distrações
+- ✅ Interface minimalista e responsiva
+- ✅ Persistência de dados e configurações
+- ✅ Performance otimizada e baixo consumo
 
-- **Interface Ultra-Minimalista**: Mais limpa, com foco em eliminar distrações
-- **Deep Focus Mode**: Modo que restringe o acesso a aplicativos distrativas por um tempo configurado
-- **Modo Standby Always-On**: Interface útil quando o dispositivo está carregando
-- **Controle de Uso**: Limites de tempo personalizáveis por aplicativo e categoria
-- **Lista de Apps Repensada**: Design mais zen e funcional
-- **Implementações Completas**: Finalização das funcionalidades pendentes
+## Estrutura Principal
 
-## Divisão do Trabalho
+### Navegação (Bottom Navigation)
+```
+┌─────────────────────────────────────────────────┐
+│                MainActivity                     │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  🏠 Home     📱 Apps     🎯 Focus     🏆 Ranking     📊 Stats  │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
 
-A implementação será dividida nas seguintes áreas principais, cada uma documentada em seu próprio arquivo:
+### Telas Principais
+1. **🏠 HomeFragment** - Apps favoritos e acesso rápido
+2. **📱 AppsFragment** - Lista completa de aplicativos organizados
+3. **🎯 FocusFragment** - Deep Focus Mode com timer
+4. **🏆 RankingFragment** - Classificação de apps por uso
+5. **📊 StatsFragment** - Estatísticas detalhadas de uso
 
-1. **Arquitetura e Modelos de Dados**: Novos modelos, repositórios e casos de uso
-2. **Deep Focus Mode**: Interface e lógica para o modo de foco
-3. **Controle de Uso de Aplicativos**: Monitoramento e limitação de uso
-4. **Modo Standby Always-On**: Interface para quando o dispositivo está carregando
-5. **Lista de Aplicativos Minimalista**: Redesenho da gaveta de aplicativos
-6. **Melhorias na Tela Inicial**: Completar funcionalidades pendentes
-7. **Testes e Otimizações**: Garantir qualidade e desempenho
+### Activities Especiais
+- **StandbyActivity** - Modo Always-On durante carregamento
+- **AppBlockScreenActivity** - Tela de bloqueio de aplicativos
+- **UsagePermissionActivity** - Solicitação de permissões
 
-## Princípios Norteadores
+## Arquitetura do Sistema
 
-1. **Simplicidade**: Manter a interface e o código simples e claros
-2. **Foco**: Priorizar funcionalidades que aumentem o foco e bem-estar
-3. **Gradualismo**: Implementar mudanças de forma incremental, testando cada etapa
-4. **Usabilidade**: Facilidade de uso sem sacrificar funcionalidade
-5. **Desempenho**: Garantir resposta rápida e baixo consumo de recursos
+```
+┌─────────────────────────────────────┐
+│         PRESENTATION                │
+├─────────────────────────────────────┤
+│  • Fragments & ViewModels           │
+│  • Activities & Adapters            │
+│  • Navigation & Dialogs             │
+└─────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────┐
+│           DOMAIN                    │
+├─────────────────────────────────────┤
+│  • Entities & Use Cases             │
+│  • Repository Interfaces            │
+│  • Business Logic                   │
+└─────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────┐
+│            DATA                     │
+├─────────────────────────────────────┤
+│  • Repository Implementations       │
+│  • Services & Workers               │
+│  • Receivers & Data Sources         │
+└─────────────────────────────────────┘
+```
 
-## Próximos Passos
+## Funcionalidades Core
 
-Revisar e entender os documentos de implementação específicos:
+### 🎯 **Deep Focus Mode**
+- Timer configurável de 15min a 2h
+- Bloqueio automático de apps selecionados
+- Estados reativos (Idle → Running → Completed)
+- Persistência de sessões entre fechamentos
 
-- [01_arquitetura_e_modelos.md](01_arquitetura_e_modelos.md)
-- [02_deep_focus_mode.md](02_deep_focus_mode.md)
-- [03_controle_uso.md](03_controle_uso.md)
-- [04_modo_standby.md](04_modo_standby.md)
-- [05_lista_apps_minimalista.md](05_lista_apps_minimalista.md)
-- [06_melhorias_tela_inicial.md](06_melhorias_tela_inicial.md)
-- [07_testes_otimizacoes.md](07_testes_otimizacoes.md)
+### 🔒 **Sistema de Bloqueio**
+- Interceptação em tempo real de apps
+- Telas de bloqueio personalizadas
+- Níveis de bloqueio (LOW, MEDIUM, HIGH)
+- Integração com Focus Mode
+
+### ⚡ **Modo Standby**
+- Ativação automática durante carregamento
+- Interface dedicada Always-On
+- Detecção via PowerConnectionReceiver
+
+### 📊 **Monitoramento de Uso**
+- Coleta via UsageStatsManager
+- Estatísticas detalhadas por app
+- Ranking automático por tempo de uso
+- Métricas de produtividade
+
+## Divisão da Documentação
+
+A documentação está organizada por contextos funcionais:
+
+1. **[Arquitetura e Modelos](01_arquitetura_e_modelos.md)** - Base técnica e entidades
+2. **[Deep Focus Mode](02_deep_focus_mode.md)** - Sistema de foco e timer
+3. **[Controle de Uso](03_controle_uso.md)** - Monitoramento e bloqueio
+4. **[Modo Standby](04_modo_standby.md)** - Interface Always-On
+5. **[Lista de Apps](05_lista_apps_minimalista.md)** - Organização de aplicativos
+6. **[Tela Inicial](06_melhorias_tela_inicial.md)** - Home e widgets
+7. **[Testes e Otimizações](07_testes_otimizacoes.md)** - Qualidade e performance
+
+## Princípios do Projeto
+
+### 🎨 **Design**
+- **Minimalismo**: Interface limpa e sem distrações
+- **Funcionalidade**: Cada elemento tem propósito claro
+- **Responsividade**: Adaptação fluida a diferentes telas
+
+### 🔧 **Técnico**
+- **Clean Architecture**: Separação clara de responsabilidades
+- **Reatividade**: UI que responde automaticamente a mudanças
+- **Performance**: Otimização de memória e bateria
+
+### 🧠 **Bem-estar**
+- **Consciência**: Usuário ciente do próprio uso
+- **Controle**: Ferramentas para gerenciar distrações
+- **Equilíbrio**: Promover uso saudável da tecnologia
+
+## Estado de Implementação
+
+### ✅ **Totalmente Funcional**
+- Deep Focus Mode com timer real
+- Sistema de bloqueio efetivo
+- Estatísticas precisas de uso
+- Navegação fluida entre telas
+- Modo standby automático
+
+### 🔄 **Em Evolução**
+- Interface visual (pode ser mais zen)
+- Gamificação e conquistas
+- Notificações inteligentes
+- Widgets personalizados
+
+### 📋 **Próximos Passos**
+- Polish da interface visual
+- Expansão das métricas de bem-estar
+- Integração com calendário
+- Backup na nuvem das configurações
+
+---
+
+**Última Atualização**: Junho 2025  
+**Status**: Launcher funcional em produção

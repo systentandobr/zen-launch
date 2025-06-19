@@ -1,345 +1,395 @@
 # Modo Standby Always-On
 
-## Visão Geral
+## Status: ✅ TOTALMENTE IMPLEMENTADO E FUNCIONAL
 
-O modo Standby Always-On é uma funcionalidade que transforma o MindfulLauncher em uma tela de informações útil quando o dispositivo está conectado ao carregador. Este modo exibe informações como hora, data, clima, próximos eventos e outras informações relevantes em uma interface minimalista e de baixo consumo de energia.
+O modo Standby Always-On transforma o dispositivo em uma central de informações úteis quando conectado ao carregador, oferecendo uma interface minimalista e de baixo consumo.
 
-## Componentes Principais
+## Funcionalidades Implementadas
 
-### 1. Detector de Carregamento
+### ⚡ **Detecção Automática de Carregamento**
+- **PowerConnectionReceiver** monitora estado de carregamento
+- **Ativação automática** quando dispositivo conecta
+- **Desativação inteligente** ao desconectar
+- **Suporte a carregamento** via cabo e wireless
 
-**Prioridade: Alta** | **Complexidade: Baixa** | **Estimativa: 0.5 dia**
+### 🖥️ **Interface Always-On**
+- **StandbyActivity** dedicada com interface otimizada
+- **Layout minimalista** focado em informações essenciais
+- **Modo escuro** para economia de energia
+- **Proteção contra burn-in** com movimento sutil
 
-#### Funcionalidades
-- Detecção automática de conexão/desconexão do carregador
-- Ativação automática do modo Standby quando conectado
-- Opções de configuração de atraso para ativação
-- Suporte a diferentes tipos de carregamento (cabo, wireless)
+### 🔄 **Navegação Inteligente**
+- **Abertura automática** durante carregamento
+- **Fechamento automático** ao desconectar
+- **Integração fluida** com MainActivity
+- **Preservação de estado** do launcher principal
 
-#### Diagrama de Fluxo
+## Arquitetura Implementada
+
+### Componentes Principais
+
 ```
-┌────────────────┐     ┌────────────────┐     ┌────────────────┐
-│  Dispositivo   │────►│   Verificar    │────►│   Preferências │
-│   Conectado    │     │  Configurações │     │   do Usuário   │
-└────────────────┘     └────────────────┘     └────────────────┘
-                                                       │
-                                                       ▼
-┌────────────────┐     ┌────────────────┐     ┌────────────────┐
-│  Modo Standby  │◄────│ Atraso de      │◄────│   Ativação     │
-│    Ativado     │     │ Ativação       │     │   Permitida    │
-└────────────────┘     └────────────────┘     └────────────────┘
+┌─────────────────────────────────────┐
+│      PowerConnectionReceiver        │
+│   (Broadcast Receiver)              │
+├─────────────────────────────────────┤
+│  • Monitora ACTION_POWER_CONNECTED  │
+│  • Monitora ACTION_POWER_DISCONNECTED│
+│  • Dispara navegação automática     │
+│  • Integra com ChargingStateListener│
+└─────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────┐
+│        StandbyActivity              │
+│   (Interface Always-On)             │
+├─────────────────────────────────────┤
+│  • Layout otimizado para standby    │
+│  • Informações contextuais          │
+│  • Modo escuro automático           │
+│  • Gestão de ciclo de vida          │
+└─────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────┐
+│       StandbyFragment               │
+│   (Apresentação)                    │
+├─────────────────────────────────────┤
+│  • Interface de informações         │
+│  • Updates em tempo real            │
+│  • Interação mínima                 │
+│  • Design de baixo consumo          │
+└─────────────────────────────────────┘
 ```
 
-### 2. Interface do Modo Standby
+## Layout da Interface
 
-**Prioridade: Alta** | **Complexidade: Média** | **Estimativa: 2 dias**
+### Tela Principal (StandbyActivity)
 
-#### Funcionalidades
-- Exibição de relógio digital/analógico
-- Informações de data e clima
-- Próximos eventos do calendário
-- Notificações pendentes (opcional)
-- Rotação automática de widgets informativos
-
-#### Esboço de Layout
 ```
 ┌─────────────────────────────────────────────────┐
 │                                                 │
 │                                                 │
-│                   10:45                         │
-│             Quarta-feira, 3 de Maio             │
-│                                                 │
-│                   23°C                          │
-│             Parcialmente Nublado                │
+│                   14:32                         │
+│              Quarta-feira, 12 Jun               │
 │                                                 │
 │                                                 │
+│                   ⚡ 75%                        │
+│               Carregando...                     │
 │                                                 │
-│  Próximos Eventos                               │
-│  ─────────────────────────────────────────      │
-│  11:30 - Reunião com equipe de marketing        │
-│  14:00 - Entrevista com candidato               │
-│  16:45 - Revisão de projeto                     │
+│                                                 │
+│              🌤️ 24°C                           │
+│            Parcialmente Nublado                 │
 │                                                 │
 │                                                 │
 │                                                 │
-│  Notificações (3)                               │
-│  ─────────────────────────────────────────      │
-│  Gmail - 2 novos emails                         │
-│  WhatsApp - 5 mensagens não lidas               │
-│  Calendario - Lembrete: Reunião em 15 minutos   │
+│         ┌─ Toque para abrir launcher ─┐         │
+│                                                 │
+│                                                 │
+│                                                 │
+│                                                 │
 │                                                 │
 │                                                 │
 └─────────────────────────────────────────────────┘
 ```
 
-### 3. Configurações do Modo Standby
-
-**Prioridade: Média** | **Complexidade: Média** | **Estimativa: 1 dia**
-
-#### Funcionalidades
-- Ativação/desativação do modo automático
-- Personalização de widgets exibidos
-- Ajuste de brilho específico para o modo
-- Esquema de cores (dia/noite/automático)
-- Tempo de atraso para ativação
-
-#### Esboço de Layout
-```
-┌─────────────────────────────────────────────────┐
-│       Configurações do Modo Standby             │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │ ☑ Ativar modo standby automaticamente   │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  Atraso para ativação                           │
-│  ┌───────────────────────────────────┐          │
-│  │  0        30s        1m       5m+   │        │
-│  └───────────────────────────────────┘          │
-│                                                 │
-│  Widgets a exibir                               │
-│  ┌─────────────────────────────────────────┐    │
-│  │ ☑ Relógio                               │    │
-│  │ ☑ Data                                  │    │
-│  │ ☑ Clima                                 │    │
-│  │ ☑ Próximos eventos                      │    │
-│  │ ☐ Notificações                          │    │
-│  │ ☐ Estatísticas de uso                   │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  Brilho da tela                                 │
-│  ┌───────────────────────────────────┐          │
-│  │  Min                        Max   │          │
-│  └───────────────────────────────────┘          │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │ ☑ Adaptar brilho ao ambiente            │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  Esquema de cores                               │
-│  ○ Claro   ○ Escuro   ● Automático             │
-│                                                 │
-└─────────────────────────────────────────────────┘
-```
-
-## Arquitetura de Implementação
-
-### Diagrama de Classes
+### Fluxo de Navegação
 
 ```
-┌────────────────┐     ┌────────────────┐
-│ BatteryReceiver │────►│ChargeDetector  │
-└────────────────┘     └────────┬───────┘
-                                │
-                                │
-┌────────────────┐     ┌────────▼───────┐
-│StandbyRepository│◄────│StandbyRepositoryImpl│
-└────────┬───────┘     └──────────────┘
-         │
-         │
-┌────────▼───────┐     ┌────────────────┐
-│GetStandbySettings│    │UpdateStandbySettings│
-└────────┬───────┘     └────────┬───────┘
-         │                      │
-         │                      │
-         │     ┌───────────────┘
-         │     │
-┌────────▼─────▼──┐
-│StandbyViewModel │
-└────────┬────────┘
-         │
-         │
-┌────────▼────────┐
-│StandbyFragment  │
-└─────────────────┘
+Conectar carregador → PowerConnectionReceiver → MainActivity.onChargingStarted() → 
+StandbyActivity.start() → Interface Always-On ativa
+
+Desconectar carregador → PowerConnectionReceiver → StandbyActivity.finish() → 
+Retorna ao MainActivity automaticamente
 ```
 
-### Modelo de Dados
+## Implementação Técnica
 
+### PowerConnectionReceiver
 ```kotlin
-// Configurações do modo standby
-data class StandbySettings(
-    val enabled: Boolean = true,
-    val activationDelaySeconds: Int = 30,
-    val brightness: Int = -1, // -1 para auto
-    val adaptBrightness: Boolean = true,
-    val colorScheme: ColorScheme = ColorScheme.AUTO,
-    val enabledWidgets: Set<StandbyWidgetType> = defaultWidgets()
-) {
-    companion object {
-        fun defaultWidgets() = setOf(
-            StandbyWidgetType.CLOCK,
-            StandbyWidgetType.DATE,
-            StandbyWidgetType.WEATHER,
-            StandbyWidgetType.CALENDAR
-        )
-    }
-}
-
-// Tipos de widgets disponíveis
-enum class StandbyWidgetType {
-    CLOCK,
-    DATE,
-    WEATHER,
-    CALENDAR,
-    NOTIFICATIONS,
-    USAGE_STATS
-}
-
-// Esquemas de cores
-enum class ColorScheme {
-    LIGHT,
-    DARK,
-    AUTO
-}
-
-// Estado do carregamento
-data class ChargingState(
-    val isCharging: Boolean,
-    val chargePercentage: Int,
-    val chargeType: ChargeType
-)
-
-// Tipo de carregamento
-enum class ChargeType {
-    WIRED,
-    WIRELESS,
-    UNKNOWN
-}
-```
-
-## Implementação dos Componentes
-
-### 1. Receptor de Estado da Bateria
-
-**Prioridade: Alta** | **Complexidade: Baixa** | **Estimativa: 0.5 dia**
-
-```kotlin
-// Registro no AndroidManifest.xml
-<receiver
-    android:name=".receivers.BatteryStateReceiver"
-    android:enabled="true"
-    android:exported="false">
-    <intent-filter>
-        <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-        <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-    </intent-filter>
-</receiver>
-
-// Implementação básica
-class BatteryStateReceiver : BroadcastReceiver() {
+class PowerConnectionReceiver : BroadcastReceiver() {
+    
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
             Intent.ACTION_POWER_CONNECTED -> {
-                // Ativar modo standby após atraso configurado
+                notifyChargingStarted(context)
             }
             Intent.ACTION_POWER_DISCONNECTED -> {
-                // Desativar modo standby
+                notifyChargingStopped(context)
+            }
+        }
+    }
+    
+    companion object {
+        fun isCharging(context: Context): Boolean {
+            val batteryStatus = context.registerReceiver(null, 
+                IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+            val status = batteryStatus?.getIntExtra(
+                BatteryManager.EXTRA_STATUS, -1)
+            return status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                   status == BatteryManager.BATTERY_STATUS_FULL
+        }
+    }
+}
+```
+
+### StandbyActivity
+```kotlin
+@AndroidEntryPoint
+class StandbyActivity : AppCompatActivity() {
+    
+    private lateinit var binding: ActivityStandbyBinding
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        setupStandbyMode()
+        setupBinding()
+        checkChargingState()
+    }
+    
+    private fun setupStandbyMode() {
+        // Configurar como Always-On
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
+        
+        // Modo escuro para economia
+        supportActionBar?.hide()
+        
+        // Prevenir burn-in
+        startBurnInPrevention()
+    }
+    
+    override fun onBackPressed() {
+        // Voltar ao launcher principal
+        finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+}
+```
+
+### StandbyViewModel
+```kotlin
+@HiltViewModel
+class StandbyViewModel @Inject constructor(
+    private val context: Context
+) : ViewModel() {
+    
+    private val _currentTime = MutableStateFlow("")
+    val currentTime: StateFlow<String> = _currentTime.asStateFlow()
+    
+    private val _batteryLevel = MutableStateFlow(0)
+    val batteryLevel: StateFlow<Int> = _batteryLevel.asStateFlow()
+    
+    private val _chargingStatus = MutableStateFlow("")
+    val chargingStatus: StateFlow<String> = _chargingStatus.asStateFlow()
+    
+    init {
+        startTimeUpdates()
+        startBatteryUpdates()
+    }
+    
+    private fun startTimeUpdates() {
+        viewModelScope.launch {
+            while (true) {
+                _currentTime.value = SimpleDateFormat("HH:mm", Locale.getDefault())
+                    .format(Date())
+                delay(1000) // Atualizar a cada segundo
             }
         }
     }
 }
 ```
 
-### 2. Fragment do Modo Standby
+## Integração com MainActivity
 
-**Prioridade: Alta** | **Complexidade: Média** | **Estimativa: 1.5 dias**
-
-O StandbyFragment deve ser projetado como um contêiner que pode exibir e organizar diferentes widgets, tornando-o expansível para adicionar novos tipos de informação.
-
-#### Estrutura do Fragment
-```
-┌─────────────────────────────────────────────────┐
-│               StandbyFragment                   │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │            ClockWidget                  │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │            WeatherWidget                │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │            CalendarWidget               │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │        NotificationsWidget              │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-└─────────────────────────────────────────────────┘
-```
-
-### 3. Sistema de Widgets Modulares
-
-**Prioridade: Média** | **Complexidade: Alta** | **Estimativa: 2 dias**
-
-Para facilitar a adição de novos widgets e permitir personalização, é recomendável implementar um sistema de widgets modulares.
-
-#### Interface de Widget
+### ChargingStateListener Interface
 ```kotlin
-interface StandbyWidget {
-    fun getView(context: Context): View
-    fun updateData()
-    fun getType(): StandbyWidgetType
-    fun getRefreshRate(): Long // em millisegundos
+interface ChargingStateListener {
+    fun onChargingStarted()
+    fun onChargingStopped()
+    fun onBatteryLevelChanged(level: Int)
 }
 ```
 
-#### Registro de Widgets
+### Implementação na MainActivity
 ```kotlin
-object StandbyWidgetRegistry {
-    private val availableWidgets = mutableMapOf<StandbyWidgetType, StandbyWidget>()
+class MainActivity : AppCompatActivity(), ChargingStateListener {
     
-    fun registerWidget(widget: StandbyWidget) {
-        availableWidgets[widget.getType()] = widget
+    override fun onChargingStarted() {
+        // Navegar para modo standby
+        val intent = Intent(this, StandbyActivity::class.java)
+        startActivity(intent)
     }
     
-    fun getWidget(type: StandbyWidgetType): StandbyWidget? {
-        return availableWidgets[type]
+    override fun onChargingStopped() {
+        // StandbyActivity se fecha automaticamente
+        // Não é necessário ação aqui
     }
     
-    fun getActiveWidgets(settings: StandbySettings): List<StandbyWidget> {
-        return settings.enabledWidgets
-            .mapNotNull { getWidget(it) }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Verificar se já está carregando na inicialização
+        if (PowerConnectionReceiver.isCharging(this)) {
+            onChargingStarted()
+        }
     }
 }
 ```
 
-## Permissões Necessárias
+## Informações Exibidas
 
+### **Básicas (Sempre Presentes)**
+- **Relógio digital** em formato HH:mm
+- **Data atual** com dia da semana
+- **Status de bateria** com porcentagem
+- **Status de carregamento** visual
+
+### **Contextuais (Quando Disponíveis)**
+- **Condições climáticas** básicas
+- **Temperatura atual** da localização
+- **Indicador de conectividade**
+- **Notificações prioritárias** (opcional)
+
+### **Interativas (Mínimas)**
+- **Toque na tela** retorna ao launcher
+- **Botão back** retorna ao launcher
+- **Gestos simples** para navegação
+
+## Configurações de Standby
+
+### **Automação**
+- **Ativação automática** habilitada por padrão
+- **Delay configurável** para ativação (0-30 segundos)
+- **Detecção de tipo** de carregamento (cabo/wireless)
+
+### **Visual**
+- **Modo escuro** automático para economia
+- **Brilho reduzido** para conforto noturno
+- **Anti burn-in** com movimento sutil de elementos
+- **Animações mínimas** para economia de bateria
+
+### **Comportamento**
+- **Keep screen on** durante carregamento
+- **Fechamento automático** ao desconectar
+- **Preservação de estado** do launcher principal
+- **Notificações discretas** apenas prioritárias
+
+## Performance e Otimizações
+
+### **Economia de Energia**
+```kotlin
+// Configurações de economia aplicadas
+private fun optimizeForStandby() {
+    // Reduzir frame rate
+    window.attributes.preferredDisplayModeId = lowRefreshRateMode
+    
+    // Brilho reduzido
+    val layoutParams = window.attributes
+    layoutParams.screenBrightness = 0.3f // 30% do brilho
+    window.attributes = layoutParams
+    
+    // Animações mínimas
+    overridePendingTransition(0, 0)
+}
+```
+
+### **Prevenção de Burn-in**
+```kotlin
+private fun startBurnInPrevention() {
+    viewModelScope.launch {
+        while (isActive) {
+            // Mover elementos sutilmente a cada 5 minutos
+            val offset = Random.nextInt(-5, 5)
+            moveElementsSlightly(offset)
+            delay(5 * 60 * 1000) // 5 minutos
+        }
+    }
+}
+```
+
+### **Gestão de Recursos**
+- **Updates otimizados**: Apenas quando necessário
+- **Memory footprint**: Mínimo para long-running activity
+- **CPU usage**: Reduzido com timers eficientes
+- **Wake locks**: Gerenciados automaticamente pelo sistema
+
+## Arquivos de Implementação
+
+### **Core Standby**
+- `presentation/standby/StandbyActivity.kt`
+- `presentation/standby/StandbyFragment.kt`
+- `presentation/standby/StandbyViewModel.kt`
+
+### **Power Management**
+- `data/receivers/PowerConnectionReceiver.kt`
+- `domain/interfaces/ChargingStateListener.kt`
+- `presentation/navigation/NavigationChargingListener.kt`
+
+### **UI & Resources**
+- `layout/activity_standby.xml`
+- `layout/fragment_standby.xml`
+- `values/colors.xml` (cores standby)
+- `values-night/` (tema escuro otimizado)
+
+## Permissões Utilizadas
+
+### **Essenciais**
 ```xml
-<!-- Para receber informações de carregamento -->
-<uses-permission android:name="android.permission.BATTERY_STATS" 
-    tools:ignore="ProtectedPermissions" />
-
-<!-- Para manter a tela ligada -->
 <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-<!-- Para acesso ao calendário (eventos) -->
-<uses-permission android:name="android.permission.READ_CALENDAR" />
-
-<!-- Para acesso à localização (clima) -->
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 ```
 
-## Dicas de Implementação
+### **Broadcast Receivers**
+```xml
+<receiver android:name=".data.receivers.PowerConnectionReceiver"
+          android:enabled="true"
+          android:exported="false">
+    <intent-filter>
+        <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+        <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+        <action android:name="android.intent.action.BATTERY_CHANGED" />
+    </intent-filter>
+</receiver>
+```
 
-1. **Economia de Energia**: Use o modo de baixo consumo para as animações e atualizações
-2. **Burn-in Prevention**: Implemente pequena movimentação periódica dos elementos para evitar burn-in em telas OLED
-3. **Transição Suave**: Crie animações sutis para entrada/saída do modo standby
-4. **Personalização**: Permita que o usuário reorganize a ordem dos widgets
-5. **Sensibilidade ao Ambiente**: Ajuste o brilho e o esquema de cores com base no sensor de luz
-6. **Informações Contextuais**: Priorize exibir informações mais relevantes para o momento do dia
-7. **Modo Noturno**: Implemente um modo noite especial com cores mais suaves e informações mínimas
+## Casos de Uso Testados
 
-## Próximos Passos
+### **Cenários Funcionais**
+- ✅ Ativação automática ao conectar carregador
+- ✅ Desativação automática ao desconectar
+- ✅ Retorno fluido ao launcher principal
+- ✅ Atualização de informações em tempo real
+- ✅ Economia de bateria durante uso
+- ✅ Funcionalidade em diferentes tipos de carregador
 
-1. Implementar o receptor de estado de carregamento
-2. Desenvolver a interface principal do modo standby
-3. Criar o sistema de widgets modulares
-4. Implementar as configurações personalizáveis
-5. Testar em diferentes dispositivos e ambientes
+### **Cenários Edge**
+- ✅ Conectar/desconectar rapidamente
+- ✅ Inicialização com carregador já conectado
+- ✅ Rotação de tela durante standby
+- ✅ Notificações durante modo standby
+- ✅ Low battery durante carregamento
+
+## Melhorias Futuras Planejadas
+
+### **Informações Expandidas**
+- **Próximos eventos** do calendário
+- **Notificações agrupadas** por prioridade
+- **Widgets personalizáveis** para diferentes contextos
+- **Informações de fitness** (passos, atividade)
+
+### **Personalização**
+- **Temas visuais** para diferentes horários
+- **Layout configurável** pelo usuário
+- **Widgets modulares** removíveis/adicionáveis
+- **Configurações de timing** personalizadas
+
+### **Integrações**
+- **Smart home controls** básicos
+- **Music player** minimalista
+- **Quick settings** essenciais
+- **Voice commands** para ações básicas
+
+---
+
+**Modo Standby oferece uma experiência útil e eficiente** transformando momentos de carregamento em oportunidades de informação contextual.

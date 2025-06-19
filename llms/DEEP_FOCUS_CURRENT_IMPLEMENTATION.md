@@ -2,7 +2,7 @@
 
 ## Status: ✅ TOTALMENTE IMPLEMENTADO E FUNCIONAL
 
-O Deep Focus Mode é a funcionalidade principal do ZenLauncher, permitindo aos usuários entrar em estado de foco profundo com bloqueio automático de aplicativos distrações.
+O Deep Focus Mode é a funcionalidade principal do MindfulLauncher, permitindo aos usuários entrar em estado de foco profundo com bloqueio automático de aplicativos distrações.
 
 ## Funcionalidades Implementadas
 

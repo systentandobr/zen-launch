@@ -67,7 +67,7 @@ kotlinclass AppRepositoryImpl(
     // ...
 }
 5. Inicialização na Application
-kotlinclass ZenLauncherApplication : Application() {
+kotlinclass MindfulLauncherApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // Inicializar o Service Locator

@@ -28,6 +28,8 @@ import com.zenlauncher.domain.entities.AppBlock
 import com.zenlauncher.presentation.common.dialogs.AppContextMenuDialog
 import com.zenlauncher.presentation.common.dialogs.BlockedAppInfoDialog
 import com.zenlauncher.presentation.common.views.AlphabeticalFastScroller
+import com.zenlauncher.presentation.focus.blockscreen.AppBlockScreenActivity
+import java.util.Date
 
 /**
  * Fragment para exibir todos os aplicativos instalados.
@@ -119,15 +121,24 @@ class AppsFragment : Fragment() {
     }
     
     fun showBlockDialog(app: AppInfo) {
+        val quatroHorasEmMillis: Long = 4 * 60 * 60 * 1000L;
+
         val dialog = BlockConfirmationDialog.newInstance(
             1, // apenas 1 app
-            1.0f, // duração padrão 1 hora
+            quatroHorasEmMillis, // duração padrão 4 horas
             AppBlock.BlockLevel.MEDIUM // nível padrão
         )
-        dialog.setOnConfirmListener { blockLevel ->
+        dialog.setOnConfirmListener { l: AppBlock ->
             // Aqui você pode chamar o método do ViewModel para bloquear o app
-            // Exemplo: viewModel.blockApp(app.packageName, blockLevel)
-            Snackbar.make(binding.root, "App bloqueado: ${app.label} ($blockLevel)", Snackbar.LENGTH_SHORT).show()
+            // Exemplo:
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.blockApp(app.packageName, l.blockedUntil, l.blockLevel);
+                Snackbar.make(
+                    binding.root,
+                    "App bloqueado: ${app.label} ($l.blockLevel)",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         }
         dialog.show(parentFragmentManager, "BlockConfirmationDialog")
     }
@@ -186,8 +197,15 @@ class AppsFragment : Fragment() {
         // Configurar o adaptador para a visualização em lista
         appAdapter = AppAdapter(
             onAppClick = { app ->
-                // TODO: consultar as regras de bloqueio do APP
-                viewModel.launchApp(app.packageName)
+                viewLifecycleOwner.lifecycleScope.launch {
+                    if (viewModel.isBlockedApp(app.packageName)) {
+                        val intent = Intent(requireContext(), AppBlockScreenActivity::class.java)
+                        intent.putExtra("PACKAGE_NAME", app.packageName)
+                        startActivity(intent)
+                    } else {
+                        viewModel.launchApp(app.packageName)
+                    }
+                }
             },
             onAppLongClick = { app ->
                 openDialogChoice(app)

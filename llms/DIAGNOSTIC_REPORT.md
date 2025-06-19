@@ -1,11 +1,11 @@
-# Diagnóstico do Estado Atual - ZenLauncher
+# Diagnóstico do Estado Atual - MindfulLauncher
 
 ## Data da Análise
 **11 de Junho de 2025**
 
 ## Resumo Executivo
 
-Após análise detalhada do código-fonte e estrutura do projeto ZenLauncher, foi identificado um **GAP significativo** entre a documentação existente e a implementação real. A aplicação evoluiu consideravelmente, mas a documentação não acompanhou essas mudanças, resultando em uma visão desatualizada do projeto.
+Após análise detalhada do código-fonte e estrutura do projeto MindfulLauncher, foi identificado um **GAP significativo** entre a documentação existente e a implementação real. A aplicação evoluiu consideravelmente, mas a documentação não acompanhou essas mudanças, resultando em uma visão desatualizada do projeto.
 
 ## Estado Atual da Aplicação
 
@@ -150,7 +150,7 @@ Após análise detalhada do código-fonte e estrutura do projeto ZenLauncher, fo
 
 ## Conclusão
 
-O **ZenLauncher evoluiu significativamente** além da documentação inicial. A base técnica é sólida e as funcionalidades core estão implementadas e funcionais. O principal gap é a **documentação desatualizada** e algumas oportunidades de **polimento da interface**.
+O **MindfulLauncher evoluiu significativamente** além da documentação inicial. A base técnica é sólida e as funcionalidades core estão implementadas e funcionais. O principal gap é a **documentação desatualizada** e algumas oportunidades de **polimento da interface**.
 
 A aplicação **NÃO é um mockup** - é um launcher funcional com recursos reais de produtividade. O próximo passo é atualizar a documentação para refletir a realidade atual e fazer ajustes de polish para uma experiência mais zen.
 

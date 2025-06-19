@@ -1,322 +1,369 @@
 # Controle de Uso de Aplicativos
 
-## Visão Geral
+## Status: ✅ TOTALMENTE IMPLEMENTADO E FUNCIONAL
 
-O módulo de Controle de Uso permite monitorar e limitar o tempo de uso de aplicativos, ajudando usuários a estabelecerem hábitos digitais mais saudáveis. Esta funcionalidade complementa o Deep Focus Mode, fornecendo análises detalhadas de uso e aplicando limites específicos por aplicativo.
+O sistema de controle de uso monitora, analisa e apresenta estatísticas detalhadas sobre o uso de aplicativos, fornecendo insights valiosos para promover o uso consciente da tecnologia.
 
-## Componentes Principais
+## Funcionalidades Implementadas
 
-### 1. Estatísticas de Uso
+### 📊 **Monitoramento em Tempo Real**
+- **UsageTrackingService** coleta dados continuamente
+- **UsageStatsManager** para precisão do sistema
+- **Persistência automática** de estatísticas
+- **Processamento inteligente** de dados brutos
 
-**Prioridade: Alta** | **Complexidade: Alta** | **Estimativa: 3 dias**
+### 📈 **Visualização de Estatísticas**
+- **Tela Stats** com dados detalhados por app
+- **Ranking** dos apps mais utilizados
+- **Métricas temporais** (dia, semana, mês)
+- **Categorização automática** de aplicativos
 
-#### Funcionalidades
-- Rastreamento de tempo de uso por aplicativo
-- Visualização de estatísticas diárias, semanais e mensais
-- Detecção de padrões de uso (horários de pico, frequência)
-- Categorização de aplicativos por tipo de uso
+### 🏆 **Sistema de Ranking**
+- **Classificação automática** por tempo de uso
+- **Filtragem por períodos** configuráveis
+- **Comparações temporais** e tendências
+- **Insights de produtividade** baseados em categorias
 
-#### Diagrama de Estrutura
+## Arquitetura do Sistema
+
+### Componentes Principais
+
+```
+┌─────────────────────────────────────┐
+│      UsageTrackingService           │
+│   (Foreground Service)              │
+├─────────────────────────────────────┤
+│  • Coleta dados via UsageStats      │
+│  • Processa e agrega informações    │
+│  • Persiste dados automaticamente   │
+│  • Calcula métricas em tempo real   │
+└─────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────┐
+│     UsageStatsRepository            │
+│   (Processamento de Dados)          │
+├─────────────────────────────────────┤
+│  • Interface com sistema Android    │
+│  • Agregação e normalização         │
+│  • Cache inteligente de dados       │
+│  • Cálculos de métricas complexas   │
+└─────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────┐
+│    StatsFragment & RankingFragment  │
+│   (Apresentação)                    │
+├─────────────────────────────────────┤
+│  • Visualização reativa de dados    │
+│  • Listas e cards informativos      │
+│  • Filtros por período              │
+│  • Navegação para detalhes          │
+└─────────────────────────────────────┘
+```
+
+## Layout das Interfaces
+
+### Tela de Estatísticas (StatsFragment)
+
 ```
 ┌─────────────────────────────────────────────────┐
-│            Estatísticas de Uso                  │
+│                 Estatísticas                    │
 ├─────────────────────────────────────────────────┤
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │     Gráfico de Uso Diário/Semanal       │    │
-│  └─────────────────────────────────────────┘    │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐           │
+│  │ 4h 32m  │ │ 23 apps │ │ 45 min  │           │
+│  │  Total  │ │  Usados │ │ Médio   │           │
+│  └─────────┘ └─────────┘ └─────────┘           │
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │      Top 5 Aplicativos Mais Usados      │    │
-│  └─────────────────────────────────────────┘    │
+│              Apps Mais Utilizados               │
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │       Categorias de Aplicativos         │    │
-│  └─────────────────────────────────────────┘    │
+│  📱 Instagram        2h 15m    ████████░░       │
+│  📺 YouTube          1h 45m    ██████░░░░       │
+│  💬 WhatsApp         45m       ███░░░░░░░       │
+│  🐦 Twitter          30m       ██░░░░░░░░       │
+│  📧 Gmail            25m       █░░░░░░░░░       │
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │      Estatísticas por Aplicativo        │    │
-│  └─────────────────────────────────────────┘    │
+│              Por Categoria                      │
+│                                                 │
+│  🎭 Social Media     3h 30m                    │
+│  ⚡ Produtividade    1h 15m                    │
+│  🎮 Entretenimento   45m                       │
+│  📰 Notícias         20m                       │
 │                                                 │
 └─────────────────────────────────────────────────┘
 ```
 
-### 2. Limites de Uso
+### Tela de Ranking (RankingFragment)
 
-**Prioridade: Alta** | **Complexidade: Alta** | **Estimativa: 2 dias**
-
-#### Funcionalidades
-- Definição de limites diários por aplicativo
-- Lembretes e alertas próximos ao limite
-- Bloqueio automático após atingir o limite (opcional)
-- Exibição de tempo restante durante o uso
-
-#### Diagrama de Estrutura
 ```
 ┌─────────────────────────────────────────────────┐
-│               Limites de Uso                    │
+│                    Ranking                      │
 ├─────────────────────────────────────────────────┤
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │    Configuração de Limite por App       │    │
-│  └─────────────────────────────────────────┘    │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐           │
+│  │   Hoje  │ │ Semana  │ │   Mês   │           │
+│  └─────────┘ └─────────┘ └─────────┘           │
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │  Lista de Apps com Limites Definidos    │    │
-│  └─────────────────────────────────────────┘    │
+│  🥇  1º  📱 Instagram       2h 15m             │
 │                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │   Opções de Bloqueio e Notificação      │    │
-│  └─────────────────────────────────────────┘    │
+│  🥈  2º  📺 YouTube         1h 45m             │
+│                                                 │
+│  🥉  3º  💬 WhatsApp        45m                │
+│                                                 │
+│  📍  4º  🐦 Twitter         30m                │
+│                                                 │
+│  📍  5º  📧 Gmail           25m                │
+│                                                 │
+│  📍  6º  🎵 Spotify         20m                │
+│                                                 │
+│  📍  7º  📷 Camera          15m                │
+│                                                 │
+│  📍  8º  ⚙️ Configurações   10m                │
 │                                                 │
 └─────────────────────────────────────────────────┘
 ```
 
-### 3. Notificações e Alertas
+## Entidades de Dados
 
-**Prioridade: Média** | **Complexidade: Média** | **Estimativa: 1 dia**
-
-#### Funcionalidades
-- Alertas quando se aproxima do limite de uso
-- Notificações de resumo diário de uso
-- Feedback positivo ao manter uso abaixo dos limites
-- Opções de personalização de alertas
-
-#### Exemplos de Notificações
-```
-┌─────────────────────────────────────────────────┐
-│ MindfulLauncher                                 now │
-├─────────────────────────────────────────────────┤
-│ Limite de Uso: Instagram                        │
-│ Você tem 5 minutos restantes hoje.              │
-└─────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────┐
-│ MindfulLauncher                                 now │
-├─────────────────────────────────────────────────┤
-│ Resumo de Uso: Hoje                             │
-│ Tempo total: 3h 45min                           │
-│ Top app: YouTube (1h 20min)                     │
-└─────────────────────────────────────────────────┘
-```
-
-## Arquitetura de Implementação
-
-### Diagrama de Classes
-
-```
-┌───────────────────┐       ┌───────────────────┐
-│  UsageStatsManager │◄──────│ UsageStatsService │
-└───────────────────┘       └─────────┬─────────┘
-                                      │
-                                      │
-┌───────────────────┐       ┌─────────▼─────────┐
-│  UsageRepository  │◄──────│UsageRepositoryImpl│
-└────────┬──────────┘       └───────────────────┘
-         │
-         │
-┌────────▼──────────┐       ┌───────────────────┐
-│GetAppUsageUseCase │       │SetUsageLimitUseCase│
-└────────┬──────────┘       └────────┬──────────┘
-         │                           │
-         │                           │
-         │        ┌──────────────────┘
-         │        │
-┌────────▼────────▼───────┐
-│   UsageViewModel        │
-└────────┬────────────────┘
-         │
-         │
-┌────────▼────────────────┐
-│   UsageStatsFragment    │
-└─────────────────────────┘
-```
-
-### Modelo de Dados
-
+### **AppUsageStat**
 ```kotlin
-// Informações de uso de um aplicativo
-data class AppUsageInfo(
+data class AppUsageStat(
     val packageName: String,
     val appName: String,
-    val icon: Drawable,
-    val usageTimeToday: Long,       // em milissegundos
-    val usageTimeWeek: Long,        // em milissegundos
-    val launchCount: Int,           // número de vezes que o app foi aberto hoje
-    val lastTimeUsed: Long          // timestamp da última utilização
+    val totalTimeInForeground: Long,    // Em milissegundos
+    val lastTimeUsed: Long,             // Timestamp
+    val sessionCount: Int,              // Número de aberturas
+    val averageSessionDuration: Long,   // Duração média
+    val category: AppCategory           // Categoria do app
 )
+```
 
-// Limites de uso definidos pelo usuário
-data class UsageLimit(
-    val packageName: String,
-    val dailyLimitMinutes: Int,     // limite diário em minutos
-    val isBlockingEnabled: Boolean, // se deve bloquear após o limite
-    val notifyAtPercentage: Int     // notificar quando atingir esta porcentagem
+### **DailyUsageStats**
+```kotlin
+data class DailyUsageStats(
+    val date: LocalDate,
+    val totalScreenTime: Long,
+    val totalUnlocks: Int,
+    val mostUsedApp: String,
+    val longestSession: Long,
+    val appsUsed: Int,
+    val productivityScore: Double
 )
+```
 
-// Resumo de uso para a dashboard
+### **UsageSummary**
+```kotlin
 data class UsageSummary(
-    val totalUsageToday: Long,      // tempo total de uso hoje
-    val topApps: List<AppUsageInfo>, // apps mais usados
-    val categorySummary: Map<String, Long> // uso por categoria
+    val totalUsageToday: Long,
+    val topApps: List<AppUsageStat>,
+    val categoryBreakdown: Map<AppCategory, Long>,
+    val comparedToYesterday: Double,
+    val weeklyAverage: Long
 )
 ```
 
-## Interfaces de Usuário
+## Casos de Uso Implementados
 
-### 1. Tela de Estatísticas de Uso
+### **GetAppUsageStatsUseCase**
+- Obtém estatísticas de uso por app
+- Filtragem por período (dias, semanas)
+- Ordenação por tempo de uso
+- Integração com dados do sistema
 
-**Prioridade: Alta** | **Complexidade: Média** | **Estimativa: 2 dias**
+### **GetMostUsedAppsUseCase**
+- Ranking dos apps mais utilizados
+- Configuração de limite de resultados
+- Filtragem de apps de sistema
+- Cache inteligente para performance
 
-#### Esboço de Layout
-```
-┌─────────────────────────────────────────────────┐
-│           Estatísticas de Uso                   │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  ┌───────────┐ ┌───────────┐ ┌───────────┐      │
-│  │   Hoje    │ │  Semana   │ │    Mês    │      │
-│  └───────────┘ └───────────┘ └───────────┘      │
-│                                                 │
-│  Tempo total de uso: 3h 45min                   │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │                                         │    │
-│  │                                         │    │
-│  │     Gráfico de Uso por Categoria        │    │
-│  │                                         │    │
-│  │                                         │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  Aplicativos Mais Usados                        │
-│                                                 │
-│  ┌────────┐ Instagram         1h 30min     ┌──┐ │
-│  │  Icon  │                               │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-│  ┌────────┐ YouTube           1h 05min     ┌──┐ │
-│  │  Icon  │                               │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-│  ┌────────┐ WhatsApp          45min        ┌──┐ │
-│  │  Icon  │                               │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-└─────────────────────────────────────────────────┘
+### **ManageAppMonitoringUseCase**
+- Configuração de monitoramento por app
+- Habilitação/desabilitação de coleta
+- Configuração de intervalos
+- Gestão de permissões
+
+## Métricas e Cálculos
+
+### **Produtividade Score**
+```kotlin
+fun calculateProductivityScore(stats: List<AppUsageStat>): Double {
+    val totalTime = stats.sumOf { it.totalTimeInForeground }
+    val productiveTime = stats
+        .filter { it.category in productiveCategories }
+        .sumOf { it.totalTimeInForeground }
+    
+    return (productiveTime.toDouble() / totalTime) * 100
+}
 ```
 
-### 2. Tela de Configuração de Limites
+### **Wellness Metrics**
+- **Screen Time Balance** - Baseado em metas pessoais
+- **App Diversity** - Variedade de apps utilizados
+- **Session Quality** - Duração vs frequência
+- **Focus Time** - Tempo em apps produtivos
+- **Distraction Level** - Tempo em apps distrativos
 
-**Prioridade: Alta** | **Complexidade: Média** | **Estimativa: 1 dia**
-
-#### Esboço de Layout
-```
-┌─────────────────────────────────────────────────┐
-│           Configurar Limites                    │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │  Pesquisar aplicativo                   │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  Aplicativos com Limites                        │
-│                                                 │
-│  ┌────────┐ Instagram                      ┌──┐ │
-│  │  Icon  │ Limite: 1h/dia                │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-│  ┌────────┐ TikTok                         ┌──┐ │
-│  │  Icon  │ Limite: 30min/dia             │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-│  Outros Aplicativos                             │
-│                                                 │
-│  ┌────────┐ YouTube                        ┌──┐ │
-│  │  Icon  │ Sem limite                    │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-│  ┌────────┐ Twitter                        ┌──┐ │
-│  │  Icon  │ Sem limite                    │>│ │ │
-│  └────────┘                               └──┘ │
-│                                                 │
-└─────────────────────────────────────────────────┘
+### **Categorização Inteligente**
+```kotlin
+enum class AppCategory {
+    PRODUCTIVITY,    // Produtividade e trabalho
+    SOCIAL,         // Redes sociais
+    ENTERTAINMENT,  // Entretenimento e mídia
+    GAMES,          // Jogos
+    EDUCATION,      // Educação e aprendizado
+    BUSINESS,       // Negócios e finanças
+    TOOLS,          // Ferramentas do sistema
+    HEALTH,         // Saúde e fitness
+    NEWS,           // Notícias e informação
+    COMMUNICATION,  // Comunicação
+    OTHER           // Outros
+}
 ```
 
-### 3. Diálogo de Configuração de Limite
+## Integração com Outras Funcionalidades
 
-**Prioridade: Média** | **Complexidade: Baixa** | **Estimativa: 0.5 dia**
-
-#### Esboço de Layout
-```
-┌─────────────────────────────────────────────────┐
-│    Configurar Limite para Instagram             │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  Tempo limite diário                            │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │              1 hora                     │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  ┌───────────────────────────────────┐          │
-│  │  0           1h           2h     3h+  │      │
-│  └───────────────────────────────────┘          │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │ ☑ Bloquear app após atingir o limite    │    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  ┌─────────────────────────────────────────┐    │
-│  │ ☑ Notificar quando atingir 80% do limite│    │
-│  └─────────────────────────────────────────┘    │
-│                                                 │
-│  ┌───────────┐             ┌───────────────┐    │
-│  │  Cancelar │             │    Salvar     │    │
-│  └───────────┘             └───────────────┘    │
-│                                                 │
-└─────────────────────────────────────────────────┘
+### **Focus Mode Integration**
+```kotlin
+// Stats sugerem apps para bloquear automaticamente
+fun suggestAppsToBlock(): List<String> {
+    return getMostUsedAppsUseCase(days = 7, limit = 5)
+        .filter { it.category in distractiveCategories }
+        .map { it.packageName }
+}
 ```
 
-## Permissões Necessárias
+### **Ranking para Bloqueio**
+- Apps mais usados aparecem automaticamente no Focus Mode
+- Sugestões inteligentes baseadas em padrões
+- Integração com configurações de bloqueio
 
-Para implementar o controle de uso, é necessário solicitar a permissão `PACKAGE_USAGE_STATS`, que requer aprovação manual do usuário nas configurações do sistema.
+### **Insights de Bem-estar**
+```kotlin
+// Geração de insights baseados em padrões
+fun generateWellnessInsights(stats: List<AppUsageStat>): List<WellnessInsight> {
+    val insights = mutableListOf<WellnessInsight>()
+    
+    // Detectar uso excessivo (>3h em um app)
+    stats.filter { it.totalTimeInForeground > 3 * 60 * 60 * 1000 }
+        .forEach { app ->
+            insights.add(WellnessInsight.ExcessiveUse(app.packageName))
+        }
+    
+    // Detectar padrões negativos
+    if (hasLateNightUsage(stats)) {
+        insights.add(WellnessInsight.LateNightUsage)
+    }
+    
+    return insights
+}
+```
 
+## Performance e Otimizações
+
+### **Coleta Eficiente**
+- **Interval otimizado**: 30 segundos para balancear precisão e bateria
+- **Background processing**: Threads separadas para processamento
+- **Batch operations**: Agrupamento de operações de persistência
+- **Smart caching**: Cache de dados frequentemente acessados
+
+### **Gestão de Memória**
+```kotlin
+class UsageStatsCache {
+    private val statsCache = LruCache<String, List<AppUsageStat>>(50)
+    private val cacheExpiry = mutableMapOf<String, Long>()
+    private val cacheValidityMs = 5 * 60 * 1000L // 5 minutos
+    
+    // Cache inteligente com expiração automática
+}
+```
+
+### **Otimizações Aplicadas**
+- **Foreground service** evita kill pelo sistema
+- **Notification discreta** para transparência
+- **Wake locks mínimos** apenas quando necessário
+- **Database indexing** para queries rápidas
+
+## Permissões e Configuração
+
+### **Permissão Crítica**
 ```xml
-<!-- AndroidManifest.xml -->
-<uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" 
-    tools:ignore="ProtectedPermissions" />
+<uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
 ```
 
-## Fluxo de Solicitação de Permissão
-
+### **Fluxo de Permissão**
 ```
-┌────────────────┐     ┌────────────────┐     ┌────────────────┐
-│ Tela Inicial   │────►│Explicação sobre│────►│  Configurações │
-│                │     │   permissão    │     │  do Sistema    │
-└────────────────┘     └────────────────┘     └────────────────┘
-        ▲                                              │
-        │                                              │
-        │                                              ▼
-┌────────────────┐                          ┌────────────────┐
-│ Funcionalidade │◄─────────────────────────│  Permissão     │
-│   Ativada      │                          │  Concedida     │
-└────────────────┘                          └────────────────┘
+App iniciado → Verifica permissão → Se negada → UsagePermissionActivity → Settings → Retorna ao app
 ```
 
-## Dicas de Implementação
+### **UsagePermissionActivity**
+- Interface amigável explicando a necessidade
+- Botão direto para configurações do sistema
+- Verificação automática após retorno
+- Fallback gracioso se permissão negada
 
-1. **UsageStatsManager**: Use a API do sistema para acessar as estatísticas de uso
-2. **Armazenamento**: Utilize DataStore para salvar limites e configurações de uso
-3. **Background Service**: Implemente um serviço em segundo plano para monitorar o uso
-4. **Categorização**: Use a Google Play Store API ou técnicas de heurística para categorizar apps
-5. **Performance**: Cache os dados de uso para evitar cálculos frequentes
-6. **Accuracy**: Verifique os dados de uso em períodos regulares para maior precisão
-7. **Battery**: Otimize os intervalos de verificação para evitar consumo excessivo de bateria
+## Arquivos de Implementação
 
-## Próximos Passos
+### **Core Services**
+- `data/services/UsageTrackingService.kt`
+- `data/repositories/UsageStatsRepositoryImpl.kt`
+- `domain/usecases/GetAppUsageStatsUseCase.kt`
+- `domain/usecases/GetMostUsedAppsUseCase.kt`
 
-1. Implementar o repositório de estatísticas de uso
-2. Criar os casos de uso relacionados
-3. Desenvolver as interfaces de usuário
-4. Implementar o sistema de notificações
-5. Testar em diferentes dispositivos e versões do Android
+### **Presentation Layer**
+- `presentation/stats/StatsFragment.kt`
+- `presentation/stats/StatsViewModel.kt`
+- `presentation/ranking/RankingFragment.kt`
+- `presentation/ranking/RankingViewModel.kt`
+
+### **UI Components**
+- `presentation/stats/adapters/AppUsageAdapter.kt`
+- `presentation/ranking/adapters/RankingAdapter.kt`
+- `presentation/ranking/model/RankingModels.kt`
+
+### **Permission Handling**
+- `presentation/permissions/UsagePermissionActivity.kt`
+
+## Estatísticas Coletadas
+
+### **Por App**
+- Tempo total de uso (foreground)
+- Número de sessões/aberturas
+- Duração média por sessão
+- Última utilização
+- Categoria do aplicativo
+
+### **Agregadas**
+- Tempo total de tela por dia
+- Número de desbloqueios
+- App mais usado do dia
+- Sessão mais longa
+- Score de produtividade
+
+### **Tendências**
+- Comparação com dias anteriores
+- Médias semanais/mensais
+- Padrões de uso por horário
+- Evolução do uso ao longo do tempo
+
+## Melhorias Futuras Planejadas
+
+### **Visualizações Avançadas**
+- Gráficos temporais de uso
+- Heatmaps de atividade por horário
+- Comparações com médias gerais
+- Projeções baseadas em tendências
+
+### **Insights Inteligentes**
+- Detecção de padrões problemáticos
+- Sugestões personalizadas de melhoria
+- Alertas de uso excessivo
+- Celebração de conquistas
+
+### **Gamificação**
+- Metas de redução de tempo de tela
+- Conquistas por uso consciente
+- Streaks de dias com uso equilibrado
+- Comparações sociais (opcional)
+
+---
+
+**Sistema robusto que fornece insights valiosos** para promover o uso consciente e saudável da tecnologia móvel.

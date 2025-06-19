@@ -1,4 +1,4 @@
-# ZenLauncher
+# MindfulLauncher
 
 ![Status do Projeto](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Linguagem](https://img.shields.io/badge/kotlin-1.9.0-blue)
@@ -8,7 +8,7 @@ Um launcher Android minimalista focado em bem-estar digital e produtividade, que
 
 ## Visão Geral
 
-O ZenLauncher é um launcher Android que combina:
+O MindfulLauncher é um launcher Android que combina:
 
 - **Design Minimalista**: Interface limpa e sem distrações
 - **Deep Focus Mode**: Bloqueio temporário de aplicativos distrativas
@@ -52,7 +52,7 @@ O ZenLauncher é um launcher Android que combina:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/ZenLauncher.git
+git clone https://github.com/seu-usuario/MindfulLauncher.git
 ```
 
 2. Abra o projeto no Android Studio

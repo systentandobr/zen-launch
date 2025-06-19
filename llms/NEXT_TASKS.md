@@ -30,7 +30,7 @@ Todas as tarefas planejadas foram concluídas com sucesso:
 
 ### Possíveis Melhorias Futuras
 
-Para futuras iterações do ZenLauncher, podemos considerar:
+Para futuras iterações do MindfulLauncher, podemos considerar:
 
 1. **Personalização da Interface**: Adicionar temas e opções de personalização
 2. **Widgets**: Suporte a widgets na tela inicial

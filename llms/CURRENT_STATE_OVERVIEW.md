@@ -1,8 +1,8 @@
-# ZenLauncher - Documentação Atualizada 2025
+# MindfulLauncher - Documentação Atualizada 2025
 
 ## Visão Geral do Projeto
 
-O **ZenLauncher** é um launcher Android focado em **produtividade e bem-estar digital**, projetado para reduzir distrações e promover o uso consciente de dispositivos móveis.
+O **MindfulLauncher** é um launcher Android focado em **produtividade e bem-estar digital**, projetado para reduzir distrações e promover o uso consciente de dispositivos móveis.
 
 ## Status Atual: FUNCIONAL ✅
 
@@ -265,7 +265,7 @@ implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1'
 
 ## Conclusão
 
-O **ZenLauncher** é uma aplicação **madura e funcional** que atinge seus objetivos de **promover produtividade e bem-estar digital**. Com uma arquitetura sólida e funcionalidades core implementadas, está pronto para uso diário e futuras expansões.
+O **MindfulLauncher** é uma aplicação **madura e funcional** que atinge seus objetivos de **promover produtividade e bem-estar digital**. Com uma arquitetura sólida e funcionalidades core implementadas, está pronto para uso diário e futuras expansões.
 
 A base técnica permite **fácil manutenção e extensão**, enquanto o design foca na **simplicidade e efetividade** para reduzir distrações e promover o uso consciente de smartphones.
 

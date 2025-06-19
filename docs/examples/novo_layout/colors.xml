@@ -6,7 +6,7 @@
     <color name="colorPrimaryLight">#2A2A2A</color>
     
     <!-- Cores de Destaque -->
-    <color name="colorAccent">#4CAF50</color>
+    <color name="colorAccentLight">#4CAF50</color>
     <color name="colorAccentLight">#81C784</color>
     <color name="colorAccentDark">#388E3C</color>
     

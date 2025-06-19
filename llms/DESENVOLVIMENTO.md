@@ -1,6 +1,6 @@
-# Desenvolvimento do ZenLauncher
+# Desenvolvimento do MindfulLauncher
 
-Este documento descreve as implementações realizadas e fornece orientações para o desenvolvimento futuro do ZenLauncher.
+Este documento descreve as implementações realizadas e fornece orientações para o desenvolvimento futuro do MindfulLauncher.
 
 ## Implementações Realizadas
 
@@ -47,7 +47,7 @@ Componentes principais:
 
 4. **Personalização Avançada de Widgets**:
    - Permitir redimensionamento e reposicionamento de widgets na tela inicial.
-   - Adicionar suporte a widgets personalizados do ZenLauncher.
+   - Adicionar suporte a widgets personalizados do MindfulLauncher.
 
 5. **Backup e Restauração de Configurações**:
    - Implementar funcionalidade para fazer backup das configurações do launcher.
@@ -102,6 +102,6 @@ Para manter a qualidade e consistência do código, siga estas convenções:
 
 ## Conclusão
 
-O ZenLauncher está sendo desenvolvido com foco em minimalismo, desempenho e facilidade de uso. A arquitetura limpa e os princípios SOLID aplicados garantem um código organizado e de fácil manutenção, permitindo a adição de novas funcionalidades de forma modular e testável.
+O MindfulLauncher está sendo desenvolvido com foco em minimalismo, desempenho e facilidade de uso. A arquitetura limpa e os princípios SOLID aplicados garantem um código organizado e de fácil manutenção, permitindo a adição de novas funcionalidades de forma modular e testável.
 
 Com o sistema de temas implementado, o próximo foco deve ser a melhor configurabilidade do launcher, seguida pela implementação de funcionalidades avançadas como gestos personalizados e suporte a pastas de aplicativos.

@@ -3,7 +3,7 @@
 ## v1.0.0 (13/05/2025)
 
 ### Adicionado
-- Implementação inicial do ZenLauncher com foco em minimalismo e bem-estar digital
+- Implementação inicial do MindfulLauncher com foco em minimalismo e bem-estar digital
 - Interface de usuário limpa e sem distrações usando Jetpack Compose
 - Lista de aplicativos minimalista com pesquisa e organização alfabética
 - Modo Deep Focus para bloqueio de aplicativos distrativos durante períodos de concentração

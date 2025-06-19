@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_medium"
             android:text="Tempo de Uso"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorAccentLight"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
                         android:layout_height="@dimen/icon_size_large"
                         android:layout_marginEnd="@dimen/spacing_medium"
                         android:src="@drawable/ic_stats"
-                        android:tint="@color/colorAccent"
+                        android:tint="@color/colorAccentLight"
                         tools:ignore="UseAppTint" />
 
                     <LinearLayout
@@ -100,7 +100,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1h 27min"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorAccentLight"
                             android:textSize="@dimen/text_size_xlarge"
                             android:textStyle="bold" />
 
@@ -113,7 +113,7 @@
                     android:layout_width="@dimen/icon_size_small"
                     android:layout_height="@dimen/icon_size_small"
                     android:src="@drawable/ic_trending_down"
-                    android:tint="@color/colorAccent"
+                    android:tint="@color/colorAccentLight"
                     tools:ignore="UseAppTint" />
 
             </LinearLayout>
@@ -159,7 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="75%"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorAccentLight"
                         android:textSize="@dimen/text_size_medium"
                         android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/progress_bar_height_thick"
                     android:progress="75"
-                    android:progressTint="@color/colorAccent"
+                    android:progressTint="@color/colorAccentLight"
                     android:progressBackgroundTint="@color/progressBackgroundColor" />
 
             </LinearLayout>
@@ -257,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Apps mais usados"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorAccentLight"
                 android:textSize="@dimen/text_size_large"
                 android:textStyle="bold" />
 
@@ -266,7 +266,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ver todos"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorAccentLight"
                 android:textSize="@dimen/text_size_medium"
                 android:clickable="true"
                 android:focusable="true"

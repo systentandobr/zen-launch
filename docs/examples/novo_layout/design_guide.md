@@ -115,7 +115,7 @@ A implementação das cores no sistema Android utiliza o arquivo `colors.xml` co
 ```xml
 <!-- Exemplo de implementação -->
 <color name="colorPrimary">#1A1A1A</color>
-<color name="colorAccent">#4CAF50</color>
+<color name="colorAccentLight">#4CAF50</color>
 <color name="textColorPrimary">#FFFFFF</color>
 ```
 

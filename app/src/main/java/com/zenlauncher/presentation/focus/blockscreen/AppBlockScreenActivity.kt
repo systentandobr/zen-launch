@@ -55,12 +55,10 @@ class AppBlockScreenActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
-        
-        binding.extendBlockButton.setOnClickListener {
+
+        binding.continueButton.setOnClickListener {
             viewModel.extendBlockTime(TimeUnit.MINUTES.toMillis(15))
-        }
-        
-        binding.unblockButton.setOnClickListener {
+
             // Mostrar diálogo de confirmação antes de desbloquear
             AppBlockUnlockDialog().apply {
                 setOnConfirmListener {
@@ -68,11 +66,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
                 }
             }.show(supportFragmentManager, "unblock_dialog")
         }
-        
-        binding.settingsButton.setOnClickListener {
-            // Aqui pode navegar para as configurações de bloqueio de aplicativos
-            finish()
-        }
+
     }
     
     private fun setupObservers() {
@@ -90,7 +84,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
         
         lifecycleScope.launch {
             viewModel.appInfo.collectLatest { appInfo ->
-                binding.appNameTextView.text = appInfo?.label ?: packageName
+                binding.appNameText.text = appInfo?.label ?: packageName
                 binding.appIcon.setImageDrawable(appInfo?.icon)
             }
         }
@@ -126,7 +120,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
             AppBlock.BlockLevel.SOFT -> {
                 binding.blockTypeIcon.setImageResource(android.R.drawable.ic_menu_info_details)
                 binding.blockLevelTextView.text = "Apenas Lembrete"
-                binding.blockMessageTextView.text = "Este aplicativo está em sua lista de bloqueio. Você ainda pode utilizá-lo, mas recomendamos focar em outras atividades."
+                binding.blockMotivationalTextView.text = "Este aplicativo está em sua lista de bloqueio. Você ainda pode utilizá-lo, mas recomendamos focar em outras atividades."
                 
                 // Permitir continuar em nível SOFT
                 binding.continueButton.visibility = View.VISIBLE
@@ -138,7 +132,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
             AppBlock.BlockLevel.MEDIUM -> {
                 binding.blockTypeIcon.setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
                 binding.blockLevelTextView.text = "Bloqueio Médio"
-                binding.blockMessageTextView.text = "Este aplicativo está bloqueado para ajudar em sua concentração. Você ainda pode acessá-lo se realmente necessário."
+                binding.blockMotivationalTextView.text = "Este aplicativo está bloqueado para ajudar em sua concentração. Você ainda pode acessá-lo se realmente necessário."
                 
                 // Permitir continuar após confirmação em nível MEDIUM
                 binding.continueButton.visibility = View.VISIBLE
@@ -155,7 +149,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
             AppBlock.BlockLevel.HARD -> {
                 binding.blockTypeIcon.setImageResource(android.R.drawable.ic_lock_lock)
                 binding.blockLevelTextView.text = "Bloqueio Rígido"
-                binding.blockMessageTextView.text = "Este aplicativo está rigorosamente bloqueado para máxima concentração. Você só poderá acessá-lo após o término do período de bloqueio."
+                binding.blockMotivationalTextView.text = "Este aplicativo está rigorosamente bloqueado para máxima concentração. Você só poderá acessá-lo após o término do período de bloqueio."
                 
                 // Não permitir continuar em nível HARD
                 binding.continueButton.visibility = View.GONE
@@ -168,7 +162,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
      */
     private fun updateRemainingTime(remainingTimeMs: Long) {
         if (remainingTimeMs <= 0) {
-            binding.remainingTimeTextView.text = "Bloqueio expirado"
+            binding.remainingTextView.text = "Bloqueio expirado"
             binding.remainingTimeProgressBar.progress = 0
             binding.remainingTimeProgressBar.max = 100
             finish() // Fechar a tela se o bloqueio já expirou
@@ -185,7 +179,7 @@ class AppBlockScreenActivity : AppCompatActivity() {
             else -> String.format("%02d:%02d", minutes, seconds)
         }
         
-        binding.remainingTimeTextView.text = "Tempo restante: $formattedTime"
+        binding.remainingTimerTextView.text = "$formattedTime"
         
         // Formatar data de término
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())

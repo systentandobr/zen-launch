@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_small"
                         android:text="Streak Ativa: 12 dias"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorAccentLight"
                         android:textSize="@dimen/text_size_large"
                         android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_medium"
                 android:text="Use este tempo para:"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorAccentLight"
                 android:textSize="@dimen/text_size_large"
                 android:textStyle="bold" />
 
@@ -427,7 +427,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1h 27m"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorAccentLight"
                             android:textSize="@dimen/text_size_large"
                             android:textStyle="bold" />
 
@@ -452,7 +452,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="-35%"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorAccentLight"
                             android:textSize="@dimen/text_size_large"
                             android:textStyle="bold" />
 
@@ -487,7 +487,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="•"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorAccentLight"
                         android:textSize="@dimen/text_size_medium" />
 
                     <TextView
@@ -512,7 +512,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="•"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorAccentLight"
                         android:textSize="@dimen/text_size_medium" />
 
                     <TextView

@@ -1,4 +1,4 @@
-# Implementação do Sistema de Sessão de Foco - ZenLauncher
+# Implementação do Sistema de Sessão de Foco - MindfulLauncher
 
 ## Resumo das Correções Implementadas
 

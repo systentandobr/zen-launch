@@ -78,7 +78,7 @@
     <!-- Tema para Dialogs -->
     <style name="MindfulLauncherTheme.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
         <item name="android:colorBackground">@color/backgroundColorDialog</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
@@ -88,7 +88,7 @@
     <!-- Tema para Bottom Sheet -->
     <style name="MindfulLauncherTheme.BottomSheet" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
         <item name="android:colorBackground">@color/surfaceColor</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="bottomSheetStyle">@style/ZenBottomSheet</item>

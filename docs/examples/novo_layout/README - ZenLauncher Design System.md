@@ -126,7 +126,7 @@ Para criar variações de tema, modifique o arquivo `colors.xml`:
 
 ```xml
 <!-- Tema alternativo -->
-<color name="colorAccent">#2196F3</color> <!-- Azul ao invés de verde -->
+<color name="colorAccentLight">#2196F3</color> <!-- Azul ao invés de verde -->
 ```
 
 ### Adicionando Componentes

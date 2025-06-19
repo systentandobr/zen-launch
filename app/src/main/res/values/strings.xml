@@ -60,4 +60,35 @@
     
     <string name="desc_phone">Telefone</string>
     <string name="desc_camera">Câmera</string>
+
+    <!-- Strings para Tela de Bloqueio -->
+    <string name="block_title_default">App Bloqueado</string>
+    <string name="block_title_high">Bloqueio Ativo</string>
+    <string name="block_title_low">Momento de Reflexão</string>
+
+    <string name="block_subtitle_default">%s está temporariamente bloqueado</string>
+    <string name="block_subtitle_focus">%s está bloqueado durante sua sessão de foco</string>
+    <string name="block_subtitle_low">Você realmente precisa usar o %s agora?</string>
+
+    <string name="motivational_message_default">Use este tempo para algo mais produtivo</string>
+    <string name="motivational_message_focus">Mantenha o foco! Você consegue!</string>
+    <string name="motivational_message_low">Considere uma atividade mais produtiva</string>
+
+    <string name="usage_stats_today">Você já usou %d min hoje</string>
+    <string name="time_remaining">Tempo restante</string>
+    <string name="session_active">Deep Focus Mode ativo</string>
+    <string name="session_time_remaining">%d min restantes</string>
+
+    <!-- Botões da Tela de Bloqueio -->
+    <string name="btn_back_to_launcher">Voltar ao Launcher</string>
+    <string name="btn_wait_and_continue">Aguardar e Continuar</string>
+    <string name="btn_continue_anyway">Continuar Mesmo Assim</string>
+    <string name="btn_choose_other_activity">Escolher Outra Atividade</string>
+
+    <!-- Mensagens de Bloqueio por Nível -->
+    <string name="block_level_low_title">Momento de Reflexão</string>
+    <string name="block_level_medium_title">App Bloqueado</string>
+    <string name="block_level_high_title">Bloqueio Ativo</string>
+
+
 </resources>
